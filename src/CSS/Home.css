@@ -1,0 +1,42 @@
+.w-620px {
+    width: 750px;
+}
+
+.line-57p {
+    line-height: 57px !important;
+}
+
+.line-102p {
+    line-height: 102px !important;
+}
+
+.mt-22px{
+    margin-top: 22px !important;
+}
+
+.arrow-button > path {
+    color: #0C0B0B !important;
+}
+
+.mt-10n{
+    margin-top: -10px !important;
+}
+
+.left-650 {
+    left: 650px !important;
+}
+
+.top-40n {
+    top: -40px !important;
+}
+
+.w-340 {
+    width: 340px !important;
+}
+
+@font-face {
+    font-family: 'Baloo Bhai';
+    src: URL('/public/fonts/BalooBhai-Regular.ttf') format('truetype');
+  }
+
+  
