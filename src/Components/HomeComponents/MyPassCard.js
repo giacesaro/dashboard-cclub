@@ -26,7 +26,7 @@ function MyPassCard() {
                             </Typography>
                         </Grid>
                         <Grid item xs={3} md={6} lg={2} className='text-left !mt-6'/>
-                        <Grid item xs={6} md={6} lg={4} className='text-right !pr-10' sx={{mt: {xs: 1, md: 3}, mb: {xs: 2, md: 0}}}>
+                        <Grid item xs={6} md={6} lg={4} sx={{mt: {xs: 1, md: 3}, mb: {xs: 2, md: 0}, textAlign:{xs: 'right', sm: 'center', md:'right'}, pr:{xs: 5, sm: 0, md:5}}}>
                             <Button variant='contained' className='bg-my-black !rounded-md font-Roboto !text-sm'>
                                 CONTINUE
                             </Button>

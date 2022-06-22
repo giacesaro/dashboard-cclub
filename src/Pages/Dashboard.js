@@ -16,7 +16,7 @@ function Dashboard() {
               <Sidebar />
             </Grid>
             <Grid item xs={12} md={1} lg={1} sx={{display: {xs: 'initial', md: 'none'}}}>
-              <SidebarMobile />
+              <SidebarMobile/>
             </Grid>
             <Grid item xs={12} md={11} lg={11}>
               <Home />

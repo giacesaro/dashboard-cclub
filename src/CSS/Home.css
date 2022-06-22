@@ -34,6 +34,9 @@
     width: 340px !important;
 }
 
+.l-20p {
+    left: 20% !important
+}
 @font-face {
     font-family: 'Baloo Bhai';
     src: URL('/public/fonts/BalooBhai-Regular.ttf') format('truetype');

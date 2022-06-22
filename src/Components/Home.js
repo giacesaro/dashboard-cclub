@@ -10,7 +10,7 @@ import FindOutMore from './HomeComponents/FindOutMore';
 
 function Home() {
     return (
-        <Grid container spacing={5} sx={{ pl: { xs: 2, md: 6 }, mt: { xs: 1, md: 3 } }}>
+        <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
             {/* HELLO CARD - CONNECT WALLET - CARD GENERIC REF AND ETH */}
             <Grid item xs={12} md={6} lg={6}>
                 <HelloCard />

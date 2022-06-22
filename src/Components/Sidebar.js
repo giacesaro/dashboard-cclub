@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import '../CSS/Dashboard.css';
 import '../CSS/Sidebar.css'
 import { Card, Button } from '@mui/material';
 import { Box } from '@mui/system';
+import ResponsiveDrawer from './MobileComponents/SidebarMobile';
 
 function Sidebar() {
+    const [open, setOpen] = useState(true);
     return (
         <Card className='w-32 ml-8 mt-6 bg-my-black !rounded-3xl'>
             <Box
