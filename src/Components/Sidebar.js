@@ -5,9 +5,10 @@ import '../CSS/Sidebar.css'
 import { Card, Button } from '@mui/material';
 import { Box } from '@mui/system';
 import ResponsiveDrawer from './MobileComponents/SidebarMobile';
+import { useWeb3React } from '@web3-react/core';
 
 function Sidebar() {
-    const [open, setOpen] = useState(true);
+    const { account } = useWeb3React();
     return (
         <Card className='w-32 ml-8 mt-6 bg-my-black !rounded-3xl'>
             <Box
@@ -48,14 +49,23 @@ function Sidebar() {
                     src="/images/Elite-icon.png"
                 />
             </Button>
-            <Button className='!mt-14 h-16 !mb-10'>
+            {account &&
+                <Button className='!mt-14 h-16 !mb-10'>
+                    <Box
+                        component="img"
+                        className=''
+                        alt="Home"
+                        src="/images/logout.png"
+                    />
+                </Button>
+            }
+            {!account &&
                 <Box
-                    component="img"
-                    className=''
+                    component="div"
+                    className='!mt-14 h-16 !mb-10'
                     alt="Home"
-                    src="/images/logout.png"
                 />
-            </Button>
+            }
         </Card>
     );
 }
