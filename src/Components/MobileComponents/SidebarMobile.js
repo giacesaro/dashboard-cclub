@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { Grid } from '@mui/material';
@@ -35,48 +31,48 @@ function SidebarMobile(props) {
                 <ListItem key={'home'} disablePadding>
                     <ListItemButton className='!justify-center !pl-11'>
                         <ListItemIcon>
-                        <Box
-                            component="img"
-                            className=''
-                            alt="Home"
-                            src="/images/home.png"
-                        />
+                            <Box
+                                component="img"
+                                className=''
+                                alt="Home"
+                                src="/images/home.png"
+                            />
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
                 <ListItem key={'member'} disablePadding>
                     <ListItemButton className='!justify-center !pt-12'>
                         <ListItemIcon>
-                        <Box
-                            component="img"
-                            className='h-24'
-                            alt="Member"
-                            src="/images/Member-icon.png"
-                        />
+                            <Box
+                                component="img"
+                                className='h-24'
+                                alt="Member"
+                                src="/images/Member-icon.png"
+                            />
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
                 <ListItem key={'partner'} disablePadding>
                     <ListItemButton className='!justify-center'>
                         <ListItemIcon>
-                        <Box
-                            component="img"
-                            className='h-24'
-                            alt="Partner"
-                            src="/images/Partner-icon.png"
-                        />
+                            <Box
+                                component="img"
+                                className='h-24'
+                                alt="Partner"
+                                src="/images/Partner-icon.png"
+                            />
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
                 <ListItem key={'elite'} disablePadding>
                     <ListItemButton className='!justify-center'>
                         <ListItemIcon>
-                        <Box
-                            component="img"
-                            className='h-24'
-                            alt="Elite"
-                            src="/images/Elite-icon.png"
-                        />
+                            <Box
+                                component="img"
+                                className='h-24'
+                                alt="Elite"
+                                src="/images/Elite-icon.png"
+                            />
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
@@ -128,7 +124,7 @@ function SidebarMobile(props) {
             >
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Drawer
-                className='test'
+                    className='test'
                     container={container}
                     variant="temporary"
                     open={mobileOpen}

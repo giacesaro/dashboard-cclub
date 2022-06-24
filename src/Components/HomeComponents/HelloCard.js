@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Box, Card, CardMedia, Grid, Typography } from '@mui/material';
+import React from 'react';
+import { Box, Card, Grid, Typography } from '@mui/material';
 import '../../CSS/Home.css';
 import '../../CSS/Dashboard.css';
 
@@ -21,7 +21,7 @@ function HelloCard() {
                         className='absolute left-650 w-340 top-40n'
                         alt="Logo"
                         src="/images/c-club-card-hello.png"
-                        sx={{position: {xs: 'initial', md: 'absolute'}}}
+                        sx={{ position: { xs: 'initial', md: 'absolute' } }}
                     />
                 </Grid>
             </Grid>

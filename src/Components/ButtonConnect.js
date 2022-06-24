@@ -1,28 +1,22 @@
 import React, { Fragment, useState } from 'react';
-import { Button, Grid, Typography } from '@mui/material';
-import HelloCard from './HomeComponents/HelloCard';
+import { Button, Typography } from '@mui/material';
 import { ethers } from 'ethers';
 import { providerOptions, connectors } from "../Utils/providerOptions";
 import Web3Modal from "web3modal";
 import { useWeb3React } from '@web3-react/core';
 
 const web3Modal = new Web3Modal({
-  cacheProvider: true, // optional
-  providerOptions // required
+    cacheProvider: true, // optional
+    providerOptions // required
 });
 
 function ButtonConnect() {
-    const { activate } = useWeb3React();
+    const { activate, active } = useWeb3React();
     const [provider, setProvider] = useState();
     const [library, setLibrary] = useState();
     const [account, setAccount] = useState();
-    const [signature, setSignature] = useState("");
     const [error, setError] = useState("");
     const [chainId, setChainId] = useState();
-    const [network, setNetwork] = useState();
-    const [message, setMessage] = useState("");
-    const [signedMessage, setSignedMessage] = useState("");
-    const [verified, setVerified] = useState();
 
     const connectWallet = async () => {
         try {
@@ -55,16 +49,16 @@ function ButtonConnect() {
 
     return (
         <Fragment>
-        {!account && 
-        <Button variant='outlined' className='h-10 border-my-black color-my-black' onClick={connectWallet}>
-            CONNECT WALLET
-        </Button>
-        }
-        {account &&
-            <Typography variant='body1' className='h-10 font-Roboto !text-lg !font-medium'>
-                {account}
-            </Typography>
-        }
+            {!active &&
+                <Button variant='outlined' className='h-10 border-my-black color-my-black' onClick={connectWallet}>
+                    CONNECT WALLET
+                </Button>
+            }
+            {active &&
+                <Typography variant='body1' className='h-10 font-Roboto !text-lg !font-medium'>
+                    {account}
+                </Typography>
+            }
         </Fragment>
     );
 }

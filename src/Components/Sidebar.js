@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.css';
 import '../CSS/Dashboard.css';
 import '../CSS/Sidebar.css'
 import { Card, Button } from '@mui/material';
 import { Box } from '@mui/system';
-import ResponsiveDrawer from './MobileComponents/SidebarMobile';
 import { useWeb3React } from '@web3-react/core';
 
 function Sidebar() {
-    const { account } = useWeb3React();
+    const { account, deactivate } = useWeb3React();
     return (
         <Card className='w-32 ml-8 mt-6 bg-my-black !rounded-3xl'>
             <Box
@@ -50,7 +49,7 @@ function Sidebar() {
                 />
             </Button>
             {account &&
-                <Button className='!mt-14 h-16 !mb-10'>
+                <Button className='!mt-14 h-16 !mb-10' onClick={deactivate}>
                     <Box
                         component="img"
                         className=''

@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Box, Button, Card, CardMedia, Grid, Typography } from '@mui/material';
+import React from 'react';
+import { Box, Button, Card, Grid, Typography } from '@mui/material';
 import '../../CSS/Home.css';
 import '../../CSS/Dashboard.css';
 
@@ -8,7 +8,7 @@ function FindOutMore() {
         <Card className='box-border h-40 !rounded-2xl bg-card !shadow-none'>
             <Grid container>
                 <Grid item xs={7} md={8} lg={8}>
-                    <Typography variant='h1' className='text-left h-10 !font-normal !ml-8 !mt-6 font-Baloo' sx={{fontSize: {xs: 25, md: 36}, lineHeight: {xs: 1, md: 1}}}>
+                    <Typography variant='h1' className='text-left h-10 !font-normal !ml-8 !mt-6 font-Baloo' sx={{ fontSize: { xs: 25, md: 36 }, lineHeight: { xs: 1, md: 1 } }}>
                         Find Out More!
                     </Typography>
                     <Typography variant='body1' className='text-left !ml-8 font-Roboto !font-normal !text-base !leading-6'>
@@ -25,7 +25,7 @@ function FindOutMore() {
                         component="img"
                         alt="Logo"
                         src="/images/logo-buy-pass.png"
-                        sx={{height: {xs: 150, md: 176}}}
+                        sx={{ height: { xs: 150, md: 176 } }}
                     />
                 </Grid>
             </Grid>

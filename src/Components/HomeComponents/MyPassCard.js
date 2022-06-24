@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Button, Card, Grid, Typography } from '@mui/material';
 import '../../CSS/Home.css';
 import '../../CSS/Dashboard.css';
@@ -10,14 +10,14 @@ function MyPassCard() {
     return (
         <Grid container>
             <Grid item xs={12} md={10} lg={10}>
-                <Card className='box-border !rounded-2xl bg-card !shadow-none' sx={{height: {xs: 'initial', md: 80}}}>
+                <Card className='box-border !rounded-2xl bg-card !shadow-none' sx={{ height: { xs: 'initial', md: 80 } }}>
                     <Grid container>
                         <Grid item xs={4} md={2} lg={2} className='mt-10n'>
                             <Box
                                 component="img"
                                 alt="Type"
                                 src="/images/member-icon.png"
-                                sx={{height: {xs: 100, md: 112}}}
+                                sx={{ height: { xs: 100, md: 112 } }}
                             />
                         </Grid>
                         <Grid item xs={8} md={6} lg={4} className='text-left !mt-6'>
@@ -25,22 +25,22 @@ function MyPassCard() {
                                 Member Pass
                             </Typography>
                         </Grid>
-                        <Grid item xs={3} md={6} lg={2} className='text-left !mt-6'/>
-                        <Grid item xs={6} md={6} lg={4} sx={{mt: {xs: 1, md: 3}, mb: {xs: 2, md: 0}, textAlign:{xs: 'right', sm: 'center', md:'right'}, pr:{xs: 5, sm: 0, md:5}}}>
+                        <Grid item xs={3} md={6} lg={2} className='text-left !mt-6' />
+                        <Grid item xs={6} md={6} lg={4} sx={{ mt: { xs: 1, md: 3 }, mb: { xs: 2, md: 0 }, textAlign: { xs: 'right', sm: 'center', md: 'right' }, pr: { xs: 5, sm: 0, md: 5 } }}>
                             <Button variant='contained' className='bg-my-black !rounded-md font-Roboto !text-sm'>
                                 CONTINUE
                             </Button>
                         </Grid>
-                        <Grid item xs={3} md={6} lg={2} className='text-left !mt-6' display={{xs:'initial', md:'none'}}/>
+                        <Grid item xs={3} md={6} lg={2} className='text-left !mt-6' display={{ xs: 'initial', md: 'none' }} />
                     </Grid>
                 </Card>
             </Grid>
-            <Grid item xs={6} md={6} lg={1} className='self-center' sx={{textAlign: {xs: 'right', md: 'initial'}}}>
+            <Grid item xs={6} md={6} lg={1} className='self-center' sx={{ textAlign: { xs: 'right', md: 'initial' } }}>
                 <Button>
                     <ArrowCircleLeftIcon className='!text-5xl arrow-button' />
                 </Button>
             </Grid>
-            <Grid item xs={6} md={6} lg={1} className='self-center' sx={{textAlign: {xs: 'left', md: 'initial'}}}>
+            <Grid item xs={6} md={6} lg={1} className='self-center' sx={{ textAlign: { xs: 'left', md: 'initial' } }}>
                 <Button>
                     <ArrowCircleRightIcon className='!text-5xl arrow-button' />
                 </Button>
