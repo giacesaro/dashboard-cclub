@@ -4,8 +4,12 @@ import { Grid } from '@mui/material';
 import Sidebar from '../Components/Sidebar';
 import Home from '../Components/Home';
 import SidebarMobile from '../Components/MobileComponents/SidebarMobile';
+import { useDispatch } from 'react-redux';
+import { getAllNews } from '../Redux/News/NewsAction';
 
 function Dashboard() {
+  const dispatch = useDispatch();
+  dispatch(getAllNews())
   return (
     <div className="App">
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
