@@ -12,11 +12,8 @@ const web3Modal = new Web3Modal({
 
 function ButtonConnect() {
     const { activate, active } = useWeb3React();
-    const [provider, setProvider] = useState();
-    const [library, setLibrary] = useState();
     const [account, setAccount] = useState();
     const [error, setError] = useState("");
-    const [chainId, setChainId] = useState();
 
     const connectWallet = async () => {
         try {
@@ -24,8 +21,6 @@ function ButtonConnect() {
             const library = new ethers.providers.Web3Provider(provider);
             const accounts = await library.listAccounts();
             const network = await library.getNetwork();
-            setProvider(provider);
-            setLibrary(library);
             console.log('ttt', library.connection.url)
             switch (library.connection.url) {
                 case 'metamask':
@@ -38,7 +33,6 @@ function ButtonConnect() {
                     break;
             }
             if (accounts) setAccount(accounts[0]);
-            setChainId(network.chainId);
             console.log('chain', network.chainId)
             console.log('provider', provider)
             console.log('library', library)
