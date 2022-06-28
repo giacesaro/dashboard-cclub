@@ -18,10 +18,10 @@ function HelloCard() {
                 <Grid item xs={6} md={6} lg={6}>
                     <Box
                         component="img"
-                        className='absolute left-650 w-340 top-40n'
+                        className='absolute w-340 top-40n'
                         alt="Logo"
                         src="/images/c-club-card-hello.png"
-                        sx={{position: {xs: 'initial', md: 'absolute'}}}
+                        sx={{position: {xs: 'initial', md: 'absolute'}, left: {md: 480}}}
                     />
                 </Grid>
             </Grid>
