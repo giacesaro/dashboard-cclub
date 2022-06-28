@@ -7,8 +7,13 @@ import MyPassCard from './HomeComponents/MyPassCard';
 import News from './HomeComponents/News';
 import Statistics from './HomeComponents/Statistics';
 import FindOutMore from './HomeComponents/FindOutMore';
+import ModalNews from './HomeComponents/ModalNews';
 
 function Home() {
+    const [openNews, setOpenNews] = React.useState(false);
+    const [title, setTitle] = React.useState('');
+    const [content, setContent] = React.useState('');
+    
     return (
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
             {/* HELLO CARD - CONNECT WALLET - CARD GENERIC REF AND ETH */}
@@ -35,12 +40,12 @@ function Home() {
                         <MyPassCard />
                     </Grid>
                     <Grid item xs={12} md={12} lg={12} className='!pt-6'>
-                        <News />
+                        <News setTitle={setTitle} setContent={setContent} setOpenNews={setOpenNews} />
                     </Grid>
                 </Grid>
             </Grid>
             {/* STATISTICS - BUY PASS */}
-            <Grid item xs={12} md={6} lg={6} sx={{mb: {xs: 5, md: 0}}}>
+            <Grid item xs={12} md={6} lg={6} sx={{ mb: { xs: 5, md: 0 } }}>
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
                         <Statistics />
@@ -50,6 +55,8 @@ function Home() {
                     </Grid>
                 </Grid>
             </Grid>
+            {/* MODALS */}
+            <ModalNews open={openNews} setOpen={setOpenNews} title={title} content={content} />
         </Grid>
     );
 }
