@@ -2,6 +2,18 @@
     background-color: #0C0B0B !important;
 }
 
+.bg-member-pass {
+    background-color: #956b08 !important;
+}
+
+.bg-partner-pass {
+    background-color: #153633 !important;
+}
+
+.bg-elite-pass {
+    background-color: #821218 !important;
+}
+
 .border-my-black {
     border-color: #0C0B0B !important;
 }

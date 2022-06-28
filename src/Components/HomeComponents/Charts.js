@@ -5,9 +5,8 @@ import ReactApexChart from 'react-apexcharts'
 class ApexChart extends Component {
   constructor(props) {
     super(props);
-
+    console.log(props);
     this.state = {
-
       series: [{
         name: 'Sales',
         data: [1, 2, 10, 12, 14, 18, 22]
@@ -50,7 +49,6 @@ class ApexChart extends Component {
 
     };
   }
-
 
 
   render() {

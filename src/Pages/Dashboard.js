@@ -4,12 +4,14 @@ import { Grid } from '@mui/material';
 import Sidebar from '../Components/Sidebar';
 import Home from '../Components/Home';
 import SidebarMobile from '../Components/MobileComponents/SidebarMobile';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllNews } from '../Redux/News/NewsAction';
+import Passes from './Passes';
 
 function Dashboard() {
   const dispatch = useDispatch();
-  dispatch(getAllNews())
+  dispatch(getAllNews());
+  const section = useSelector(state => state.sidebar.section);
   return (
     <div className="App">
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,7 +25,12 @@ function Dashboard() {
           <SidebarMobile />
         </Grid>
         <Grid item xs={12} md={11} lg={11}>
-          <Home />
+          {section === 'home' &&
+            <Home />
+          }
+          {section !== 'home' &&
+            <Passes />
+          }
         </Grid>
       </Grid>
     </div>

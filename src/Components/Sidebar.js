@@ -1,22 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import '../CSS/Dashboard.css';
 import '../CSS/Sidebar.css'
 import { Card, Button } from '@mui/material';
 import { Box } from '@mui/system';
 import { useWeb3React } from '@web3-react/core';
+import { useDispatch } from 'react-redux';
+import { setSection } from '../Redux/Sidebar/SidebarAction';
 
 function Sidebar() {
     const { account, deactivate } = useWeb3React();
+    const [selected, setSelected] = useState('home');
+    const dispatch = useDispatch();
+
+    const handleChangeSection = (type) => {
+        dispatch(setSection(type));
+        setSelected(type);
+    }
+
+    var background = '';
+    switch (selected) {
+        case 'home':
+            background = 'bg-my-black'
+            break;
+        case 'member':
+            background = 'bg-member-pass';
+            break;
+        case 'partner':
+            background = 'bg-partner-pass';
+            break;
+        case 'elite':
+            background = 'bg-elite-pass';
+            break;
+        default:
+            break;
+    }
+
     return (
-        <Card className='w-32 ml-8 mt-6 bg-my-black !rounded-3xl'>
+        <Card className={'w-32 mt-6 ml-6 !rounded-3xl ' + background }>
             <Box
                 component="img"
                 className='mt-4'
                 alt="Logo"
                 src="/images/Logo.png"
             />
-            <Button className='mt-22p h-16'>
+            <Button className='mt-22p h-16' onClick={() => handleChangeSection('home')}>
                 <Box
                     component="img"
                     className=''
@@ -24,7 +52,7 @@ function Sidebar() {
                     src="/images/home.png"
                 />
             </Button>
-            <Button className='!mt-14 h-16'>
+            <Button className='!mt-14 h-16' onClick={() => handleChangeSection('member')}>
                 <Box
                     component="img"
                     className=''
@@ -32,7 +60,7 @@ function Sidebar() {
                     src="/images/Member-icon.png"
                 />
             </Button>
-            <Button className='!mt-14 h-16'>
+            <Button className='!mt-14 h-16' onClick={() => handleChangeSection('partner')}>
                 <Box
                     component="img"
                     className=''
@@ -40,7 +68,7 @@ function Sidebar() {
                     src="/images/Partner-icon.png"
                 />
             </Button>
-            <Button className='!mt-14 h-16 !mb-32'>
+            <Button className='!mt-14 h-16 !mb-32' onClick={() => handleChangeSection('elite')}>
                 <Box
                     component="img"
                     className=''
