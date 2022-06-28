@@ -10,6 +10,7 @@ import FindOutMore from '../Components/HomeComponents/FindOutMore';
 import ModalNews from '../Components/HomeComponents/ModalNews';
 import ReferralProgramStatus from '../Components/PassesComponents/ReferralProgramStatus';
 import { useSelector } from 'react-redux';
+import BenefitsStatus from '../Components/PassesComponents/BenefitsStatus';
 
 function Passes() {
     const [openNews, setOpenNews] = React.useState(false);
@@ -51,7 +52,7 @@ function Passes() {
             <Grid item xs={12} md={6} lg={6}>
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={12} lg={12} className='!pt-0'>
-                        <News setTitle={setTitle} setContent={setContent} setOpenNews={setOpenNews} />
+                        <BenefitsStatus  colorDark={colorDark} colorPass={colorPass} />
                     </Grid>
                 </Grid>
             </Grid>
@@ -61,13 +62,8 @@ function Passes() {
                     <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
                         <Statistics colorDark={colorDark} colorPass={colorPass}/>
                     </Grid>
-                    <Grid item xs={12} md={9} lg={9} className='!pt-6'>
-                        <FindOutMore />
-                    </Grid>
                 </Grid>
             </Grid>
-            {/* MODALS */}
-            <ModalNews open={openNews} setOpen={setOpenNews} title={title} content={content} />
         </Grid>
     );
 }
