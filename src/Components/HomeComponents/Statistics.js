@@ -12,7 +12,7 @@ function Statistics(props) {
             </Typography>
             <Grid container>
                 <Grid item xs={12} md={11} lg={11}>
-                    <ApexChart colorDark={props.colorDark} colorPass={props.colorPass}/>
+                    <ApexChart colorLine={props.colorLine} />
                 </Grid>
             </Grid>
         </Fragment>

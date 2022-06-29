@@ -21,3 +21,15 @@
 .color-elite-pass {
     color: #e9424a !important;
 }
+
+.bg-color-disable {
+    background-color: #a6a6a6 !important;
+}
+
+.info-button:hover, .info-button:visited, .info-button:active{
+    background-color: transparent !important;
+}
+
+.info-button:focus, .info-button:focus-visible, .info-button:focus-within{
+    color: transparent !important;
+}
