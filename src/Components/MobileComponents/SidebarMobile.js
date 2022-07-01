@@ -40,20 +40,8 @@ function SidebarMobile(props) {
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key={'member'} disablePadding>
-                    <ListItemButton className='!justify-center !pt-12'>
-                        <ListItemIcon>
-                            <Box
-                                component="img"
-                                className='h-24'
-                                alt="Member"
-                                src="/images/Member-icon.png"
-                            />
-                        </ListItemIcon>
-                    </ListItemButton>
-                </ListItem>
                 <ListItem key={'partner'} disablePadding>
-                    <ListItemButton className='!justify-center'>
+                    <ListItemButton className='!justify-center !pt-12'>
                         <ListItemIcon>
                             <Box
                                 component="img"
@@ -72,6 +60,18 @@ function SidebarMobile(props) {
                                 className='h-24'
                                 alt="Elite"
                                 src="/images/Elite-icon.png"
+                            />
+                        </ListItemIcon>
+                    </ListItemButton>
+                </ListItem>
+                <ListItem key={'premium'} disablePadding>
+                    <ListItemButton className='!justify-center'>
+                        <ListItemIcon>
+                            <Box
+                                component="img"
+                                className='h-24'
+                                alt="Premium"
+                                src="/images/Premium-icon.png"
                             />
                         </ListItemIcon>
                     </ListItemButton>
