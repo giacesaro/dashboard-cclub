@@ -16,13 +16,13 @@ function MyPassCard() {
                             <Box
                                 component="img"
                                 alt="Type"
-                                src="/images/member-icon.png"
+                                src="/images/Partner-icon.png"
                                 sx={{ height: { xs: 100, md: 112 } }}
                             />
                         </Grid>
                         <Grid item xs={8} md={6} lg={4} className='text-left !mt-6'>
                             <Typography variant='body1' className='text-left !text-4xl h-10 !font-normal line-57p font-Baloo'>
-                                Member Pass
+                                Partner Pass
                             </Typography>
                         </Grid>
                         <Grid item xs={3} md={6} lg={2} className='text-left !mt-6' />
