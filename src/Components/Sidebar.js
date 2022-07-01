@@ -23,14 +23,14 @@ function Sidebar() {
         case 'home':
             background = 'bg-my-black'
             break;
-        case 'member':
-            background = 'bg-member-pass';
-            break;
         case 'partner':
             background = 'bg-partner-pass';
             break;
         case 'elite':
             background = 'bg-elite-pass';
+            break;
+        case 'premium':
+            background = 'bg-premium-pass';
             break;
         default:
             break;
@@ -53,32 +53,32 @@ function Sidebar() {
                 />
             </Button>
             <Tooltip title="Add" placement="right">
-                <Button className='!mt-14 h-16 info-button' onClick={() => handleChangeSection('member')}>
-                    <Box
-                        component="img"
-                        className=''
-                        alt="Home"
-                        src="/images/Member-icon.png"
-                    />
-                </Button>
-            </Tooltip>
-            <Tooltip title="Add" placement="right">
                 <Button className='!mt-14 h-16 info-button' onClick={() => handleChangeSection('partner')}>
                     <Box
                         component="img"
                         className=''
-                        alt="Home"
+                        alt="Partner"
                         src="/images/Partner-icon.png"
                     />
                 </Button>
             </Tooltip>
             <Tooltip title="Add" placement="right">
-                <Button className='!mt-14 h-16 !mb-32 info-button' onClick={() => handleChangeSection('elite')}>
+                <Button className='!mt-14 h-16 info-button' onClick={() => handleChangeSection('elite')}>
                     <Box
                         component="img"
                         className=''
-                        alt="Home"
+                        alt="Elite"
                         src="/images/Elite-icon.png"
+                    />
+                </Button>
+            </Tooltip>
+            <Tooltip title="Add" placement="right">
+                <Button className='!mt-14 h-16 !mb-32 info-button' onClick={() => handleChangeSection('premium')}>
+                    <Box
+                        component="img"
+                        className=''
+                        alt="Premium"
+                        src="/images/Premium-icon.png"
                     />
                 </Button>
             </Tooltip>

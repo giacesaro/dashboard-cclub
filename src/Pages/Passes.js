@@ -12,30 +12,35 @@ function Passes() {
     var colorPass = '';
     var bgColor = '';
     var color = '';
+    var image = '';
     switch (section) {
         case 'home':
             colorDark = 'black';
             colorPass = 'black';
             bgColor = 'bg-my-black';
             color = '#0C0B0B';
-            break;
-        case 'member':
-            colorDark = 'color-dark-member-pass';
-            colorPass = 'color-member-pass';
-            bgColor = 'bg-member-pass';
-            color = '#956b08';
+            image = '/images/c-club-card-hello.png';
             break;
         case 'partner':
             colorDark = 'color-dark-partner-pass';
             colorPass = 'color-partner-pass';
             bgColor = 'bg-partner-pass';
             color = '#153633';
+            image = '/images/MrCapital_Partner.png';
             break;
         case 'elite':
             colorDark = 'color-dark-elite-pass';
             colorPass = 'color-elite-pass';
             bgColor = 'bg-elite-pass';
             color = '#821218';
+            image = '/images/MrCapital_Elite.png';
+            break;
+        case 'premium':
+            colorDark = 'color-dark-premium-pass';
+            colorPass = 'color-premium-pass';
+            bgColor = 'bg-premium-pass';
+            color = '#424141';
+            image = '/images/c-club-card-hello.png';
             break;
         default:
             break;
@@ -44,7 +49,7 @@ function Passes() {
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
             {/* HELLO CARD - CONNECT WALLET - CARD GENERIC REF AND ETH */}
             <Grid item xs={12} md={6} lg={6}>
-                <HelloCard type={section} colorDark={colorDark} colorPass={colorPass}/>
+                <HelloCard type={section} colorDark={colorDark} colorPass={colorPass} image={image}/>
             </Grid>
             <Grid item xs={12} md={6} lg={6}>
                 <ReferralProgramStatus colorDark={colorDark} colorPass={colorPass}/>

@@ -14,16 +14,16 @@ function HelloCard(props) {
                         {hello}
                     </Typography>
                     <Typography variant='body1' className='text-left !ml-8 font-Roboto !font-normal !text-xl !leading-6'>
-                        Welcome, <span className={props.colorPass + ' font-semibold'}>{props.type}</span> user!
+                        Welcome, <span className={props.colorPass + ' font-semibold'}>{props.type}</span> member!
                     </Typography>
                 </Grid>
                 <Grid item xs={6} md={6} lg={6}>
                     <Box
                         component="img"
-                        className='absolute w-340 top-40n'
+                        className='w-340 !top-0 !h-56'
                         alt="Logo"
-                        src="/images/c-club-card-hello.png"
-                        sx={{position: {xs: 'initial', md: 'absolute'}, left: {md: 480}}}
+                        src={props.image}
+                        sx={{position: {xs: 'initial', md: 'absolute'}}}
                     />
                 </Grid>
             </Grid>

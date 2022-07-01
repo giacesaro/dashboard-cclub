@@ -1,7 +1,3 @@
-.color-dark-member-pass {
-    color: #956b08 !important;
-}
-
 .color-dark-partner-pass {
     color: #153633 !important;
 }
@@ -10,16 +6,20 @@
     color: #821218 !important;
 }
 
-.color-member-pass {
-    color: #f8b413 !important;
+.color-dark-premium-pass {
+    color: #424141 !important;
 }
 
 .color-partner-pass {
-    color: #125b50 !important;
+    color: #153633 !important;
 }
 
 .color-elite-pass {
-    color: #e9424a !important;
+    color: #821218 !important;
+}
+
+.color-premium-pass {
+    color: #424141 !important;
 }
 
 .bg-color-disable {
