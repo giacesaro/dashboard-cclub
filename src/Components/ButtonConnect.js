@@ -49,7 +49,7 @@ function ButtonConnect() {
                 </Button>
             }
             {active &&
-                <Typography variant='body1' className='h-10 font-Roboto !text-lg !font-medium'>
+                <Typography variant='body1' className='h-10 font-openSans-light !text-lg !font-medium'>
                     {account}
                 </Typography>
             }

@@ -10,11 +10,11 @@ function HelloCard(props) {
         <Card className='box-border h-40 !rounded-2xl bg-card !shadow-none'>
             <Grid container>
                 <Grid item xs={6} md={6} lg={6}>
-                    <Typography variant='h1' className={'text-left !text-4xl h-10 !font-normal line-57p !ml-8 !mt-11 font-Baloo ' + props.colorDark} >
+                    <Typography variant='h1' className={'text-left !text-4xl h-10 !font-normal line-57p !ml-8 !mt-11 font-openSans-extrabold ' + props.colorDark} >
                         {hello}
                     </Typography>
-                    <Typography variant='body1' className='text-left !ml-8 font-Roboto !font-normal !text-xl !leading-6'>
-                        Welcome, <span className={props.colorPass + ' font-semibold'}>{props.type}</span> member!
+                    <Typography variant='body1' className='text-left !ml-8 font-openSans-light !font-normal !text-xl !leading-6 !mt-1'>
+                        Welcome, <span className={props.colorPass + ' !font-bold font-openSans-light'}>{props.type}</span> member!
                     </Typography>
                 </Grid>
                 <Grid item xs={6} md={6} lg={6}>

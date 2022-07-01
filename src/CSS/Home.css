@@ -10,15 +10,15 @@
     line-height: 102px !important;
 }
 
-.mt-22px{
+.mt-22px {
     margin-top: 22px !important;
 }
 
-.arrow-button > path {
+.arrow-button>path {
     color: #0C0B0B !important;
 }
 
-.mt-10n{
+.mt-10n {
     margin-top: -10px !important;
 }
 
@@ -37,9 +37,23 @@
 .l-20p {
     left: 20% !important
 }
-@font-face {
-    font-family: 'Baloo Bhai';
-    src: URL('/public/fonts/BalooBhai-Regular.ttf') format('truetype');
-  }
 
-  
+@font-face {
+    font-family: "Open Sans Light";
+    src: url("/public/fonts/OpenSans-Light/OpenSans-Light.eot?") format("eot"),
+        url("/public/fonts/OpenSans-Light/OpenSans-Light.woff") format("woff"),
+        url("/public/fonts/OpenSans-Light/OpenSans-Light.ttf") format("truetype"),
+        url("/public/fonts/OpenSans-Light/OpenSans-Light.svg#OpenSans-Light") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans Extrabold";
+    src: url("/public/fonts/OpenSans-Extrabold/OpenSans-ExtraBold.eot?") format("eot"),
+        url("/public/fonts/OpenSans-Extrabold/OpenSans-ExtraBold.woff") format("woff"),
+        url("/public/fonts/OpenSans-Extrabold/OpenSans-ExtraBold.ttf") format("truetype"),
+        url("/public/fonts/OpenSans-Extrabold/OpenSans-ExtraBold.svg#OpenSans-Extrabold") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}

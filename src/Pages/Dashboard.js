@@ -7,6 +7,7 @@ import SidebarMobile from '../Components/MobileComponents/SidebarMobile';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNews } from '../Redux/News/NewsAction';
 import Passes from './Passes';
+import BuyPasses from './BuyPasses';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -28,8 +29,11 @@ function Dashboard() {
           {section === 'home' &&
             <Home />
           }
-          {section !== 'home' &&
+          {section !== 'home' && section !== 'buying' &&
             <Passes />
+          }
+          {section === 'buying' &&
+            <BuyPasses />
           }
         </Grid>
       </Grid>
