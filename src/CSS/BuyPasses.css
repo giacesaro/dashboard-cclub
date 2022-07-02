@@ -8,3 +8,9 @@
     transform: scale(1.03);
     border: solid 1px #e8e8e8;
 }
+
+.card-header-buy > div > span:nth-child(1){
+    font-family: 'Open Sans Extrabold' !important;
+    font-size: 30px;
+    line-height: 36px;
+}

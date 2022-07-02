@@ -2,3 +2,5 @@
 - Aggiungere descrizione per tooltip info benefits
 - Rimuovere tooltip da sidebar
 - CSS -> CardBuy con box shadow o senza?
+- Rendere dinamico il recupero dei benefits sul buy pass
+- Ricontrollare color, dark e bg sui css
