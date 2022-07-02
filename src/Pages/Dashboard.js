@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllNews } from '../Redux/News/NewsAction';
 import Passes from './Passes';
 import BuyPasses from './BuyPasses';
+import '../CSS/Dashboard.css'
 
 function Dashboard() {
   const dispatch = useDispatch();

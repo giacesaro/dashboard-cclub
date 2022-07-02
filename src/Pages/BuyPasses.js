@@ -1,12 +1,13 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Box, Button, Card, CardContent, CardHeader, Grid, Typography } from '@mui/material';
 import HelloCard from '../Components/HomeComponents/HelloCard';
 import Statistics from '../Components/HomeComponents/Statistics';
 import ReferralProgramStatus from '../Components/PassesComponents/ReferralProgramStatus';
 import { useSelector } from 'react-redux';
 import BenefitsStatus from '../Components/PassesComponents/BenefitsStatus';
+import '../CSS/BuyPasses.css'
 
-function BuyPasses() {
+function BuyPasses(props) {
     const section = useSelector(state => state.sidebar.section);
     var colorDark = '';
     var colorPass = '';
@@ -47,27 +48,26 @@ function BuyPasses() {
     }
     return (
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
-            {/* HELLO CARD - CONNECT WALLET - CARD GENERIC REF AND ETH */}
-            {/* <Grid item xs={12} md={6} lg={6}>
-                <HelloCard type={section} colorDark={colorDark} colorPass={colorPass} image={image}/>
+            <Grid item xs={3} md={3} lg={3}>
+                <Card className='box-border !rounded-2xl bg-card flex flex-col card-buy'>
+                    <CardHeader
+                        className='!pt-9'
+                        title="Test Pass 1"
+                        subheader="test sottotitolo"
+                    />
+                    <CardContent className='flex flex-col'>
+                        <Typography variant="h3" color="text.secondary" className='font-openSans-extrabold'>
+                            1 ETH
+                        </Typography>
+                        <Button variant='contained'> BUY ACCESS PASS </Button>
+                        <Typography variant="body2" color="text.secondary">
+                            This impressive paella is a perfect party dish and a fun meal to cook
+                            together with your guests. Add 1 cup of frozen peas along with the mussels,
+                            if you like.
+                        </Typography>
+                    </CardContent>
+                </Card>
             </Grid>
-            <Grid item xs={12} md={6} lg={6}>
-                <ReferralProgramStatus colorDark={colorDark} colorPass={colorPass}/>
-            </Grid>
-            <Grid item xs={12} md={6} lg={6}>
-                <Grid container spacing={5}>
-                    <Grid item xs={12} md={12} lg={12} className='!pt-0'>
-                        <BenefitsStatus colorDark={colorDark} colorPass={colorPass} bgColor={bgColor} colorTooltip={color}/>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid item xs={12} md={6} lg={6} sx={{ mb: { xs: 5, md: 0 } }}>
-                <Grid container spacing={5}>
-                    <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
-                        <Statistics colorDark={colorDark} colorLine={color}/>
-                    </Grid>
-                </Grid> */}
-                test
         </Grid>
     );
 }

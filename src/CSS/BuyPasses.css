@@ -1,0 +1,10 @@
+.card-buy {
+    box-shadow: 0 0 16px rgb(0 0 0 / 10%) !important;
+    border: solid 1px #e8e8e8;
+}
+
+.card-buy:hover {
+    box-shadow: 0 2px 15px 0 rgb(0 0 0 / 15%);
+    transform: scale(1.03);
+    border: solid 1px #e8e8e8;
+}
