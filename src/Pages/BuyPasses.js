@@ -17,7 +17,11 @@ function BuyPasses(props) {
             'nftsAirdrop': true,
             'metaverseAccess': true,
             'fixedEarnings': false,
-            'type':'partner'
+            'type':'partner',
+            'img':'./images/card-partner.png',
+            'css-color':'color-partner-pass',
+            'bg-color': 'bg-partner-pass',
+            'border': '#153633'
         },
         {
             'title': 'ELITE PASS',
@@ -28,7 +32,11 @@ function BuyPasses(props) {
             'nftsAirdrop': true,
             'metaverseAccess': false,
             'fixedEarnings': false,
-            'type':'elite'
+            'type':'elite',
+            'img':'./images/card-elite.png',
+            'css-color':'color-elite-pass',
+            'bg-color': 'bg-elite-pass',
+            'border':'#821218'
         },
         {
             'title': 'PREMIUM PASS',
@@ -39,36 +47,40 @@ function BuyPasses(props) {
             'nftsAirdrop': true,
             'metaverseAccess': true,
             'fixedEarnings': true,
-            'type':'premium'
+            'type':'premium',
+            'img':'./images/card-premium.png',
+            'css-color':'color-premium-pass',
+            'bg-color': 'bg-premium-pass',
+            'border':'#424141'
         }
     ];
 
     console.log('props', props)
     return (
-        <Grid container spacing={5} className='justify-center' sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
+        <Grid container spacing={5} className='justify-center' sx={{ pl: { xs: 1, md: 4, lg: 0 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
             {passes.map(pass => {
                 return (
                     <Grid item xs={3.5} md={3.5} lg={3.5}>
-                        <Card className={'box-border !rounded-2xl flex flex-col card-buy ' + (pass.type === 'partner' ? 'bg-partner-pass' : (pass.type === 'elite' ? 'bg-elite-pass' : 'bg-premium-pass'))}>
+                        <Card className={'box-border !rounded-2xl flex flex-col card-buy '} style={{borderColor: pass.border}}> {/*+ (pass.type === 'partner' ? 'bg-partner-pass' : (pass.type === 'elite' ? 'bg-elite-pass' : 'bg-premium-pass')) */}
                             <CardHeader
-                                className='!pt-9 card-header-buy'
+                                className={'!pt-9 card-header-buy ' + pass['css-color']}
                                 title={pass.title}
                                 subheader="test sottotitolo"
                             />
                             <CardMedia
                                 component="img"
                                 height="200"
-                                image="./images/Elite-icon.png"
+                                image={pass.img}
                                 alt="Paella dish"
                             />
                             <CardContent className='flex flex-col'>
-                                <Typography variant="h3" color="text.secondary" className='font-openSans-extrabold'>
+                                <Typography variant="h3" color="text.secondary" className={'font-openSans-extrabold ' + pass['css-color']}>
                                     {pass.price}
                                 </Typography>
-                                <Button variant='contained' className='!rounded-full !h-12 !text-lg !mt-5 font-openSans-extrabold'>
+                                <Button variant='contained' className={'!rounded-full !h-12 !text-lg !mt-5 font-openSans-extrabold ' + pass['bg-color']}>
                                     BUY ACCESS PASS
                                 </Button>
-                                <Typography variant="body2" color="text.secondary" className='text-left !mt-10'>
+                                <Typography variant="body2" color="text.secondary" className={'text-left !mt-10 ' + pass['css-color']}>
                                     {pass.referralProgram ? <CheckIcon color='success'/> : <ClearIcon color='error'/>} Referral Program
                                     <br/>
                                     {pass.giveawayAccess ? <CheckIcon color='success'/> : <ClearIcon color='error'/>} Giveaway Access
