@@ -3,7 +3,7 @@ import { SET_SECTION } from "./types";
 
 export function sidebarReducer(
     state = {
-        section: ''
+        section: 'home'
     }, action
 ) {
     switch (action.type) {

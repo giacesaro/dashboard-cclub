@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Fade } from 'react-reveal';
+import '../../CSS/Dashboard.css';
 
 const style = {
     position: 'absolute',
@@ -28,11 +28,11 @@ export default function ModalNews(props) {
             aria-describedby="modal-modal-description"
         >
             <Fade right>
-                <Box sx={style} className='mt-80'>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Box sx={style} className='mt-80 rounded-2xl text-center'>
+                    <Typography id="modal-modal-title font-openSans-extrabold" variant="h5" >
                         {props.title}
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <Typography id="modal-modal-description font-openSans-light" sx={{ mt: 2 }}>
                         {props.content}
                     </Typography>
                 </Box>

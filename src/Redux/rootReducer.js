@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { applicationReducer } from "./Application";
 import { blockchainReducer } from "./Blockchain/BlockchainReducer";
 import { newsReducer } from "./News/NewsReducer";
 import { RefMovReducer } from "./ReferralMovement/RefMovReducer";
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     news: newsReducer,
     user: userReducer,
     refMovement: RefMovReducer,
-    sidebar: sidebarReducer
+    sidebar: sidebarReducer,
+    application: applicationReducer
 });
 
 export default rootReducer;
