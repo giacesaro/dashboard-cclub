@@ -14,6 +14,18 @@
     background-color: #424141 !important;
 }
 
+.bg-light-partner-pass:hover {
+    background-color: #125B50 !important;
+}
+
+.bg-light-elite-pass:hover {
+    background-color: #E8424A !important;
+}
+
+.bg-light-premium-pass:hover {
+    background-color: #1a1d1c !important;
+}
+
 .border-my-black {
     border-color: #0C0B0B !important;
 }

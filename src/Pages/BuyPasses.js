@@ -5,6 +5,7 @@ import '../CSS/BuyPasses.css';
 import '../CSS/Dashboard.css';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
+import ButtonConnect from '../Components/ButtonConnect';
 
 function BuyPasses(props) {
     let passes = [
@@ -17,11 +18,12 @@ function BuyPasses(props) {
             'nftsAirdrop': true,
             'metaverseAccess': true,
             'fixedEarnings': false,
-            'type':'partner',
-            'img':'./images/card-partner.png',
-            'css-color':'color-partner-pass',
+            'type': 'partner',
+            'img': './images/card-partner.png',
+            'css-dark-color': 'color-dark-partner-pass',
             'bg-color': 'bg-partner-pass',
-            'border': '#153633'
+            'border': '#153633',
+            'hover-bg-color': 'bg-light-partner-pass',
         },
         {
             'title': 'ELITE PASS',
@@ -32,11 +34,12 @@ function BuyPasses(props) {
             'nftsAirdrop': true,
             'metaverseAccess': false,
             'fixedEarnings': false,
-            'type':'elite',
-            'img':'./images/card-elite.png',
-            'css-color':'color-elite-pass',
+            'type': 'elite',
+            'img': './images/card-elite.png',
+            'css-dark-color': 'color-dark-elite-pass',
             'bg-color': 'bg-elite-pass',
-            'border':'#821218'
+            'border': '#821218',
+            'hover-bg-color': 'bg-light-elite-pass',
         },
         {
             'title': 'PREMIUM PASS',
@@ -47,23 +50,27 @@ function BuyPasses(props) {
             'nftsAirdrop': true,
             'metaverseAccess': true,
             'fixedEarnings': true,
-            'type':'premium',
-            'img':'./images/card-premium.png',
-            'css-color':'color-premium-pass',
+            'type': 'premium',
+            'img': './images/card-premium.png',
+            'css-dark-color': 'color-dark-premium-pass',
             'bg-color': 'bg-premium-pass',
-            'border':'#424141'
+            'border': '#424141',
+            'hover-bg-color': 'bg-light-premium-pass',
         }
     ];
 
     console.log('props', props)
     return (
         <Grid container spacing={5} className='justify-center' sx={{ pl: { xs: 1, md: 4, lg: 0 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
+            <Grid item xs={12} md={12} lg={12} className='!mr-20 text-right' sx={{ display: { xs: 'none', md: 'initial' } }}>
+                <ButtonConnect />
+            </Grid>
             {passes.map(pass => {
                 return (
                     <Grid item xs={3.5} md={3.5} lg={3.5}>
-                        <Card className={'box-border !rounded-2xl flex flex-col card-buy '} style={{borderColor: pass.border}}> {/*+ (pass.type === 'partner' ? 'bg-partner-pass' : (pass.type === 'elite' ? 'bg-elite-pass' : 'bg-premium-pass')) */}
+                        <Card className={'box-border !rounded-2xl flex flex-col card-buy '} style={{ borderColor: pass.border }}> {/*+ (pass.type === 'partner' ? 'bg-partner-pass' : (pass.type === 'elite' ? 'bg-elite-pass' : 'bg-premium-pass')) */}
                             <CardHeader
-                                className={'!pt-9 card-header-buy ' + pass['css-color']}
+                                className={'!pt-9 card-header-buy ' + pass['css-dark-color']}
                                 title={pass.title}
                                 subheader="test sottotitolo"
                             />
@@ -74,24 +81,24 @@ function BuyPasses(props) {
                                 alt="Paella dish"
                             />
                             <CardContent className='flex flex-col'>
-                                <Typography variant="h3" color="text.secondary" className={'font-openSans-extrabold ' + pass['css-color']}>
+                                <Typography variant="h3" color="text.secondary" className={'font-openSans-extrabold ' + pass['css-dark-color']}>
                                     {pass.price}
                                 </Typography>
-                                <Button variant='contained' className={'!rounded-full !h-12 !text-lg !mt-5 font-openSans-extrabold ' + pass['bg-color']}>
+                                <Button variant='contained' className={'!rounded-full !h-12 !text-lg !mt-5 font-openSans-extrabold ' + pass['hover-bg-color'] + ' ' + pass['bg-color']}>
                                     BUY ACCESS PASS
                                 </Button>
-                                <Typography variant="body2" color="text.secondary" className={'text-left !mt-10 ' + pass['css-color']}>
-                                    {pass.referralProgram ? <CheckIcon color='success'/> : <ClearIcon color='error'/>} Referral Program
-                                    <br/>
-                                    {pass.giveawayAccess ? <CheckIcon color='success'/> : <ClearIcon color='error'/>} Giveaway Access
-                                    <br/>
-                                    {pass.presaleAccess ? <CheckIcon color='success'/> : <ClearIcon color='error'/>} Presale Access
-                                    <br/>
-                                    {pass.nftsAirdrop ? <CheckIcon color='success'/> : <ClearIcon color='error'/>} NFTs Airdrop
-                                    <br/>
-                                    {pass.metaverseAccess ? <CheckIcon color='success'/> : <ClearIcon color='error'/>} Metaverse Access
-                                    <br/>
-                                    {pass.fixedEarnings ? <CheckIcon color='success'/> : <ClearIcon color='error'/>} Fixed Earnings
+                                <Typography variant="body2" color="text.secondary" className={'text-left !mt-10 ' + pass['css-dark-color']}>
+                                    {pass.referralProgram ? <CheckIcon color='success' /> : <ClearIcon color='error' />} Referral Program
+                                    <br />
+                                    {pass.giveawayAccess ? <CheckIcon color='success' /> : <ClearIcon color='error' />} Giveaway Access
+                                    <br />
+                                    {pass.presaleAccess ? <CheckIcon color='success' /> : <ClearIcon color='error' />} Presale Access
+                                    <br />
+                                    {pass.nftsAirdrop ? <CheckIcon color='success' /> : <ClearIcon color='error' />} NFTs Airdrop
+                                    <br />
+                                    {pass.metaverseAccess ? <CheckIcon color='success' /> : <ClearIcon color='error' />} Metaverse Access
+                                    <br />
+                                    {pass.fixedEarnings ? <CheckIcon color='success' /> : <ClearIcon color='error' />} Fixed Earnings
                                 </Typography>
                             </CardContent>
                         </Card>
