@@ -78,14 +78,15 @@ export function mint(mintamount, account, refCodeUsed, idPass) {
 
                 //PRIMO TENTATIVO
                 const response = await smartContract.mint(mintamount);
-                const test = await fetch(response, {
-                    headers: {
-                      "Content-Type": "application/json",
-                      Accept: "application/json",
-                    }, //la fetch mi ritorna una risposta di http, quindi faccio .json() e recupero la risposta
-                  })
+                // console.log(response)
+                // const test = await fetch(response, {
+                //     headers: {
+                //       "Content-Type": "application/json",
+                //       Accept: "application/json",
+                //     }, //la fetch mi ritorna una risposta di http, quindi faccio .json() e recupero la risposta
+                //   })
                   
-                  console.log(test)
+                //   console.log(test)
                   
                 //   .then(resultFetch => resultFetch.json()).catch(err => console.log(err => 'errr', err.message))
                 //     .then(json => {
