@@ -1,0 +1,4 @@
+export const BALANCE_OF_SUCCESS = "BALANCE_OF_SUCCESS";
+export const BALANCE_OF_FAILED = "BALANCE_OF_FAILED";
+export const MINT_SUCCESS = "MINT_SUCCESS";
+export const MINT_FAILED = "MINT_FAILED";

@@ -1,15 +1,17 @@
-import { GET_ALL_NEWS } from "./types";
+import {
+    CREATE_USER
+} from "./types";
 
 export function userReducer(
     state = {
-        listNews: []
+        newUser: {}
     },
     action
 ) {
     switch (action.type) {
-        case GET_ALL_NEWS:
+        case CREATE_USER:
             return Object.assign({}, state, {
-                listNews: action.listNews
+                newUser: action.newUser
             });
         default:
             return state;

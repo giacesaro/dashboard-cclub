@@ -1,14 +1,23 @@
 import axios from "axios"
 import { apiRoot } from "../../Utils/config"
-import { GET_ALL_NEWS } from "./types"
+import {
+    CREATE_USER
+} from "./types"
 
 
-export function getAllNews() {
-    return async function(dispatch) {
-        const result = await axios.get(apiRoot.localApi + '/news/getAllNews')
+export function createUser(account, refCodeUsed, idPass) {
+    return async function (dispatch) {
+        const result = await axios.post(apiRoot.localApi + '/user/', {wallet: account, referralCode: "y851q726w653", idPass: idPass})
         dispatch({
-            type: GET_ALL_NEWS,
-            listNews: result.data
+            type: CREATE_USER,
+            newUser: result.data
         })
+    }
+}
+
+export function getUserById() {
+    return async function (dispatch) {
+        const result = await axios.get(apiRoot.localApi + '/user/getUserbyId/83')
+       console.log('res',result)
     }
 }
