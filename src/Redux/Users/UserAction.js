@@ -7,7 +7,7 @@ import {
 
 export function createUser(account, refCodeUsed, idPass) {
     return async function (dispatch) {
-        const result = await axios.post(apiRoot.localApi + '/user/', {wallet: account, referralCode: "y851q726w653", idPass: idPass})
+        const result = await axios.post(apiRoot.localApi + '/user/', {wallet: account, referralCode: refCodeUsed, idPass: idPass})
         dispatch({
             type: CREATE_USER,
             newUser: result.data

@@ -8,8 +8,12 @@ import {
     MINT_FAILED,
     MINT_SUCCESS
 } from "./types";
+import { ethers } from "ethers";
 
 var smartContract = {};
+var web3;
+var provider;
+var signer;
 
 export function connectAbi() {
     return async () => {
@@ -20,14 +24,15 @@ export function connectAbi() {
                 Accept: "application/json",
             },
         });
-        debugger
         const abi = await abiResponse.json();
         const { ethereum } = window;
         const walletIsInstalled = ethereum && (ethereum.isMetaMask || ethereum.isCoinbaseWallet);
-        var web3;
+
         if (ethereum === null || ethereum === undefined || walletIsInstalled) {
-            web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/6a2daf18fc2d42e187e35eeb749e206c")); //https://bsc-dataseed1.binance.org
-            smartContract = new web3.eth.Contract(abi, contractAddress)
+            provider = new ethers.providers.Web3Provider(window.ethereum);
+            web3 = new Web3(provider); //https://bsc-dataseed1.binance.org
+            signer = provider.getSigner();
+            smartContract = new ethers.Contract(contractAddress, abi, signer)
         } else {
             Web3EthContract.setProvider(ethereum);
             web3 = new Web3(ethereum);
@@ -70,24 +75,32 @@ export function mint(mintamount, account, refCodeUsed, idPass) {
         debugger
         try {
             if (mintamount === 1) {
-                smartContract.methods.mint(mintamount)
-                    .call({
-                        value: 0,
-                        to: "0x714b73eB6FD84A0B609bE9278C2d5e79ED508d15", //TODO cambiare con nuovo contratto
-                        from: account
-                    }).then(result => {
-                        dispatch(createUser(account, refCodeUsed, idPass))
-                        dispatch({
-                            type: MINT_SUCCESS,
-                            mint: result
-                        });
-                    }).catch(err => {
-                        dispatch({
-                            type: MINT_FAILED,
-                            errorBoolean: true,
-                            errorMethod: err.message
-                        });
-                    })
+
+                //PRIMO TENTATIVO
+                const response = await smartContract.mint(mintamount);
+                const test = await fetch(response, {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Accept: "application/json",
+                    }, //la fetch mi ritorna una risposta di http, quindi faccio .json() e recupero la risposta
+                  })
+                  
+                  console.log(test)
+                  
+                //   .then(resultFetch => resultFetch.json()).catch(err => console.log(err => 'errr', err.message))
+                //     .then(json => {
+                //       //Aggiungo l'immagine dalla risposta alla mia lista
+                //       let listImage = json.image
+                //     }).catch(err => {
+                //       console.log('errr', err.message)
+                //     })
+                console.log(response);
+
+                dispatch(createUser(account, refCodeUsed, idPass))
+                dispatch({
+                    type: MINT_SUCCESS,
+                    mint: response
+                });
             } else {
                 dispatch({
                     type: MINT_FAILED,
