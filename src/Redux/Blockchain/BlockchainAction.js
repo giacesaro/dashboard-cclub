@@ -47,20 +47,14 @@ export function connectAbi() {
 export function balanceOf(address) {
     return async (dispatch) => {
         try {
-            smartContract.methods.balanceOf(address)
-                .call().then(result => {
-                    dispatch({
-                        type: BALANCE_OF_SUCCESS,
-                        balanceOf: result,
-                    });
-                }).catch(err => {
-                    dispatch({
-                        type: BALANCE_OF_FAILED,
-                        errorBoolean: true,
-                        errorMethod: err.message,
-                    });
-                });
+            const balanceOf = await smartContract.balanceOf(address);
+            console.log('bal', balanceOf)
+            dispatch({
+                type: BALANCE_OF_SUCCESS,
+                balanceOf: balanceOf,
+            });
         } catch (err) {
+            console.log('balanceOf - Error: ', err)
             dispatch({
                 type: BALANCE_OF_FAILED,
                 errorBoolean: true,

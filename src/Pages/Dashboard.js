@@ -10,11 +10,14 @@ import Passes from './Passes';
 import BuyPasses from './BuyPasses';
 import '../CSS/Dashboard.css'
 import { getParamByKey } from '../Redux/Application';
+import { balanceOf, connectAbi } from '../Redux/Blockchain/BlockchainAction';
+import { contractTest } from '../Utils/config';
 
 function Dashboard() {
   const dispatch = useDispatch();
   dispatch(getAllNews());
   dispatch(getParamByKey('PASSES'));
+  dispatch(balanceOf(contractTest))
   const section = useSelector(state => state.sidebar.section);
   var colorDark = '';
   var colorPass = '';
