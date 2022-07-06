@@ -12,6 +12,7 @@ import '../CSS/Dashboard.css'
 import { getParamByKey } from '../Redux/Application';
 import { balanceOf, connectAbi } from '../Redux/Blockchain/BlockchainAction';
 import { contractTest } from '../Utils/config';
+import PreHome from './PreHome';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -61,6 +62,11 @@ function Dashboard() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet"></link>
+      {section === 'prehome' &&
+            <PreHome/>
+      }
+      {
+        section !== 'prehome' && 
       <Grid container>
         <Grid item xs={1} md={1} lg={1} sx={{ display: { xs: 'none', md: 'initial' } }}>
           <Sidebar />
@@ -78,8 +84,12 @@ function Dashboard() {
           {section === 'buying' &&
             <BuyPasses bgColor={bgColor}/>
           }
+          {section === 'prehome' &&
+            <PreHome/>
+          }
         </Grid>
       </Grid>
+      }
     </div>
   );
 }
