@@ -75,33 +75,15 @@ export function mint(mintamount, account, refCodeUsed, idPass) {
         debugger
         try {
             if (mintamount === 1) {
-
-                //PRIMO TENTATIVO
-                const response = await smartContract.mint(mintamount);
-                // console.log(response)
-                // const test = await fetch(response, {
-                //     headers: {
-                //       "Content-Type": "application/json",
-                //       Accept: "application/json",
-                //     }, //la fetch mi ritorna una risposta di http, quindi faccio .json() e recupero la risposta
-                //   })
-                  
-                //   console.log(test)
-                  
-                //   .then(resultFetch => resultFetch.json()).catch(err => console.log(err => 'errr', err.message))
-                //     .then(json => {
-                //       //Aggiungo l'immagine dalla risposta alla mia lista
-                //       let listImage = json.image
-                //     }).catch(err => {
-                //       console.log('errr', err.message)
-                //     })
-                console.log(response);
-
-                dispatch(createUser(account, refCodeUsed, idPass))
-                dispatch({
-                    type: MINT_SUCCESS,
-                    mint: response
-                });
+                const transaction = await smartContract.mint(mintamount);
+                //USO IL WAIT PER ATTENDERE CHE LA TRANSAZIONE SI CONCLUDA
+                transaction.wait().then(result => {
+                    dispatch(createUser(account, refCodeUsed, idPass))
+                    dispatch({
+                        type: MINT_SUCCESS,
+                        mint: result
+                    });
+                })
             } else {
                 dispatch({
                     type: MINT_FAILED,
