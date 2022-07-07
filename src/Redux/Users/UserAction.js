@@ -1,7 +1,7 @@
 import axios from "axios"
 import { apiRoot } from "../../Utils/config"
 import {
-    CREATE_USER
+    CREATE_USER, GET_REFERRAL_CODE
 } from "./types"
 
 
@@ -19,5 +19,15 @@ export function getUserById() {
     return async function (dispatch) {
         const result = await axios.get(apiRoot.localApi + '/user/getUserbyId/83')
        console.log('res',result)
+    }
+}
+
+export function getReferralCode(wallet) {
+    return async function (dispatch) {
+        const result = await axios.get(apiRoot.localApi + '/user/getUserByWallet/'+wallet);
+        dispatch({
+            type: GET_REFERRAL_CODE,
+            referralCode: result.data.referralCode
+        })
     }
 }

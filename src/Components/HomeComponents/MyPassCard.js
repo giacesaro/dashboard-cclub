@@ -25,16 +25,16 @@ function MyPassCard() {
                             ""
                         }
                         </Grid>
-                        <Grid item xs={8} md={6} lg={active ? 4 : 6} className={'text-left !mt-6 ' + (active ? ''  : '!pl-4')}>
-                            <Typography variant='body1' className='text-left !text-3xl h-10 !font-normal line-57p font-openSans-extrabold '>
+                        <Grid item xs={8} md={6} lg={active ? 4 : 12} className={'text-left !mt-6 ' + (active ? ''  : '!pl-4')}>
+                            <Typography variant='body1' className={'text-left h-10 !font-normal !text-3xl line-57p font-openSans-extrabold '}>
                                 {active ? 
                                 'Partner Pass' //TODO mettere nome del pass
                                 :
                                  'No Pass Owned'}
                             </Typography>
                         </Grid>
-                        <Grid item xs={3} md={6} lg={2} className='text-left !mt-6' />
-                        <Grid item xs={6} md={6} lg={4} sx={{ mt: { xs: 1, md: 3 }, mb: { xs: 2, md: 0 }, textAlign: { xs: 'right', sm: 'center', md: 'right' }, pr: { xs: 5, sm: 0, md: 5 } }}>
+                        <Grid item xs={3} md={6} lg={2} className='text-left !mt-6' display={active ? 'initial' : 'none'}/>
+                        <Grid item xs={6} md={6} lg={4} sx={{ mt: { xs: 1, md: 3 }, mb: { xs: 2, md: 0 }, textAlign: { xs: 'right', sm: 'center', md: 'right' }, pr: { xs: 5, sm: 0, md: 5 } }} display={active ? 'initial' : 'none'}>
                             <Button variant='contained' className='bg-my-black !rounded-md font-openSans-light !text-sm'> {/*TODO  onclick che riporta alla page del pass */}
                                 CONTINUE
                             </Button> 

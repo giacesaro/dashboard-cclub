@@ -37,7 +37,7 @@ function Sidebar() {
     }
 
     return (
-        <Card className={'w-32 mt-6 ml-6 !rounded-3xl ' + background}>
+        <Card className={'w-28 mt-6 ml-6 !mr-3 !rounded-3xl ' + background}>
             <Box
                 component="img"
                 className='mt-4'

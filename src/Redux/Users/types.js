@@ -1,1 +1,2 @@
 export const CREATE_USER = "CREATE_USER";
+export const GET_REFERRAL_CODE = "GET_REFERRAL_CODE";

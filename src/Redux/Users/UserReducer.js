@@ -1,10 +1,11 @@
 import {
-    CREATE_USER
+    CREATE_USER, GET_REFERRAL_CODE
 } from "./types";
 
 export function userReducer(
     state = {
-        newUser: {}
+        newUser: {},
+        referralCode: ''
     },
     action
 ) {
@@ -12,6 +13,10 @@ export function userReducer(
         case CREATE_USER:
             return Object.assign({}, state, {
                 newUser: action.newUser
+            });
+        case GET_REFERRAL_CODE:
+            return Object.assign({}, state, {
+                referralCode: action.referralCode
             });
         default:
             return state;

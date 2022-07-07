@@ -23,39 +23,44 @@ function News(props) {
             <Typography variant='h3' className='text-left !text-xl h-10 !font-normal line-57p !mt-4 font-openSans-extrabold '>
                 All News
             </Typography>
-            {listNews.map(news => (
-                <Card className='box-border !rounded-2xl bg-card !shadow-none !mb-4' sx={{ height: { xs: 'initial', md: 80 } }}>
-                    <Grid container>
-                        <Grid item xs={2} md={2} lg={2} className='mt-10n'>
-                            <Box
-                                component="img"
-                                alt="Type"
-                                src="/images/btc.png"
-                                sx={{ height: { xs: 'initial', md: 112 }, mt: { xs: 2.5, md: 0 }, ml: { xs: 1, md: 0 } }}
-                            />
-                        </Grid>
-                        <Grid item xs={4} md={6} lg={4} className='text-left !mt-6 ' sx={{ ml: { xs: 2, md: 0 } }}>
-                            <Typography variant='h5' className='text-left font-openSans-extrabold ' sx={{ lineHeight: { xs: 0.8, md: 0.9 } }}>
-                                {news.title}
-                            </Typography>
-                            <Typography variant='body2' className='text-left font-openSans-light !leading-4 !text-xs pt-1'>
-                                by C-Club
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={2} md={6} lg={2} className='text-left !mt-6'>
-                            <AccessTimeFilledIcon />
-                            <Typography variant='overline' className='text-left font-openSans-extrabold !text-sm !mt-2' sx={{ ml: { xs: 0, md: 0.5 } }}>
-                                3min
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={3} md={6} lg={4} className='text-right !mt-6 !pr-10'>
-                            <Button variant='outlined' className='!rounded-md font-openSans-extrabold !text-sm border-my-black color-my-black !border-2 !font-bold' onClick={() => handleOpenModal(news.id)}>
-                                READ
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Card>
-            ))}
+            {listNews.map((news, index) => {
+                if (index < 4) { //MOSTRO SOLO LE ULTIME 4 NOTIZIE
+                    return (
+                        <Card className='box-border !rounded-2xl bg-card !shadow-none !mb-4' sx={{ height: { xs: 'initial', md: 75 } }}>
+                            <Grid container>
+                                <Grid item xs={2} md={2} lg={2} className='mt-10n'>
+                                    <Box
+                                        component="img"
+                                        alt="Type"
+                                        src="/images/btc.png"
+                                        sx={{ height: { xs: 'initial', md: 112 }, mt: { xs: 2.5, md: 0 }, ml: { xs: 1, md: 0 } }}
+                                    />
+                                </Grid>
+                                <Grid item xs={4} md={6} lg={4} className='text-left !mt-6 ' sx={{ ml: { xs: 2, md: 0 } }}>
+                                    <Typography variant='h5' className='text-left font-openSans-extrabold ' sx={{ lineHeight: { xs: 0.8, md: 0.9 } }}>
+                                        {news.title}
+                                    </Typography>
+                                    <Typography variant='body2' className='text-left font-openSans-light !leading-4 !text-xs pt-1'>
+                                        by C-Club
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={2} md={6} lg={2} className='text-left !mt-6'>
+                                    <AccessTimeFilledIcon />
+                                    <Typography variant='overline' className='text-left font-openSans-extrabold !text-sm !mt-2' sx={{ ml: { xs: 0, md: 0.5 } }}>
+                                        3min
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={3} md={6} lg={4} className='text-right !mt-6 !pr-10'>
+                                    <Button variant='outlined' className='!rounded-md font-openSans-extrabold !text-sm border-my-black color-my-black !border-2 !font-bold' onClick={() => handleOpenModal(news.id)}>
+                                        READ
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Card>
+                    )
+                }
+            }
+            )}
         </Fragment>
     );
 }

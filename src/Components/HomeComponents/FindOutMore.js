@@ -15,8 +15,8 @@ function FindOutMore() {
     return (
         <Card className='box-border h-40 !rounded-2xl bg-card !shadow-none'>
             <Grid container>
-                <Grid item xs={7} md={8} lg={8}>
-                    <Typography variant='h1' className='text-left h-10 !font-normal !ml-8 !mt-6 font-openSans-extrabold' sx={{ fontSize: { xs: 25, md: 36 }, lineHeight: { xs: 1, md: 1 } }}>
+                <Grid item xs={7} md={7} lg={7}>
+                    <Typography variant='h1' className='text-left h-10 !font-normal !ml-8 !mt-6 font-openSans-extrabold' sx={{ fontSize: { xs: 25, xl: 36 }, lineHeight: { xs: 1, md: 1 } }}>
                         Find Out More!
                     </Typography>
                     <Typography variant='body1' className='text-left !ml-8 ffont-openSans-light !font-normal !text-base !leading-6'>
@@ -28,7 +28,7 @@ function FindOutMore() {
                         </Button>
                     </Typography>
                 </Grid>
-                <Grid item xs={5} md={4} lg={4}>
+                <Grid item xs={5} md={5} lg={5}>
                     <Box
                         component="img"
                         alt="Logo"
