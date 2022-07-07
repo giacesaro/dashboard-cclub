@@ -25,7 +25,7 @@ function MyPassCard() {
                             ""
                         }
                         </Grid>
-                        <Grid item xs={8} md={6} lg={active ? 4 : 12} className={'text-left !mt-6 ' + (active ? ''  : '!pl-4')}>
+                        <Grid item xs={active ? 8 : 12} md={active ? 6 : 12} lg={active ? 4 : 12} className={'text-left !mt-6 ' + (active ? ''  : '!pl-4')}>
                             <Typography variant='body1' className={'text-left h-10 !font-normal !text-3xl line-57p font-openSans-extrabold '}>
                                 {active ? 
                                 'Partner Pass' //TODO mettere nome del pass

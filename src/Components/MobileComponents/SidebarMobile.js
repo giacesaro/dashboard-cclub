@@ -11,14 +11,16 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import '../../CSS/Home.css';
+import { useWeb3React } from '@web3-react/core';
 
 const drawerWidth = 120;
 
 function SidebarMobile(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const { account, deactivate } = useWeb3React();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -76,6 +78,19 @@ function SidebarMobile(props) {
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
+                {!account &&
+                    <ListItem key={'logout'} disablePadding>
+                        <ListItemButton className='!justify-center !ml-8 !mt-72'>
+                            <ListItemIcon>
+                                <Box
+                                    component="img"
+                                    alt="Logout"
+                                    src="/images/logout.png"
+                                />
+                            </ListItemIcon>
+                        </ListItemButton>
+                    </ListItem>
+                }
             </List>
         </div>
     );
@@ -91,7 +106,7 @@ function SidebarMobile(props) {
                 sx={{
                 }}
             >
-                <Toolbar className='bg-my-black !rounded-3xl ml-1 mr-1 mt-1'>
+                <Toolbar className='bg-my-black !rounded-3xl ml-1 mr-1 mt-3 h-16'>
                     <Grid container>
                         <Grid item xs={2} className='self-center'>
                             <IconButton
@@ -145,6 +160,23 @@ function SidebarMobile(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
             </Box>
+            {account &&
+                <Button className='!mt-14 h-16 !mb-10 info-button' onClick={deactivate}>
+                    <Box
+                        component="img"
+                        className=''
+                        alt="Home"
+                        src="/images/logout.png"
+                    />
+                </Button>
+            }
+            {!account &&
+                <Box
+                    component="div"
+                    className='!mt-14 h-16 !mb-10'
+                    alt="Home"
+                />
+            }
         </Box>
     );
 }
