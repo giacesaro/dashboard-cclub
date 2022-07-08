@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, CardContent, CardHeader, CardMedia, Grid, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import '../CSS/BuyPasses.css';
@@ -6,6 +6,7 @@ import '../CSS/Dashboard.css';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import ButtonConnect from '../Components/ButtonConnect';
+import ModalCustom from '../Components/HomeComponents/ModalCustom'
 import { useDispatch } from 'react-redux';
 import { useWeb3React } from '@web3-react/core';
 import { Zoom } from 'react-reveal';
@@ -15,6 +16,8 @@ import { getUserById } from '../Redux/Users/UserAction';
 function BuyPasses(props) {
     const dispatch = useDispatch();
     const { active, account } = useWeb3React();
+    const [open, setOpen] = useState(false);
+    const [type, setType] = useState('');
     let passes = [
         {
             'title': 'PARTNER PASS',
@@ -69,11 +72,13 @@ function BuyPasses(props) {
 
     const handleBuy = (type) => {
         let idPass = type === 'partner' ? 1 : type === 'elite' ? 2 : 3;
-        if(active){
-            dispatch(mint(1, account, '', idPass))
-        } else {
-            //TODO modale per connettere wallet
-        }
+        setOpen(true);
+        setType(type);
+        // if(active){
+        //     dispatch(mint(1, account, '', idPass))
+        // } else {
+        //     //TODO modale per connettere wallet
+        // }
     }
 
     return (
@@ -123,6 +128,9 @@ function BuyPasses(props) {
                     </Grid>
                 )
             })}
+            {open && 
+                <ModalCustom open={open} setOpen={setOpen} title={'test'} content={''} type={type}/>
+            }
         </Grid>
     );
 }

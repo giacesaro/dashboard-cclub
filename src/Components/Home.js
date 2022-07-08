@@ -7,7 +7,7 @@ import MyPassCard from './HomeComponents/MyPassCard';
 import News from './HomeComponents/News';
 import Statistics from './HomeComponents/Statistics';
 import FindOutMore from './HomeComponents/FindOutMore';
-import ModalNews from './HomeComponents/ModalNews';
+import ModalCustom from './HomeComponents/ModalCustom';
 import { useSelector } from 'react-redux';
 
 function Home() {
@@ -58,7 +58,7 @@ function Home() {
                 </Grid>
             </Grid>
             {/* MODALS */}
-            <ModalNews open={openNews} setOpen={setOpenNews} title={title} content={content} />
+            <ModalCustom open={openNews} setOpen={setOpenNews} title={title} content={content} />
         </Grid>
     );
 }
