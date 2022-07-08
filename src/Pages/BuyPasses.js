@@ -88,7 +88,7 @@ function BuyPasses(props) {
             </Grid>
             {passes.map(pass => {
                 return (
-                    <Grid item xs={3.5} md={3.5} lg={3.5} key={pass.type} className='!pt-4'>
+                    <Grid item xs={12} md={3.5} lg={3.5} key={pass.type} sx={{pt: {xs: 10, md: 2}}}>
                         <Zoom left>
                             <Card className={'box-border !rounded-2xl flex flex-col card-buy '} style={{ borderColor: pass.border }}> {/*+ (pass.type === 'partner' ? 'bg-partner-pass' : (pass.type === 'elite' ? 'bg-elite-pass' : 'bg-premium-pass')) */}
                                 <CardHeader

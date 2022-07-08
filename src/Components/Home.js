@@ -9,18 +9,21 @@ import Statistics from './HomeComponents/Statistics';
 import FindOutMore from './HomeComponents/FindOutMore';
 import ModalCustom from './HomeComponents/ModalCustom';
 import { useSelector } from 'react-redux';
+import ReferralCard from './HomeComponents/ReferralCard';
+import { useWeb3React } from '@web3-react/core';
 
 function Home() {
     const [openNews, setOpenNews] = React.useState(false);
+    const { active } = useWeb3React();
     const [title, setTitle] = React.useState('');
     const [content, setContent] = React.useState('');
     const section = useSelector(state => state.sidebar.section);
-    
+
     return (
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
             {/* HELLO CARD - CONNECT WALLET - CARD GENERIC REF AND ETH */}
             <Grid item xs={12} md={6} lg={6}>
-                <HelloCard type={section} image={'/images/c-club-card-hello.png'}/>
+                <HelloCard type={section} image={'/images/Butler.png'} />
             </Grid>
             <Grid item xs={12} md={6} lg={6}>
                 <Grid container spacing={5}>
@@ -41,6 +44,12 @@ function Home() {
                     <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
                         <MyPassCard />
                     </Grid>
+                    {active &&
+                        <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
+                            <ReferralCard />
+                        </Grid>
+
+                    }
                     <Grid item xs={12} md={12} lg={12} className='!pt-6'>
                         <News setTitle={setTitle} setContent={setContent} setOpenNews={setOpenNews} />
                     </Grid>
@@ -50,7 +59,7 @@ function Home() {
             <Grid item xs={12} md={6} lg={6} sx={{ mb: { xs: 5, md: 0 } }}>
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
-                        <Statistics colorLine={'#0C0B0B'}/>
+                        <Statistics colorLine={'#0C0B0B'} />
                     </Grid>
                     <Grid item xs={12} md={9} lg={9} className='!pt-6'>
                         <FindOutMore />

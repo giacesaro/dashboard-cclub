@@ -12,12 +12,18 @@ import '../CSS/Dashboard.css'
 import { getParamByKey } from '../Redux/Application';
 import { balanceOf, connectAbi } from '../Redux/Blockchain/BlockchainAction';
 import { contractTest } from '../Utils/config';
+import PreHome from './PreHome';
+import { getReferralCode } from '../Redux/Users/UserAction';
+import { useWeb3React } from '@web3-react/core';
 
 function Dashboard() {
+  const { account } = useWeb3React();
   const dispatch = useDispatch();
   dispatch(getAllNews());
   dispatch(getParamByKey('PASSES'));
-  dispatch(balanceOf(contractTest))
+  dispatch(balanceOf(contractTest));
+  if(account)
+    dispatch(getReferralCode(account));
   const section = useSelector(state => state.sidebar.section);
   var colorDark = '';
   var colorPass = '';
@@ -37,21 +43,21 @@ function Dashboard() {
       colorPass = 'color-partner-pass';
       bgColor = 'bg-partner-pass';
       color = '#153633';
-      image = '/images/MrCapital_Partner.png';
+      image = '/images/MrCapital_Green.png';
       break;
     case 'elite':
       colorDark = 'color-dark-elite-pass';
       colorPass = 'color-elite-pass';
       bgColor = 'bg-elite-pass';
       color = '#821218';
-      image = '/images/MrCapital_Elite.png';
+      image = '/images/MrCapital_Red.png';
       break;
     case 'premium':
       colorDark = 'color-dark-premium-pass';
       colorPass = 'color-premium-pass';
       bgColor = 'bg-premium-pass';
       color = '#424141';
-      image = '/images/c-club-card-hello.png';
+      image = '/images/MrCapital_Black.png';
       break;
     default:
       break;
@@ -61,6 +67,11 @@ function Dashboard() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet"></link>
+      {section === 'prehome' &&
+            <PreHome/>
+      }
+      {
+        section !== 'prehome' && 
       <Grid container>
         <Grid item xs={1} md={1} lg={1} sx={{ display: { xs: 'none', md: 'initial' } }}>
           <Sidebar />
@@ -78,8 +89,12 @@ function Dashboard() {
           {section === 'buying' &&
             <BuyPasses bgColor={bgColor}/>
           }
+          {section === 'prehome' &&
+            <PreHome/>
+          }
         </Grid>
       </Grid>
+      }
     </div>
   );
 }
