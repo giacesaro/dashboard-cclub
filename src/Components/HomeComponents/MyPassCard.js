@@ -44,13 +44,13 @@ function MyPassCard() {
                 </Card>
             </Grid>
             <Grid item xs={6} md={6} lg={1} className='self-center' sx={{ textAlign: { xs: 'right', md: 'initial' } }}>
-                <Button> {/* TODO  onclick che scorre i pass posseduti */}
-                    <ArrowCircleLeftIcon className='!text-5xl arrow-button' />
+                <Button disabled={!active}> {/* TODO  onclick che scorre i pass posseduti */}
+                    <ArrowCircleLeftIcon className={'!text-5xl ' + (active ? 'arrow-button' : 'arrow-button-disabled')} />
                 </Button>
             </Grid>
             <Grid item xs={6} md={6} lg={1} className='self-center' sx={{ textAlign: { xs: 'left', md: 'initial' } }}>
-                <Button>
-                    <ArrowCircleRightIcon className='!text-5xl arrow-button' />
+                <Button disabled={!active}>
+                    <ArrowCircleRightIcon className={'!text-5xl ' + (active ? 'arrow-button' : 'arrow-button-disabled')} />
                 </Button>
             </Grid>
         </Grid>

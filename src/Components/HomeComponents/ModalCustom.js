@@ -20,8 +20,6 @@ const style = {
 
 export default function ModalCustom(props) {
     const handleClose = () => props.setOpen(false);
-
-    console.log('oros', props.type)
     return (
         <Modal
             open={props.open}

@@ -8,16 +8,19 @@ function HelloCard(props) {
     var hello = '';
     var widthImgXsXl = 0;
     var widthImgMd = 0;
+    var topCss = '';
     switch (props.type) {
         case 'home':
             hello = 'Hello!';
-            widthImgXsXl = 200;
-            widthImgMd = 200;
+            widthImgXsXl = 224;
+            widthImgMd = 224;
+            topCss = '!top-10'
             break;
         default:
             hello = 'Hello gentleman!';
             widthImgXsXl = 340;
             widthImgMd = 320;
+            topCss = '!top-0'
             break;
     }
     return (
@@ -29,7 +32,7 @@ function HelloCard(props) {
                     >
                         {hello}
                     </Typography>
-                    <Typography variant='body1' className='text-left !ml-8 font-openSans-light !font-normal !text-xl !leading-6'
+                    <Typography variant='body1' className='text-left !ml-8 font-openSans-light !font-normal !text-xl !leading-6 w-385'
                         sx={{ mt: { xs: 0.5, lg: 1 } }}>
                         Welcome, <span className={props.colorPass + ' !font-bold font-openSans-light'}>{props.type}</span> member!
                     </Typography>
@@ -37,7 +40,7 @@ function HelloCard(props) {
                 <Grid item xs={6} md={6} lg={6} xl={6}>
                     <Box
                         component="img"
-                        className='!top-0 !h-56'
+                        className={'!h-56 ' + topCss}
                         alt="Logo"
                         src={props.image}
                         sx={{ position: { xs: 'initial', md: 'absolute' }, width: { xs: widthImgXsXl, md: widthImgMd, xl: widthImgXsXl } }}

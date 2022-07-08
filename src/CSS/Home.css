@@ -18,6 +18,10 @@
     color: #0C0B0B !important;
 }
 
+.arrow-button-disabled>path {
+    color: #a6a6a6 !important;
+}
+
 .mt-10n {
     margin-top: -10px !important;
 }
@@ -32,6 +36,10 @@
 
 .w-340 {
     width: 340px !important;
+}
+
+.w-385 {
+    width: 385px !important;
 }
 
 .l-20p {

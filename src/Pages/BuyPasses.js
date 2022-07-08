@@ -11,74 +11,24 @@ import { useDispatch } from 'react-redux';
 import { useWeb3React } from '@web3-react/core';
 import { Zoom } from 'react-reveal';
 import { mint } from '../Redux/Blockchain/BlockchainAction';
-import { getUserById } from '../Redux/Users/UserAction';
 
 function BuyPasses(props) {
     const dispatch = useDispatch();
     const { active, account } = useWeb3React();
     const [open, setOpen] = useState(false);
     const [type, setType] = useState('');
-    let passes = [
-        {
-            'title': 'PARTNER PASS',
-            'price': '0.1 ETH',
-            'referralProgram': true,
-            'giveawayAccess': false,
-            'presaleAccess': false,
-            'nftsAirdrop': true,
-            'metaverseAccess': true,
-            'fixedEarnings': false,
-            'type': 'partner',
-            'img': './images/card-partner.png',
-            'css-dark-color': 'color-dark-partner-pass',
-            'bg-color': 'bg-partner-pass',
-            'border': '#153633',
-            'hover-bg-color': 'bg-light-partner-pass',
-        },
-        {
-            'title': 'ELITE PASS',
-            'price': '1.0 ETH',
-            'referralProgram': true,
-            'giveawayAccess': true,
-            'presaleAccess': true,
-            'nftsAirdrop': true,
-            'metaverseAccess': false,
-            'fixedEarnings': false,
-            'type': 'elite',
-            'img': './images/card-elite.png',
-            'css-dark-color': 'color-dark-elite-pass',
-            'bg-color': 'bg-elite-pass',
-            'border': '#821218',
-            'hover-bg-color': 'bg-light-elite-pass',
-        },
-        {
-            'title': 'PREMIUM PASS',
-            'price': '10.0 ETH',
-            'referralProgram': true,
-            'giveawayAccess': true,
-            'presaleAccess': true,
-            'nftsAirdrop': true,
-            'metaverseAccess': true,
-            'fixedEarnings': true,
-            'type': 'premium',
-            'img': './images/card-premium.png',
-            'css-dark-color': 'color-dark-premium-pass',
-            'bg-color': 'bg-premium-pass',
-            'border': '#424141',
-            'hover-bg-color': 'bg-light-premium-pass',
-        }
-    ];
-    dispatch(getUserById())
+    var configPasses = useSelector(state => state.application.configPasses);
+    //dispatch(getUserByWallet())
 
     const handleBuy = (type) => {
         let idPass = type === 'partner' ? 1 : type === 'elite' ? 2 : 3;
-        setOpen(true);
-        setType(type);
-        // if(active){
-        //     dispatch(mint(1, account, '', idPass))
-        // } else {
-        //     //TODO modale per connettere wallet
-        // }
+        // setOpen(true);
+        // setType(type);
+        if(active){
+            dispatch(mint(1, account, 'z73p50', idPass))
+        } else {
+            //TODO modale per connettere wallet
+        }
     }
 
     return (
@@ -86,7 +36,8 @@ function BuyPasses(props) {
             <Grid item xs={12} md={12} lg={12} className='!mr-20 text-right' sx={{ display: { xs: 'none', md: 'initial' } }}>
                 <ButtonConnect />
             </Grid>
-            {passes.map(pass => {
+            {configPasses.map(configPass => {
+                var pass = JSON.parse(configPass.valore);
                 return (
                     <Grid item xs={12} md={3.5} lg={3.5} key={pass.type} sx={{pt: {xs: 10, md: 2}}}>
                         <Zoom left>

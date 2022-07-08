@@ -48,13 +48,12 @@ export function balanceOf(address) {
     return async (dispatch) => {
         try {
             const balanceOf = await smartContract.balanceOf(address);
-            console.log('bal', balanceOf)
             dispatch({
                 type: BALANCE_OF_SUCCESS,
                 balanceOf: balanceOf,
             });
         } catch (err) {
-            console.log('balanceOf - Error: ', err)
+            console.error('balanceOf - Error: ', err)
             dispatch({
                 type: BALANCE_OF_FAILED,
                 errorBoolean: true,
@@ -86,7 +85,7 @@ export function mint(mintamount, account, refCodeUsed, idPass) {
                 });
             }
         } catch (err) {
-            console.log(err)
+            console.error('Min - Error: ', err)
             dispatch({
                 type: MINT_FAILED,
                 errorBoolean: true,

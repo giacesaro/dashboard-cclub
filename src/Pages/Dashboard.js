@@ -9,21 +9,23 @@ import { getAllNews } from '../Redux/News/NewsAction';
 import Passes from './Passes';
 import BuyPasses from './BuyPasses';
 import '../CSS/Dashboard.css'
-import { getParamByKey } from '../Redux/Application';
+import { getAllPassConfig, getParamByKey } from '../Redux/Application';
 import { balanceOf, connectAbi } from '../Redux/Blockchain/BlockchainAction';
 import { contractTest } from '../Utils/config';
 import PreHome from './PreHome';
-import { getReferralCode } from '../Redux/Users/UserAction';
+import { getUserByWallet } from '../Redux/Users/UserAction';
 import { useWeb3React } from '@web3-react/core';
+import { CONFIG_PASS } from '../Redux/Application/types';
 
 function Dashboard() {
   const { account } = useWeb3React();
   const dispatch = useDispatch();
   dispatch(getAllNews());
-  dispatch(getParamByKey('PASSES'));
+  dispatch(getAllPassConfig())
+  dispatch(getParamByKey(CONFIG_PASS))
   dispatch(balanceOf(contractTest));
   if(account)
-    dispatch(getReferralCode(account));
+    dispatch(getUserByWallet(account));
   const section = useSelector(state => state.sidebar.section);
   var colorDark = '';
   var colorPass = '';

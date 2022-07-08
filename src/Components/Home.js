@@ -18,12 +18,13 @@ function Home() {
     const [title, setTitle] = React.useState('');
     const [content, setContent] = React.useState('');
     const section = useSelector(state => state.sidebar.section);
+    const referralCode = useSelector(state => state.user.referralCode);
 
     return (
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
             {/* HELLO CARD - CONNECT WALLET - CARD GENERIC REF AND ETH */}
             <Grid item xs={12} md={6} lg={6}>
-                <HelloCard type={section} image={'/images/Butler.png'} />
+                <HelloCard type={section} image={'/images/Logo-Home.png'} />
             </Grid>
             <Grid item xs={12} md={6} lg={6}>
                 <Grid container spacing={5}>
@@ -44,7 +45,7 @@ function Home() {
                     <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
                         <MyPassCard />
                     </Grid>
-                    {active &&
+                    {active && referralCode !== '' && referralCode &&
                         <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
                             <ReferralCard />
                         </Grid>
