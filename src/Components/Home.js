@@ -68,7 +68,7 @@ function Home() {
                 </Grid>
             </Grid>
             {/* MODALS */}
-            <ModalCustom open={openNews} setOpen={setOpenNews} title={title} content={content} />
+            <ModalCustom open={openNews} setOpen={setOpenNews} title={title} content={content} type={"news"}/>
         </Grid>
     );
 }

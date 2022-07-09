@@ -22,6 +22,18 @@
     color: #1a1d1c !important;
 }
 
+.color-label-input-partner-pass > label {
+    color: #153633 !important;
+}
+
+.color-label-input-elite-pass > label {
+    color: #821218 !important;
+}
+
+.color-label-input-premium-pass > label {
+    color: #424141 !important;
+}
+
 .bg-color-disable {
     background-color: #a6a6a6 !important;
 }

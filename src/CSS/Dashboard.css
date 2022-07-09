@@ -30,6 +30,18 @@
     border-color: #0C0B0B !important;
 }
 
+.border-partner-pass {
+    border-color: #153633 !important;
+}
+
+.border-elite-pass {
+    border-color: #821218 !important;
+}
+
+.border-premium-pass {
+    border-color: #424141!important;
+}
+
 .color-my-black {
     color: #0C0B0B !important;
 }

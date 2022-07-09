@@ -17,18 +17,22 @@ function BuyPasses(props) {
     const { active, account } = useWeb3React();
     const [open, setOpen] = useState(false);
     const [type, setType] = useState('');
+    const [modalTitle, setModalTitle] = useState('');
+    const [modalPrice, setModalPrice] = useState('');
     var configPasses = useSelector(state => state.application.configPasses);
     //dispatch(getUserByWallet())
 
-    const handleBuy = (type) => {
-        let idPass = type === 'partner' ? 1 : type === 'elite' ? 2 : 3;
-        // setOpen(true);
-        // setType(type);
-        if(active){
-            dispatch(mint(1, account, 'z73p50', idPass))
-        } else {
-            //TODO modale per connettere wallet
-        }
+    const handleBuy = (pass) => {
+        let idPass = pass.type === 'partner' ? 1 : type === 'elite' ? 2 : 3;
+        setOpen(true);
+        setType(pass.type);
+        setModalTitle(pass.title);
+        setModalPrice(pass.price);
+        // if(active){
+        //     dispatch(mint(1, account, 'z73p50', idPass))
+        // } else {
+        //     //TODO modale per connettere wallet
+        // }
     }
 
     return (
@@ -57,7 +61,10 @@ function BuyPasses(props) {
                                     <Typography variant="h3" color="text.secondary" className={'font-openSans-extrabold ' + pass['css-dark-color']}>
                                         {pass.price}
                                     </Typography>
-                                    <Button variant='contained' className={'!rounded-full !h-12 !text-lg !mt-5 font-openSans-extrabold ' + pass['hover-bg-color'] + ' ' + pass['bg-color']} onClick={() => handleBuy(pass.type)}>
+                                    <Button variant='contained' 
+                                        className={'!rounded-full !h-12 !text-lg !mt-5 font-openSans-extrabold ' + pass['hover-bg-color'] + ' ' + pass['bg-color']} 
+                                        onClick={() => handleBuy(pass)}
+                                        >
                                         BUY ACCESS PASS
                                     </Button>
                                     <Typography variant="body2" color="text.secondary" className={'text-left !mt-10 ' + pass['css-dark-color']}>
@@ -80,7 +87,7 @@ function BuyPasses(props) {
                 )
             })}
             {open && 
-                <ModalCustom open={open} setOpen={setOpen} title={'test'} content={''} type={type}/>
+                <ModalCustom open={open} setOpen={setOpen} title={modalTitle} content={"Are you sure you want to buy the " + modalTitle + " for " + modalPrice + " ?"} type={type}/>
             }
         </Grid>
     );

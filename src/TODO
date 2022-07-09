@@ -11,3 +11,5 @@
 - Check img al db per le news, valutare se si puo caricare al db direttamente l img
 - Nella home lasciare Welcome, home member?
 - Nella finestra a scelta del connect wallet se scelgo "WalletConnect" ma cambio idea non posso tornare indietro(anche se aggiorno la pagina)
+- Fix del myPassCard, adattare img e testo.. su Mac si vede male
+- Aggiungere modali di errore
