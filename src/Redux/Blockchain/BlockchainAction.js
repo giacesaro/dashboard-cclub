@@ -9,11 +9,19 @@ import {
     MINT_SUCCESS
 } from "./types";
 import { ethers } from "ethers";
+import { providerOptions, connectors } from "../../Utils/providerOptions";
+import Web3Modal from "web3modal";
+import { useWeb3React } from "@web3-react/core";
 
 var smartContract = {};
 var web3;
 var provider;
 var signer;
+
+const web3Modal = new Web3Modal({
+    cacheProvider: true, // optional
+    providerOptions // required
+});
 
 export function connectAbi() {
     return async () => {
@@ -44,14 +52,41 @@ export function connectAbi() {
     }
 }
 
+export const connectWallet = async (activate) => {
+    try {
+        const provider = await web3Modal.connect();
+        const library = new ethers.providers.Web3Provider(provider);
+        const accounts = await library.listAccounts();
+        // const network = await library.getNetwork();
+        switch (library.connection.url) {
+            case 'metamask':
+                activate(connectors.injected)
+                break;
+            case 'eip-1193:':
+                activate(connectors.walletConnect)
+                break;
+            default:
+                break;
+        }
+        if (accounts){
+            connectAbi();
+        }
+    } catch (error) {
+        //setError(error);
+    }
+};
+
 export function balanceOf(address) {
     return async (dispatch) => {
         try {
-            const balanceOf = await smartContract.balanceOf(address);
-            dispatch({
-                type: BALANCE_OF_SUCCESS,
-                balanceOf: balanceOf,
-            });
+            console.log(smartContract)
+            if (Object.keys(smartContract).length !== 0) {
+                const balanceOf = await smartContract.balanceOf(address);
+                dispatch({
+                    type: BALANCE_OF_SUCCESS,
+                    balanceOf: balanceOf,
+                });
+            }
         } catch (err) {
             console.error('balanceOf - Error: ', err)
             dispatch({

@@ -13,3 +13,4 @@
 - Nella finestra a scelta del connect wallet se scelgo "WalletConnect" ma cambio idea non posso tornare indietro(anche se aggiorno la pagina)
 - Fix del myPassCard, adattare img e testo.. su Mac si vede male
 - Aggiungere modali di errore
+- Se si apre schermata wallet, non si richiude senza selezionare

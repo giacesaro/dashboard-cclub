@@ -9,6 +9,8 @@ import { Button, Grid, TextField } from '@mui/material';
 import { createStyles, styled } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { useWeb3React } from '@web3-react/core';
+import { CssTextFieldElite, CssTextFieldPartner, CssTextFieldPremium } from '../../Utils/Constants';
+import { connectWallet, mint } from '../../Redux/Blockchain/BlockchainAction';
 
 const style = {
     position: 'absolute',
@@ -17,30 +19,32 @@ const style = {
     transform: 'translate(-50%, -50%)',
     //width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '1px solid #000',
     boxShadow: 24,
     p: 4,
 };
 
 export default function ModalCustom(props) {
     const dispatch = useDispatch();
-    const { active, account } = useWeb3React();
+    const { active, account, activate } = useWeb3React();
     const [referral, setReferral] = React.useState('');
     const handleClose = () => props.setOpen(false);
 
     const handleChange = (event) => {
         setReferral(event.target.value);
-        console.log(referral)
     };
 
-    const mint = () => {
-        debugger
+    const mintPass = () => {
         let idPass = props.type === 'partner' ? 1 : props.type === 'elite' ? 2 : 3;
         if (active) {
-            console.log(referral)
-            //dispatch(mint(1, account, referral, idPass))
+            dispatch(mint(1, account, referral, idPass))
         } else {
-            //TODO modale per connettere wallet
+            props.setOpen(false);
+            dispatch(connectWallet(activate).then(result => {
+                props.setOpen(true);
+            })
+            );
+            //TODO attendere che si connetta e poi rifare mint?
         }
     }
     var bgColor = '';
@@ -81,25 +85,8 @@ export default function ModalCustom(props) {
             break;
     }
 
-    const CssTextField = styled(TextField)({
-        '& label.Mui-focused': {
-            color: color,
-        },
-        '& .MuiInput-underline:after': {
-            borderBottomColor: color,
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: color,
-            },
-            '&:hover fieldset': {
-                borderColor: color,
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: color,
-            },
-        },
-    });
+
+
     return (
         <Modal
             open={props.open}
@@ -107,54 +94,72 @@ export default function ModalCustom(props) {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            {/* <div> */}
-            <Fade right>
-                <Grid container>
-                    <Box sx={style} className='mt-80 rounded-2xl text-center'>
-                        <Grid item xs={12} md={12} lg={12}>
-                            <Typography id="modal-modal-title" className={'font-openSans-extrabold ' + colorPass} variant="h5" >
-                                {props.title}
-                            </Typography>
-                            <Typography id="modal-modal-description" className={'font-openSans-light ' + colorPass} sx={{ mt: 2 }}>
-                                {props.content}
-                            </Typography>
-                        </Grid>
-                        {props.type !== 'news' &&
-                            <React.Fragment>
-                                <Grid item xs={12} md={12} lg={12} className='text-left !mt-2'>
-                                    <Typography id="modal-modal-description" className={'font-openSans-light ' + colorPass}>
-                                        Insert Referral Code:
-                                    </Typography>
-                                    <CssTextField
-                                        label="Referral Code"
-                                        id="custom-css-outlined-input"
-                                        className={'font-openSans-light !mt-2 !w-full ' + labelColor}
-                                        onChange={handleChange}
-                                        value={referral}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={12} lg={12} className='!mt-6'>
-                                    <Button
-                                        className={'font-openSans-light !mr-4 ' + borderColor + ' ' + colorPass}
-                                        variant='outlined'
-                                        onClick={() => handleClose}
-                                    >
-                                        Cancel
-                                    </Button>
-                                    <Button
-                                        className={'font-openSans-light !text-white ' + bgColor + ' ' + borderColor}
-                                        variant='outlined'
-                                        onClick={() => mint}
-                                    >
-                                        Confirm
-                                    </Button>
-                                </Grid>
-                            </React.Fragment>
-                        }
-                    </Box>
-                </Grid>
-            </Fade>
-            {/* </div> */}
+            <div>
+                <Fade right>
+                    <Grid container>
+                        <Box sx={style} className='mt-80 rounded-2xl text-center'>
+                            <Grid item xs={12} md={12} lg={12}>
+                                <Typography id="modal-modal-title" className={'font-openSans-extrabold ' + colorPass} variant="h5" >
+                                    {props.title}
+                                </Typography>
+                                <Typography id="modal-modal-description" className={'font-openSans-light !font-semibold ' + colorPass} sx={{ mt: 2 }}>
+                                    {props.content}
+                                </Typography>
+                            </Grid>
+                            {props.type !== 'news' &&
+                                <React.Fragment>
+                                    <Grid item xs={12} md={12} lg={12} className='text-left !mt-2'>
+                                        <Typography id="modal-modal-description" className={'font-openSans-light !font-semibold ' + colorPass}>
+                                            Insert Referral Code:
+                                        </Typography>
+                                        {props.type === 'partner' ?
+                                            <CssTextFieldPartner
+                                                label="Referral Code"
+                                                id="custom-css-outlined-input"
+                                                className={'font-openSans-light !mt-2 !w-full ' + labelColor}
+                                                onChange={handleChange}
+                                                value={referral}
+                                            />
+                                            : props.type === 'elite' ?
+                                                <CssTextFieldElite
+                                                    label="Referral Code"
+                                                    id="custom-css-outlined-input"
+                                                    className={'font-openSans-light !mt-2 !w-full ' + labelColor}
+                                                    onChange={handleChange}
+                                                    value={referral}
+                                                />
+                                                :
+                                                <CssTextFieldPremium
+                                                    label="Referral Code"
+                                                    id="custom-css-outlined-input"
+                                                    className={'font-openSans-light !mt-2 !w-full ' + labelColor}
+                                                    onChange={handleChange}
+                                                    value={referral}
+                                                />
+                                        }
+                                    </Grid>
+                                    <Grid item xs={12} md={12} lg={12} className='!mt-6'>
+                                        <Button
+                                            className={'font-openSans-light !mr-4 !font-semibold ' + borderColor + ' ' + colorPass}
+                                            variant='outlined'
+                                            onClick={handleClose}
+                                        >
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            className={'font-openSans-light !text-white !font-semibold ' + bgColor + ' ' + borderColor}
+                                            variant='outlined'
+                                            onClick={mintPass}
+                                        >
+                                            Confirm
+                                        </Button>
+                                    </Grid>
+                                </React.Fragment>
+                            }
+                        </Box>
+                    </Grid>
+                </Fade>
+            </div>
         </Modal>
     );
 }

@@ -26,7 +26,7 @@ function News(props) {
             {listNews.map((news, index) => {
                 if (index < 4) { //MOSTRO SOLO LE ULTIME 4 NOTIZIE
                     return (
-                        <Card className='box-border !rounded-2xl bg-card !shadow-none !mb-4' sx={{ height: { xs: 'initial', md: 75 } }}>
+                        <Card className='box-border !rounded-2xl bg-card !shadow-none !mb-4' sx={{ height: { xs: 'initial', md: 75 } }} key={index}>
                             <Grid container>
                                 <Grid item xs={2} md={2} lg={2} className='mt-10n'>
                                     <Box
