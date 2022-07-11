@@ -15,3 +15,4 @@
 - Aggiungere modali di errore
 - Se si apre schermata wallet, non si richiude senza selezionare
 - TODO se inserisco il mio referralCode la transazione va avanti
+- Controllare se snackbar si apre solo in buypassess o ovunque
