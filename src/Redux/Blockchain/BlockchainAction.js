@@ -1,17 +1,19 @@
 import Web3 from "web3";
 import { contractTest } from "../../Utils/config";
-import { createUser } from "../Users/UserAction";
+import { createUser, updateNewPass } from "../Users/UserAction";
 import Web3EthContract from "web3-eth-contract";
 import {
     BALANCE_OF_FAILED,
     BALANCE_OF_SUCCESS,
     MINT_FAILED,
-    MINT_SUCCESS
+    MINT_SUCCESS,
+    SET_ERROR_BLOCKCHAIN,
+    SET_SUCCESS_BLOCKCHAIN
 } from "./types";
 import { ethers } from "ethers";
 import { providerOptions, connectors } from "../../Utils/providerOptions";
 import Web3Modal from "web3modal";
-import { useWeb3React } from "@web3-react/core";
+import { setLoading } from "../Application/ApplicationAction";
 
 var smartContract = {};
 var web3;
@@ -92,40 +94,70 @@ export function balanceOf(address) {
             dispatch({
                 type: BALANCE_OF_FAILED,
                 errorBoolean: true,
-                errorMethod: err.message,
+                errorMessage: err.message,
             });
         }
     };
 };
 
-export function mint(mintamount, account, refCodeUsed, idPass) {
+export function mint(mintamount, account, refCodeUsed, idPass, userLogged) {
     return async (dispatch) => {
-        debugger
         try {
             if (mintamount === 1) {
                 const transaction = await smartContract.mint(mintamount);
                 //USO IL WAIT PER ATTENDERE CHE LA TRANSAZIONE SI CONCLUDA
                 transaction.wait().then(result => {
-                    dispatch(createUser(account, refCodeUsed, idPass))
+                    //CONTROLLO SE L'UTENTE HA GIA' ACQUISTATO UN PASS. SE NON LO POSSIEDE
+                    //FACCIO LA CREATE, ALTRIMENTI UPDATE
+                    if(Object.keys(userLogged).length === 0){
+                        dispatch(createUser(account, refCodeUsed, idPass));
+                    } else{
+                        dispatch(updateNewPass(account, refCodeUsed, idPass));
+                    }
+                    dispatch(setLoading(false));
                     dispatch({
                         type: MINT_SUCCESS,
-                        mint: result
+                        mint: result,
+                        success: true,
+                        successMessage: 'Pass Purchased!'
                     });
                 })
             } else {
+                dispatch(setLoading(false));
                 dispatch({
                     type: MINT_FAILED,
                     errorBoolean: true,
-                    errorMethod: "Error: mintamount parameter too big."
+                    errorMessage: "Error: mintamount parameter too big."
                 });
             }
         } catch (err) {
+            dispatch(setLoading(false));
             console.error('Min - Error: ', err)
             dispatch({
                 type: MINT_FAILED,
                 errorBoolean: true,
-                errorMethod: err.message
+                errorMessage: err.message
             });
         }
     };
 };
+
+export function setErrorBoolean(errorBoolean = true, errorMessage='') {
+    return (dispatch) => {
+        dispatch({
+            type: SET_ERROR_BLOCKCHAIN,
+            errorBoolean: errorBoolean,
+            errorMessage: errorMessage
+        });
+    }
+}
+
+export function setSuccess(success = true, successMessage='') {
+    return (dispatch) => {
+        dispatch({
+            type: SET_SUCCESS_BLOCKCHAIN,
+            success: success,
+            successMessage: successMessage
+        });
+    }
+}

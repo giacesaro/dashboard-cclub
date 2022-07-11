@@ -14,3 +14,4 @@
 - Fix del myPassCard, adattare img e testo.. su Mac si vede male
 - Aggiungere modali di errore
 - Se si apre schermata wallet, non si richiude senza selezionare
+- TODO se inserisco il mio referralCode la transazione va avanti

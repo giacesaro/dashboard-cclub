@@ -7,10 +7,12 @@ import '../../CSS/Passes.css';
 import { Fade } from 'react-reveal';
 import { Button, Grid, TextField } from '@mui/material';
 import { createStyles, styled } from '@mui/material/styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useWeb3React } from '@web3-react/core';
 import { CssTextFieldElite, CssTextFieldPartner, CssTextFieldPremium } from '../../Utils/Constants';
 import { connectWallet, mint } from '../../Redux/Blockchain/BlockchainAction';
+import { updateNewPass } from '../../Redux/Users/UserAction';
+import { setLoading } from '../../Redux/Application/ApplicationAction';
 
 const style = {
     position: 'absolute',
@@ -29,6 +31,7 @@ export default function ModalCustom(props) {
     const { active, account, activate } = useWeb3React();
     const [referral, setReferral] = React.useState('');
     const handleClose = () => props.setOpen(false);
+    const userLogged = useSelector(state => state.user.userLogged)
 
     const handleChange = (event) => {
         setReferral(event.target.value);
@@ -37,14 +40,16 @@ export default function ModalCustom(props) {
     const mintPass = () => {
         let idPass = props.type === 'partner' ? 1 : props.type === 'elite' ? 2 : 3;
         if (active) {
-            dispatch(mint(1, account, referral, idPass))
+            dispatch(mint(1, account, referral, idPass, userLogged));
+            props.setOpen(false);
+            let message = 'Processing...'
+            dispatch(setLoading(true, message))
         } else {
             props.setOpen(false);
             dispatch(connectWallet(activate).then(result => {
                 props.setOpen(true);
             })
             );
-            //TODO attendere che si connetta e poi rifare mint?
         }
     }
     var bgColor = '';

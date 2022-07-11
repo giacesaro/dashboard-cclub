@@ -1,10 +1,16 @@
-import { GET_ALL_PASS, GET_PARAM_BY_KEY } from "./types";
+import {
+    GET_ALL_PASS,
+    GET_PARAM_BY_KEY,
+    SET_LOADING
+} from "./types";
 
 
 export function applicationReducer(
     state = {
         configPasses: [],
-        params: {}
+        params: {},
+        loading: false,
+        message: ''
     },
     action
 ) {
@@ -16,6 +22,11 @@ export function applicationReducer(
         case GET_ALL_PASS:
             return Object.assign({}, state, {
                 configPasses: action.configPasses
+            });
+        case SET_LOADING:
+            return Object.assign({}, state, {
+                loading: action.loading,
+                message: action.message
             });
         default:
             return state

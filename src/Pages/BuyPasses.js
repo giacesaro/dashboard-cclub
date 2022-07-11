@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, CardContent, CardHeader, CardMedia, Grid, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, CardMedia, Grid, LinearProgress, Stack, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import '../CSS/BuyPasses.css';
 import '../CSS/Dashboard.css';
@@ -10,6 +10,7 @@ import ModalCustom from '../Components/HomeComponents/ModalCustom';
 import { Zoom } from 'react-reveal';
 import { useWeb3React } from '@web3-react/core';
 import { connectWallet } from '../Redux/Blockchain/BlockchainAction';
+import SnackbarCustom from '../Components/SnackbarCustom';
 
 function BuyPasses() {
     const { active, account, activate } = useWeb3React();
@@ -18,6 +19,7 @@ function BuyPasses() {
     const [type, setType] = useState('');
     const [modalTitle, setModalTitle] = useState('');
     const [modalPrice, setModalPrice] = useState('');
+    const [message, setMessage] = useState('');
     var configPasses = useSelector(state => state.application.configPasses);
 
     const handleBuy = (pass) => {
@@ -92,6 +94,7 @@ function BuyPasses() {
             {open &&
                 <ModalCustom open={open} setOpen={setOpen} title={modalTitle} content={"Are you sure you want to buy the " + modalTitle + " for " + modalPrice + " ?"} type={type} />
             }
+            <SnackbarCustom />
         </Grid>
     );
 }

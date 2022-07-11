@@ -1,2 +1,3 @@
 export const CREATE_USER = "CREATE_USER";
 export const GET_USER_BY_WALLET = "GET_USER_BY_WALLET";
+export const UPDATE_NEW_PASS = "UPDATE_NEW_PASS";

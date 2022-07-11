@@ -1,6 +1,13 @@
 import axios from "axios"
 import { apiRoot } from "../../Utils/config"
-import { ELITE_CONFIG, GET_ALL_PASS, GET_PARAM_BY_KEY, PARTNER_CONFIG, PREMIUM_CONFIG } from "./types";
+import {
+    ELITE_CONFIG,
+    GET_ALL_PASS,
+    GET_PARAM_BY_KEY,
+    PARTNER_CONFIG,
+    PREMIUM_CONFIG,
+    SET_LOADING
+} from "./types";
 
 export function getParamByKey(key) {
     return async function (dispatch) {
@@ -22,6 +29,16 @@ export function getAllPassConfig() {
         dispatch({
             type: GET_ALL_PASS,
             configPasses: configPasses
+        });
+    }
+}
+
+export function setLoading(loading = true, message='') {
+    return (dispatch) => {
+        dispatch({
+            type: SET_LOADING,
+            loading: loading,
+            message: message
         });
     }
 }

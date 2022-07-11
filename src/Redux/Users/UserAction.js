@@ -2,7 +2,8 @@ import axios from "axios"
 import { apiRoot } from "../../Utils/config"
 import {
     CREATE_USER,
-    GET_USER_BY_WALLET
+    GET_USER_BY_WALLET,
+    UPDATE_NEW_PASS
 } from "./types"
 
 
@@ -25,13 +26,35 @@ export function getUserById(id) {
 
 export function getUserByWallet(wallet) {
     return async function (dispatch) {
-        console.log(wallet)
         const result = await axios.get(apiRoot.localApi + '/user/getUserByWallet/'+wallet);
         console.log('ressss', result)
         dispatch({
             type: GET_USER_BY_WALLET,
-            user: result.data,
+            userLogged: result.data,
             referralCode: result.data.referralCode
+        })
+    }
+}
+
+export function updateUser(id) {
+    return async function (dispatch) {
+        const result = await axios.patch(apiRoot.localApi + '/user/updateUser/'+id);
+        console.log('ressss', result)
+        dispatch({
+            type: GET_USER_BY_WALLET,
+            userLogged: result.data,
+            referralCode: result.data.referralCode
+        })
+    }
+}
+
+export function updateNewPass(account, refCodeUsed, idPass) {
+    return async function (dispatch) {
+        const result = await axios.post(apiRoot.localApi + '/user/updateNewPass',  {wallet: account, referralCode: refCodeUsed, idPass: idPass});
+        console.log('ressss Update', result)
+        dispatch({
+            type: UPDATE_NEW_PASS,
+            //TODO cosa tornare?
         })
     }
 }
