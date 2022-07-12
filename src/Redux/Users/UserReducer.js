@@ -2,7 +2,8 @@ import {
     CREATE_USER,
     GET_USER_BY_WALLET,
     UPDATE_NEW_PASS,
-    GET_REFERRAL_MOVEMENT
+    GET_REFERRAL_MOVEMENT,
+    SET_REFERRAL_BY_LINK
 } from "./types";
 
 export function userReducer(
@@ -11,6 +12,7 @@ export function userReducer(
         referralCode: '',
         userLogged: {},
         refMovement: {},
+        referralFromLink: ''
     },
     action
 ) {
@@ -32,6 +34,10 @@ export function userReducer(
         case GET_REFERRAL_MOVEMENT:
             return Object.assign({}, state, {
                 refMovement: action.refMovement
+            });
+        case SET_REFERRAL_BY_LINK:
+            return Object.assign({}, state, {
+                referralFromLink: action.referralFromLink
             });
         default:
             return state;

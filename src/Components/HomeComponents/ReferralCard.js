@@ -62,7 +62,7 @@ function ReferralCard() {
                                         }
                                     </Button>
                                 </CopyToClipboard>
-                                <CopyToClipboard text={apiRoot.localApi + '/' + refCode} onCopy={onCopyLink} >
+                                <CopyToClipboard text={apiRoot.local + refCode} onCopy={onCopyLink} >
                                     <Button variant="outlined" className='bg-my-black !text-white !rounded-md font-openSans-light !text-sm !mr-5'>
                                         {copiedLink &&
                                             <CheckIcon />

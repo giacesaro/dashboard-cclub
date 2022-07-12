@@ -11,14 +11,24 @@ import BuyPasses from './BuyPasses';
 import '../CSS/Dashboard.css'
 import { getAllPassConfig, getParamByKey } from '../Redux/Application';
 import PreHome from './PreHome';
-import { getUserByWallet } from '../Redux/Users/UserAction';
+import { getUserByWallet, setReferralByLink } from '../Redux/Users/UserAction';
 import { useWeb3React } from '@web3-react/core';
 import { CONFIG_PASS } from '../Redux/Application/types';
 import SnackbarCustom from '../Components/SnackbarCustom';
+import { useLocation, useParams } from 'react-router-dom';
+import { setSection } from '../Redux/Sidebar/SidebarAction';
 
 function Dashboard() {
-  const { account } = useWeb3React();
   const dispatch = useDispatch();
+  //SE HO UN REFERRAL NEL ROUTING, ALLORA VADO ALLA SEZIONE DI 
+  //ACQUISTO PASS E SETTO IL REFERRAL PRESO DALLA ROUTE
+  let {referral} = useParams();
+  console.log('refff', referral)
+  if(referral !== undefined){
+    dispatch(setSection('buying'));
+    dispatch(setReferralByLink(referral));
+  }
+  const { account } = useWeb3React();
   dispatch(getAllNews());
   dispatch(getAllPassConfig())
   dispatch(getParamByKey(CONFIG_PASS))

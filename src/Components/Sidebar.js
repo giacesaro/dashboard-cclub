@@ -7,8 +7,10 @@ import { Box } from '@mui/system';
 import { useWeb3React } from '@web3-react/core';
 import { useDispatch } from 'react-redux';
 import { setSection } from '../Redux/Sidebar/SidebarAction';
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
+    let navigate = useNavigate();
     const { account, deactivate } = useWeb3React();
     const [selected, setSelected] = useState('home');
     const dispatch = useDispatch();
@@ -16,6 +18,7 @@ function Sidebar() {
     const handleChangeSection = (type) => {
         dispatch(setSection(type));
         setSelected(type);
+        navigate("/", { replace: true });
     }
 
     var background = '';

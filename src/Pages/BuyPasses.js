@@ -10,9 +10,11 @@ import ModalCustom from '../Components/HomeComponents/ModalCustom';
 import { Zoom } from 'react-reveal';
 import { useWeb3React } from '@web3-react/core';
 import { connectWallet } from '../Redux/Blockchain/BlockchainAction';
-import SnackbarCustom from '../Components/SnackbarCustom';
+import { Routes, Route, useParams } from 'react-router-dom';
 
 function BuyPasses() {
+    let {referral} = useParams();
+    console.log('refffff', referral)
     const { active, account, activate } = useWeb3React();
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
@@ -21,6 +23,7 @@ function BuyPasses() {
     const [modalPrice, setModalPrice] = useState('');
     const [message, setMessage] = useState('');
     var configPasses = useSelector(state => state.application.configPasses);
+    console.log('configPasses', configPasses)
 
     const handleBuy = (pass) => {
         if (active) {

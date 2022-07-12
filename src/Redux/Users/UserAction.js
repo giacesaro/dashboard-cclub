@@ -4,7 +4,8 @@ import {
     CREATE_USER,
     GET_USER_BY_WALLET,
     UPDATE_NEW_PASS,
-    GET_REFERRAL_MOVEMENT
+    GET_REFERRAL_MOVEMENT,
+    SET_REFERRAL_BY_LINK
 } from "./types"
 
 
@@ -18,13 +19,6 @@ export function createUser(account, refCodeUsed, idPass) {
         })
     }
 }
-
-// export function getUserById(id) {
-//     return async function (dispatch) {
-//         const result = await axios.get(apiRoot.localApi + '/user/getUserbyId/'+id)
-//        //console.log('res',result)
-//     }
-// }
 
 export function getUserByWallet(wallet) {
     return async function (dispatch) {
@@ -47,21 +41,9 @@ export function getUserByWallet(wallet) {
     }
 }
 
-// export function updateUser(id) {
-//     return async function (dispatch) {
-//         const result = await axios.patch(apiRoot.localApi + '/user/updateUser/'+id);
-//         dispatch({
-//             type: GET_USER_BY_WALLET,
-//             userLogged: result.data,
-//             referralCode: result.data.referralCode
-//         })
-//     }
-// }
-
 export function updateNewPass(account, refCodeUsed, idPass) {
     return async function (dispatch) {
         const result = await axios.post(apiRoot.localApi + '/user/updateNewPass',  {wallet: account, referralCode: refCodeUsed, idPass: idPass});
-        console.log('ressss Update', result)
         dispatch({
             type: UPDATE_NEW_PASS,
             userLogged: result.data,
@@ -72,10 +54,18 @@ export function updateNewPass(account, refCodeUsed, idPass) {
 export function getReferralMovementByIdUserRef(idUserRef) {
     return async function (dispatch) {
         const result = await axios.get(apiRoot.localApi + '/referralmovement/getReferralMovementByIdUserRef/'+idUserRef);
-        console.log('refmove', result)
         dispatch({
             type: GET_REFERRAL_MOVEMENT,
             refMovement: result.data,
+        })
+    }
+}
+
+export function setReferralByLink(referral) {
+    return function (dispatch) {
+        dispatch({
+            type: SET_REFERRAL_BY_LINK,
+            referralFromLink: referral
         })
     }
 }

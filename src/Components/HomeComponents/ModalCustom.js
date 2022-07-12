@@ -28,11 +28,12 @@ const style = {
 
 export default function ModalCustom(props) {
     const dispatch = useDispatch();
+    const referralFromLink = useSelector(state => state.user.referralFromLink);
+    const userLogged = useSelector(state => state.user.userLogged);
     const { active, account, activate } = useWeb3React();
-    const [referral, setReferral] = React.useState('');
+    const [referral, setReferral] = React.useState(referralFromLink);
     const [disableConfirm, setDisableConfirm] = React.useState(false);
     const handleClose = () => props.setOpen(false);
-    const userLogged = useSelector(state => state.user.userLogged)
 
     const handleChange = (event) => {
         if(event.target.value === userLogged.referralCode){
