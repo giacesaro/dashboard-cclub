@@ -1,7 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Button, Typography } from '@mui/material';
-import { ethers } from 'ethers';
-import { providerOptions, connectors } from "../Utils/providerOptions";
+import { providerOptions } from "../Utils/providerOptions";
 import Web3Modal from "web3modal";
 import { useWeb3React } from '@web3-react/core';
 import { useDispatch } from 'react-redux';
@@ -15,8 +14,6 @@ const web3Modal = new Web3Modal({
 
 function ButtonConnect() {
     const { activate, active, account } = useWeb3React();
-    //const [account, setAccount] = useState();
-    const [error, setError] = useState("");
     const dispatch = useDispatch();
 
     const handleConnect = () => {

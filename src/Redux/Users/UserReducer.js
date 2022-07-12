@@ -1,14 +1,16 @@
 import {
     CREATE_USER,
     GET_USER_BY_WALLET,
-    UPDATE_NEW_PASS
+    UPDATE_NEW_PASS,
+    GET_REFERRAL_MOVEMENT
 } from "./types";
 
 export function userReducer(
     state = {
         newUser: {},
         referralCode: '',
-        userLogged: {}
+        userLogged: {},
+        refMovement: {},
     },
     action
 ) {
@@ -26,6 +28,10 @@ export function userReducer(
         case UPDATE_NEW_PASS:
             return Object.assign({}, state, {
                 userLogged: action.userLogged
+            });
+        case GET_REFERRAL_MOVEMENT:
+            return Object.assign({}, state, {
+                refMovement: action.refMovement
             });
         default:
             return state;

@@ -10,8 +10,6 @@ import Passes from './Passes';
 import BuyPasses from './BuyPasses';
 import '../CSS/Dashboard.css'
 import { getAllPassConfig, getParamByKey } from '../Redux/Application';
-import { balanceOf, connectAbi } from '../Redux/Blockchain/BlockchainAction';
-import { contractTest } from '../Utils/config';
 import PreHome from './PreHome';
 import { getUserByWallet } from '../Redux/Users/UserAction';
 import { useWeb3React } from '@web3-react/core';
