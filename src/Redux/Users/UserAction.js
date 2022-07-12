@@ -12,7 +12,8 @@ export function createUser(account, refCodeUsed, idPass) {
         const result = await axios.post(apiRoot.localApi + '/user/', {wallet: account, referralCode: refCodeUsed, idPass: idPass});
         dispatch({
             type: CREATE_USER,
-            newUser: result.data
+            newUser: result.data,
+            userLogged: result.data,
         })
     }
 }
@@ -54,7 +55,7 @@ export function updateNewPass(account, refCodeUsed, idPass) {
         console.log('ressss Update', result)
         dispatch({
             type: UPDATE_NEW_PASS,
-            //TODO cosa tornare?
+            userLogged: result.data,
         })
     }
 }

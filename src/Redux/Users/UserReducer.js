@@ -15,7 +15,8 @@ export function userReducer(
     switch (action.type) {
         case CREATE_USER:
             return Object.assign({}, state, {
-                newUser: action.newUser
+                newUser: action.newUser,
+                userLogged: action.userLogged
             });
         case GET_USER_BY_WALLET:
             return Object.assign({}, state, {
@@ -24,7 +25,7 @@ export function userReducer(
             });
         case UPDATE_NEW_PASS:
             return Object.assign({}, state, {
-
+                userLogged: action.userLogged
             });
         default:
             return state;

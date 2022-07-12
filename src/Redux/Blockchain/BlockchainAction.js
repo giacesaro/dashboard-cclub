@@ -8,7 +8,8 @@ import {
     MINT_FAILED,
     MINT_SUCCESS,
     SET_ERROR_BLOCKCHAIN,
-    SET_SUCCESS_BLOCKCHAIN
+    SET_SUCCESS_BLOCKCHAIN,
+    CONNECT_WALLET
 } from "./types";
 import { ethers } from "ethers";
 import { providerOptions, connectors } from "../../Utils/providerOptions";
@@ -54,27 +55,32 @@ export function connectAbi() {
     }
 }
 
-export const connectWallet = async (activate) => {
-    try {
-        const provider = await web3Modal.connect();
-        const library = new ethers.providers.Web3Provider(provider);
-        const accounts = await library.listAccounts();
-        // const network = await library.getNetwork();
-        switch (library.connection.url) {
-            case 'metamask':
-                activate(connectors.injected)
-                break;
-            case 'eip-1193:':
-                activate(connectors.walletConnect)
-                break;
-            default:
-                break;
+export const connectWallet = (activate) => {
+    return async (dispatch) => {
+        try {
+            const provider = await web3Modal.connect();
+            const library = new ethers.providers.Web3Provider(provider);
+            const accounts = await library.listAccounts();
+            // const network = await library.getNetwork();
+            switch (library.connection.url) {
+                case 'metamask':
+                    activate(connectors.injected)
+                    break;
+                case 'eip-1193:':
+                    activate(connectors.walletConnect)
+                    break;
+                default:
+                    break;
+            }
+            if (accounts) {
+                connectAbi();
+            }
+            dispatch({
+                type: CONNECT_WALLET
+            });
+        } catch (error) {
+            //setError(error);
         }
-        if (accounts){
-            connectAbi();
-        }
-    } catch (error) {
-        //setError(error);
     }
 };
 
@@ -82,6 +88,7 @@ export function balanceOf(address) {
     return async (dispatch) => {
         try {
             console.log(smartContract)
+            console.log('ad', address)
             if (Object.keys(smartContract).length !== 0) {
                 const balanceOf = await smartContract.balanceOf(address);
                 dispatch({
@@ -109,9 +116,10 @@ export function mint(mintamount, account, refCodeUsed, idPass, userLogged) {
                 transaction.wait().then(result => {
                     //CONTROLLO SE L'UTENTE HA GIA' ACQUISTATO UN PASS. SE NON LO POSSIEDE
                     //FACCIO LA CREATE, ALTRIMENTI UPDATE
-                    if(Object.keys(userLogged).length === 0){
+                    console.log(userLogged)
+                    if (Object.keys(userLogged).length === 0) {
                         dispatch(createUser(account, refCodeUsed, idPass));
-                    } else{
+                    } else {
                         dispatch(updateNewPass(account, refCodeUsed, idPass));
                     }
                     dispatch(setLoading(false));
@@ -142,7 +150,7 @@ export function mint(mintamount, account, refCodeUsed, idPass, userLogged) {
     };
 };
 
-export function setErrorBoolean(errorBoolean = true, errorMessage='') {
+export function setErrorBoolean(errorBoolean = false, errorMessage = '') {
     return (dispatch) => {
         dispatch({
             type: SET_ERROR_BLOCKCHAIN,
@@ -152,7 +160,7 @@ export function setErrorBoolean(errorBoolean = true, errorMessage='') {
     }
 }
 
-export function setSuccess(success = true, successMessage='') {
+export function setSuccess(success = false, successMessage = '') {
     return (dispatch) => {
         dispatch({
             type: SET_SUCCESS_BLOCKCHAIN,

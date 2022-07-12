@@ -16,6 +16,7 @@ import PreHome from './PreHome';
 import { getUserByWallet } from '../Redux/Users/UserAction';
 import { useWeb3React } from '@web3-react/core';
 import { CONFIG_PASS } from '../Redux/Application/types';
+import SnackbarCustom from '../Components/SnackbarCustom';
 
 function Dashboard() {
   const { account } = useWeb3React();
@@ -23,7 +24,7 @@ function Dashboard() {
   dispatch(getAllNews());
   dispatch(getAllPassConfig())
   dispatch(getParamByKey(CONFIG_PASS))
-  dispatch(balanceOf(contractTest));
+  //dispatch(balanceOf(contractTest));
   if(account)
     dispatch(getUserByWallet(account));
   const section = useSelector(state => state.sidebar.section);
@@ -97,6 +98,7 @@ function Dashboard() {
         </Grid>
       </Grid>
       }
+      <SnackbarCustom />
     </div>
   );
 }

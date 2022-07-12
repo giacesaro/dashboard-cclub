@@ -10,7 +10,7 @@ import { createStyles, styled } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { useWeb3React } from '@web3-react/core';
 import { CssTextFieldElite, CssTextFieldPartner, CssTextFieldPremium } from '../../Utils/Constants';
-import { connectWallet, mint } from '../../Redux/Blockchain/BlockchainAction';
+import { connectWallet, mint, setErrorBoolean } from '../../Redux/Blockchain/BlockchainAction';
 import { updateNewPass } from '../../Redux/Users/UserAction';
 import { setLoading } from '../../Redux/Application/ApplicationAction';
 
@@ -30,10 +30,18 @@ export default function ModalCustom(props) {
     const dispatch = useDispatch();
     const { active, account, activate } = useWeb3React();
     const [referral, setReferral] = React.useState('');
+    const [disableConfirm, setDisableConfirm] = React.useState(false);
     const handleClose = () => props.setOpen(false);
     const userLogged = useSelector(state => state.user.userLogged)
 
     const handleChange = (event) => {
+        if(event.target.value === userLogged.referralCode){
+            setDisableConfirm(true)
+            dispatch(setErrorBoolean(true, 'You cannot use your referral code!'))
+        } else{
+            setDisableConfirm(false)
+            dispatch(setErrorBoolean())
+        }
         setReferral(event.target.value);
     };
 
@@ -152,9 +160,10 @@ export default function ModalCustom(props) {
                                             Cancel
                                         </Button>
                                         <Button
-                                            className={'font-openSans-light !text-white !font-semibold ' + bgColor + ' ' + borderColor}
+                                            className={'font-openSans-light !text-white !font-semibold ' + (disableConfirm ? 'bg-color-disable' : bgColor + ' ' + borderColor) }
                                             variant='outlined'
                                             onClick={mintPass}
+                                            disabled={disableConfirm}
                                         >
                                             Confirm
                                         </Button>

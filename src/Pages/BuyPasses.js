@@ -94,7 +94,6 @@ function BuyPasses() {
             {open &&
                 <ModalCustom open={open} setOpen={setOpen} title={modalTitle} content={"Are you sure you want to buy the " + modalTitle + " for " + modalPrice + " ?"} type={type} />
             }
-            <SnackbarCustom />
         </Grid>
     );
 }

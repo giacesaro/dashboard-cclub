@@ -1,6 +1,7 @@
 import {
     BALANCE_OF_FAILED,
     BALANCE_OF_SUCCESS,
+    CONNECT_WALLET,
     MINT_FAILED,
     MINT_SUCCESS,
     SET_ERROR_BLOCKCHAIN,
@@ -48,6 +49,9 @@ export function blockchainReducer(
             return Object.assign({}, state, {
                 success: action.success,
                 successMessage: action.successMessage
+            });
+        case CONNECT_WALLET:
+            return Object.assign({}, state, {
             });
         default:
             return state;
