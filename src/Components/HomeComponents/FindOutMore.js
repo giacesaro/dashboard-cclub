@@ -19,11 +19,11 @@ function FindOutMore() {
                     <Typography variant='h1' className='text-left h-10 !font-normal !ml-8 !mt-6 font-openSans-extrabold' sx={{ fontSize: { xs: 25, xl: 36 }, lineHeight: { xs: 1, md: 1 } }}>
                         Find Out More!
                     </Typography>
-                    <Typography variant='body1' className='text-left !ml-8 ffont-openSans-light !font-normal !text-base !leading-6'>
+                    <Typography variant='body1' className='text-left !ml-8 ffont-openSans-light !font-normal !text-base !leading-6' sx={{mt: {xs:2, md: 0}}}>
                         Discover all our passes!
                     </Typography>
                     <Typography variant='body1' className='text-left !ml-8 font-openSans-light !font-normal !text-base !leading-6'>
-                        <Button variant='contained' className='bg-my-black !rounded-md font-openSans-light !text-sm !text-left !mt-4' onClick={() => handleChangeSection('buying')}>
+                        <Button variant='contained' className='bg-my-black !rounded-md font-openSans-light !text-sm !text-left' onClick={() => handleChangeSection('buying')} sx={{mt: {xs: 1, md:2}}}>
                             BUY YOUR PASS
                         </Button>
                     </Typography>

@@ -57,3 +57,9 @@
 .font-openSans-light {
     font-family: 'Open Sans Light' !important;
 }
+
+.text-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

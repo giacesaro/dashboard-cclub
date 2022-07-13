@@ -12,7 +12,7 @@ const web3Modal = new Web3Modal({
     providerOptions // required
 });
 
-function ButtonConnect() {
+function ButtonConnect(props) {
     const { activate, active, account } = useWeb3React();
     const dispatch = useDispatch();
 
@@ -23,12 +23,12 @@ function ButtonConnect() {
     return (
         <Fragment>
             {!active &&
-                <Button variant='outlined' className='h-10 border-my-black color-my-black' onClick={handleConnect}>
+                <Button variant='outlined' className={'h-10 border-my-black !text-black font-openSans-extrabold ' + (props.type !== 'mobile' ? 'bg-transparent' : '!bg-white')} onClick={handleConnect}>
                     CONNECT WALLET
                 </Button>
             }
             {active &&
-                <Typography variant='body1' className='h-10 font-openSans-light !text-lg !font-medium'>
+                <Typography variant='body1' className='h-10 font-openSans-light !text-lg !font-medium text-ellipsis ' sx={{ mt: { xs: 1.5, md: 0 } }}>
                     {account}
                 </Typography>
             }

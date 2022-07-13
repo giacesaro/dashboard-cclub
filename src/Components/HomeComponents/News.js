@@ -37,20 +37,20 @@ function News(props) {
                                     />
                                 </Grid>
                                 <Grid item xs={4} md={6} lg={4} className='text-left !mt-6 ' sx={{ ml: { xs: 2, md: 0 } }}>
-                                    <Typography variant='h5' className='text-left font-openSans-extrabold ' sx={{ lineHeight: { xs: 0.8, md: 0.9 } }}>
-                                        {news.title}
+                                    <Typography variant='h5' className='text-left font-openSans-extrabold text-ellipsis ' sx={{ lineHeight: { xs: 0.8, md: 0.9 } }}>
+                                        333333333333 333333333 3
                                     </Typography>
                                     <Typography variant='body2' className='text-left font-openSans-light !leading-4 !text-xs pt-1'>
                                         by C-Club
                                     </Typography>
                                 </Grid>
-                                <Grid item xs={2} md={6} lg={2} className='text-left !mt-6'>
+                                <Grid item xs={2} md={6} lg={2} className='text-center ' sx={{ mt: { xs: 2, md: 3 } }}>
                                     <AccessTimeFilledIcon />
                                     <Typography variant='overline' className='text-left font-openSans-extrabold !text-sm !mt-2' sx={{ ml: { xs: 0, md: 0.5 } }}>
                                         3min
                                     </Typography>
                                 </Grid>
-                                <Grid item xs={3} md={6} lg={4} className='text-right !mt-6 !pr-10'>
+                                <Grid item xs={3} md={6} lg={4} className='text-right' sx={{ mt: { xs: 2, md: 3 }, pr: { xs: 0, md: 5 } }}>
                                     <Button variant='outlined' className='!rounded-md font-openSans-extrabold !text-sm border-my-black color-my-black !border-2 !font-bold' onClick={() => handleOpenModal(news.id)}>
                                         READ
                                     </Button>

@@ -11,7 +11,8 @@ function ReferralProgramStatus(props) {
 
     return (
         <Fragment>
-            <Typography variant='h2' className={'text-left !text-3xl h-6 !mt-10 !font-normal !leading-9 font-openSans-extrabold !mb-4 ' + props.colorDark} sx={{ mt: { xs: 0, md: 2 } }}>
+            <Typography variant='h2' className={'text-left h-6 !font-normal !leading-9 font-openSans-extrabold !mb-4 ' + props.colorDark}
+                sx={{ mt: { xs: 0, md: 5 }, fontSize: { xs: '24px', md: '30px' }, lineHeight: { xs: '28px', md: '36px' } }}>
                 Referral Program Status
             </Typography>
             <Grid container spacing={2}>
@@ -28,17 +29,18 @@ function ReferralProgramStatus(props) {
                             value = refUsed;
                             break;
                         case 'ETH earned':
-                            value = 12;
+                            value = 12; //TODO cambiare 
                             break;
                         default:
                             break;
                     }
                     return (
-                        <Grid item xs={6} md={6} lg={5.5} key={title}>
+                        <Grid item xs={12} md={6} lg={5.5} key={title}>
                             <Card className='box-border h-14 !rounded-2xl bg-card !shadow-none'>
                                 <Grid container>
                                     <Grid item xs={6} md={6} lg={title === 'Code' ? 7 : 9}>
-                                        <Typography variant='body1' className='font-openSans-light !text-left !text-3xl !ml-3 !mt-3'>
+                                        <Typography variant='body1' className='font-openSans-light !text-left !ml-3'
+                                            sx={{ mt: { xs: 2, md: 1.5 }, fontSize: { xs: '24px', md: '30px' }, lineHeight: { xs: '28px', md: '36px' } }}>
                                             {title}
                                         </Typography>
                                     </Grid>

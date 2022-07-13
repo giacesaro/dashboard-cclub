@@ -106,7 +106,7 @@ export default function ModalCustom(props) {
             <div>
                 <Fade right>
                     <Grid container>
-                        <Box sx={style} className='mt-80 rounded-2xl text-center'>
+                        <Box className='mt-80 rounded-2xl text-center modal-custom' sx={{width: {xs: '90%', md: 'initial'}}}>
                             <Grid item xs={12} md={12} lg={12}>
                                 <Typography id="modal-modal-title" className={'font-openSans-extrabold ' + colorPass} variant="h5" >
                                     {props.title}

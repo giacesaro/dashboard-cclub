@@ -86,7 +86,7 @@ function Dashboard() {
           <Grid item xs={1} md={1} lg={1} sx={{ display: { xs: 'none', md: 'initial' } }}>
             <Sidebar />
           </Grid>
-          <Grid item xs={12} md={1} lg={1} sx={{ display: { xs: 'initial', md: 'none' } }}>
+          <Grid item xs={12} md={1} lg={1} display={{xs: 'initial', md: 'none'}} className={'max-h-14'}>
             <SidebarMobile />
           </Grid>
           <Grid item xs={12} md={11} lg={11}>

@@ -11,27 +11,41 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
+import ButtonConnect from '../ButtonConnect'
 import { Button, Grid } from '@mui/material';
 import '../../CSS/Home.css';
 import { useWeb3React } from '@web3-react/core';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { setSection } from '../../Redux/Sidebar/SidebarAction';
 
 const drawerWidth = 120;
 
 function SidebarMobile(props) {
+    let navigate = useNavigate();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const { account, deactivate } = useWeb3React();
+    const { active, account, deactivate } = useWeb3React();
+    const [selected, setSelected] = React.useState('home');
+    const dispatch = useDispatch();
+    console.log('activ', active)
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+
+    const handleChangeSection = (type) => {
+        dispatch(setSection(type));
+        setSelected(type);
+        navigate("/", { replace: true });
+    }
 
     const drawer = (
         <div>
             <Toolbar />
             <List>
                 <ListItem key={'home'} disablePadding>
-                    <ListItemButton className='!justify-center !pl-11'>
+                    <ListItemButton className='!justify-center !pl-11' onClick={() => handleChangeSection('home')}>
                         <ListItemIcon>
                             <Box
                                 component="img"
@@ -42,7 +56,7 @@ function SidebarMobile(props) {
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key={'partner'} disablePadding>
+                <ListItem key={'partner'} disablePadding onClick={() => handleChangeSection('partner')}>
                     <ListItemButton className='!justify-center !pt-12'>
                         <ListItemIcon>
                             <Box
@@ -54,7 +68,7 @@ function SidebarMobile(props) {
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key={'elite'} disablePadding>
+                <ListItem key={'elite'} disablePadding onClick={() => handleChangeSection('elite')}>
                     <ListItemButton className='!justify-center'>
                         <ListItemIcon>
                             <Box
@@ -67,7 +81,7 @@ function SidebarMobile(props) {
                     </ListItemButton>
                 </ListItem>
                 <ListItem key={'premium'} disablePadding>
-                    <ListItemButton className='!justify-center'>
+                    <ListItemButton className='!justify-center' onClick={() => handleChangeSection('premium')}>
                         <ListItemIcon>
                             <Box
                                 component="img"
@@ -78,9 +92,9 @@ function SidebarMobile(props) {
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
-                {!account &&
-                    <ListItem key={'logout'} disablePadding>
-                        <ListItemButton className='!justify-center !ml-8 !mt-72'>
+                {active &&
+                    <ListItem key={'logout'} disablePadding onClick={deactivate}>
+                        <ListItemButton className='!justify-center !ml-8 !mt-32'>
                             <ListItemIcon>
                                 <Box
                                     component="img"
@@ -96,6 +110,23 @@ function SidebarMobile(props) {
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
+    var background = '';
+    switch (selected) {
+        case 'home':
+            background = 'bg-my-black'
+            break;
+        case 'partner':
+            background = 'bg-partner-pass';
+            break;
+        case 'elite':
+            background = 'bg-elite-pass';
+            break;
+        case 'premium':
+            background = 'bg-premium-pass';
+            break;
+        default:
+            break;
+    }
 
     return (
         <Box className='mb-4' sx={{ display: 'flex' }}>
@@ -106,7 +137,7 @@ function SidebarMobile(props) {
                 sx={{
                 }}
             >
-                <Toolbar className='bg-my-black !rounded-3xl ml-1 mr-1 mt-3 h-16'>
+                <Toolbar className={'!rounded-3xl ml-1 mr-1 mt-3 h-16 ' + background}>
                     <Grid container>
                         <Grid item xs={2} className='self-center'>
                             <IconButton
@@ -118,16 +149,17 @@ function SidebarMobile(props) {
                             >
                                 <MenuIcon />
                             </IconButton>
-
                         </Grid>
-                        <Grid item xs={10} className='relative l-20p'>
+                        <Grid item xs={7} className='self-center'>
+                            <ButtonConnect type='mobile' />
+                        </Grid>
+                        <Grid item xs={3} className='relative'>
                             <Box
                                 component="img"
                                 className='h-24'
                                 alt="Logo"
                                 src="/images/Logo-Mobile2.png"
                             />
-
                         </Grid>
                     </Grid>
                 </Toolbar>
@@ -160,23 +192,6 @@ function SidebarMobile(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
             </Box>
-            {account &&
-                <Button className='!mt-14 h-16 !mb-10 info-button' onClick={deactivate}>
-                    <Box
-                        component="img"
-                        className=''
-                        alt="Home"
-                        src="/images/logout.png"
-                    />
-                </Button>
-            }
-            {!account &&
-                <Box
-                    component="div"
-                    className='!mt-14 h-16 !mb-10'
-                    alt="Home"
-                />
-            }
         </Box>
     );
 }
