@@ -32,8 +32,11 @@ function HelloCard(props) {
                     >
                         {hello}
                     </Typography>
-                    <Typography variant='body1' className='text-left !ml-8 font-openSans-light !font-normal !text-xl !leading-6 w-385'
-                        sx={{ mt: { xs: 0.5, lg: 1 } }}>
+                    <Typography
+                        variant='body1'
+                        className='text-left !ml-8 font-openSans-light !font-normal !text-xl !leading-6 w-385'
+                        sx={{ mt: { xs: 0.5, lg: 1 } }}
+                    >
                         Welcome, <span className={props.colorPass + ' !font-bold font-openSans-light'}>{props.type}</span> member!
                     </Typography>
                 </Grid>

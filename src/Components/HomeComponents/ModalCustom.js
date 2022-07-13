@@ -5,13 +5,11 @@ import Modal from '@mui/material/Modal';
 import '../../CSS/Dashboard.css';
 import '../../CSS/Passes.css';
 import { Fade } from 'react-reveal';
-import { Button, Grid, TextField } from '@mui/material';
-import { createStyles, styled } from '@mui/material/styles';
+import { Button, Grid } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useWeb3React } from '@web3-react/core';
 import { CssTextFieldElite, CssTextFieldPartner, CssTextFieldPremium } from '../../Utils/Constants';
 import { connectWallet, mint, setErrorBoolean } from '../../Redux/Blockchain/BlockchainAction';
-import { updateNewPass } from '../../Redux/Users/UserAction';
 import { setLoading } from '../../Redux/Application/ApplicationAction';
 
 const style = {
@@ -32,14 +30,16 @@ export default function ModalCustom(props) {
     const userLogged = useSelector(state => state.user.userLogged);
     const { active, account, activate } = useWeb3React();
     const [referral, setReferral] = React.useState(referralFromLink);
-    const [disableConfirm, setDisableConfirm] = React.useState(false);
+    const [disableConfirm, setDisableConfirm] = React.useState(referral === userLogged.referralCode ? true : false);
     const handleClose = () => props.setOpen(false);
+    if (referral === userLogged.referralCode)
+        dispatch(setErrorBoolean(true, 'You cannot use your referral code!'))
 
     const handleChange = (event) => {
-        if(event.target.value === userLogged.referralCode){
+        if (event.target.value === userLogged.referralCode) {
             setDisableConfirm(true)
             dispatch(setErrorBoolean(true, 'You cannot use your referral code!'))
-        } else{
+        } else {
             setDisableConfirm(false)
             dispatch(setErrorBoolean())
         }
@@ -64,35 +64,30 @@ export default function ModalCustom(props) {
     var bgColor = '';
     var borderColor = '';
     var colorPass = '';
-    var color = '';
     var labelColor = '';
     switch (props.type) {
         case 'home':
             colorPass = 'black';
             bgColor = 'bg-my-black';
             borderColor = 'border-my-black';
-            color = 'black';
             labelColor = 'color-label-input-partner-pass'
             break;
         case 'partner':
             colorPass = 'color-dark-partner-pass';
             bgColor = 'bg-partner-pass';
             borderColor = 'border-partner-pass';
-            color = '#153633';
             labelColor = 'color-label-input-partner-pass'
             break;
         case 'elite':
             colorPass = 'color-dark-elite-pass';
             bgColor = 'bg-elite-pass';
             borderColor = 'border-elite-pass';
-            color = '#821218';
             labelColor = 'color-label-input-elite-pass'
             break;
         case 'premium':
             colorPass = 'color-dark-premium-pass';
             bgColor = 'bg-premium-pass';
             borderColor = 'border-premium-pass';
-            color = '#424141';
             labelColor = 'color-label-input-premium-pass'
             break;
         default:
@@ -161,7 +156,7 @@ export default function ModalCustom(props) {
                                             Cancel
                                         </Button>
                                         <Button
-                                            className={'font-openSans-light !text-white !font-semibold ' + (disableConfirm ? 'bg-color-disable' : bgColor + ' ' + borderColor) }
+                                            className={'font-openSans-light !text-white !font-semibold ' + (disableConfirm ? 'bg-color-disable' : bgColor + ' ' + borderColor)}
                                             variant='outlined'
                                             onClick={mintPass}
                                             disabled={disableConfirm}

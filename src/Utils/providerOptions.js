@@ -28,7 +28,7 @@ export const providerOptions = {
 };
 
 const injected = new InjectedConnector({ //METAMASK
-  supportedChainIds: [1, 3, 4, 5, 42,56,97]
+  supportedChainIds: [1, 3, 4, 5, 42, 56, 97]
 });
 
 const walletconnect = new WalletConnectConnector({
@@ -40,7 +40,7 @@ const walletconnect = new WalletConnectConnector({
 const walletlink = new WalletLinkConnector({
   url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
   appName: "web3-react-demo",
-  supportedChainIds: [1, 3, 4, 5, 42,56,97],
+  supportedChainIds: [1, 3, 4, 5, 42, 56, 97],
 });
 
 export const connectors = {

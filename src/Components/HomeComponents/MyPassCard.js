@@ -50,7 +50,7 @@ function MyPassCard() {
             default:
                 break;
         }
-        if(passPosseduti > 0){
+        if (passPosseduti > 0) {
             dispatch(setSection(type));
         }
     }
@@ -82,12 +82,12 @@ function MyPassCard() {
                         </Grid>
                         <Grid item xs={3} md={6} lg={2} className='text-left !mt-6' display={active ? 'initial' : 'none'} />
                         <Grid item xs={6} md={6} lg={3} sx={{ mt: { xs: 1, md: 3 }, mb: { xs: 2, md: 0 }, textAlign: { xs: 'right', sm: 'center', md: 'right' }, pr: { xs: 5, sm: 0, md: 5 } }} display={active ? 'initial' : 'none'}>
-                            <Button 
-                                variant='contained' 
-                                className={'!rounded-md font-openSans-light !text-sm ' + (passPosseduti > 0 ?'bg-my-black' : 'bg-color-disable')} 
-                                onClick={handleGoPage} 
+                            <Button
+                                variant='contained'
+                                className={'!rounded-md font-openSans-light !text-sm ' + (passPosseduti > 0 ? 'bg-my-black' : 'bg-color-disable')}
+                                onClick={handleGoPage}
                                 disabled={passPosseduti === 0}
-                                >
+                            >
                                 CONTINUE
                             </Button>
                         </Grid>

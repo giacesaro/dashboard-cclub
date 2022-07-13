@@ -11,7 +11,7 @@ import {
 
 export function createUser(account, refCodeUsed, idPass) {
     return async function (dispatch) {
-        const result = await axios.post(apiRoot.localApi + '/user/', {wallet: account, referralCode: refCodeUsed, idPass: idPass});
+        const result = await axios.post(apiRoot.localApi + '/user/', { wallet: account, referralCode: refCodeUsed, idPass: idPass });
         dispatch({
             type: CREATE_USER,
             newUser: result.data,
@@ -22,15 +22,23 @@ export function createUser(account, refCodeUsed, idPass) {
 
 export function getUserByWallet(wallet) {
     return async function (dispatch) {
-        const result = await axios.get(apiRoot.localApi + '/user/getUserByWallet/'+wallet);
+        const result = await axios.get(apiRoot.localApi + '/user/getUserByWallet/' + wallet);
         console.log('ressss', result)
         //SE IL WALLET E' GIA' REGISTRATO, VADO A RECUPERARE ANCHE I MOVIMENTI DALLA TABELLA
         if (Object.keys(result.data).length !== 0) {
             const resultRefMovement = await axios.get(apiRoot.localApi + '/referralmovement/getReferralMovementByIdUserRef/' + result.data.id);
-            console.log('refmove', resultRefMovement)
+            //VADO A CALCOLARE ANCHE I PASS COMPRATI COL MIO REFERRAL
+            let refUsed = 0;
+            if (Object.keys(resultRefMovement).length !== 0) {
+                let passConf = JSON.parse(resultRefMovement.data.idPassConf);
+                passConf.forEach(element => {
+                    refUsed = refUsed + element.passPosseduti;
+                });
+            }
             dispatch({
                 type: GET_REFERRAL_MOVEMENT,
                 refMovement: resultRefMovement.data,
+                refUsed: refUsed
             })
         }
         dispatch({
@@ -43,7 +51,7 @@ export function getUserByWallet(wallet) {
 
 export function updateNewPass(account, refCodeUsed, idPass) {
     return async function (dispatch) {
-        const result = await axios.post(apiRoot.localApi + '/user/updateNewPass',  {wallet: account, referralCode: refCodeUsed, idPass: idPass});
+        const result = await axios.post(apiRoot.localApi + '/user/updateNewPass', { wallet: account, referralCode: refCodeUsed, idPass: idPass });
         dispatch({
             type: UPDATE_NEW_PASS,
             userLogged: result.data,
@@ -53,7 +61,7 @@ export function updateNewPass(account, refCodeUsed, idPass) {
 
 export function getReferralMovementByIdUserRef(idUserRef) {
     return async function (dispatch) {
-        const result = await axios.get(apiRoot.localApi + '/referralmovement/getReferralMovementByIdUserRef/'+idUserRef);
+        const result = await axios.get(apiRoot.localApi + '/referralmovement/getReferralMovementByIdUserRef/' + idUserRef);
         dispatch({
             type: GET_REFERRAL_MOVEMENT,
             refMovement: result.data,

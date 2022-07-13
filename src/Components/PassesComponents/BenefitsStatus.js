@@ -27,7 +27,7 @@ function BenefitsStatus(props) {
                                 </Typography>
                             </Grid>
                             <Grid item xs={3} md={6} lg={6} className='text-right self-center !mt-2.5'>
-                                <Tooltip title="Add" placement="left">
+                                <Tooltip title={benefit.info} placement="left">
                                     <Button className='info-button'>
                                         <InfoIcon className='mr-6' sx={{ color: props.colorTooltip }} />
                                     </Button>

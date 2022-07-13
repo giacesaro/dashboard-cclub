@@ -10,16 +10,16 @@ function Passes(props) {
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
             {/* HELLO CARD - CONNECT WALLET - CARD GENERIC REF AND ETH */}
             <Grid item xs={12} md={6} lg={6}>
-                <HelloCard type={props.section} colorDark={props.colorDark} colorPass={props.colorPass} image={props.image}/>
+                <HelloCard type={props.section} colorDark={props.colorDark} colorPass={props.colorPass} image={props.image} />
             </Grid>
             <Grid item xs={12} md={6} lg={6}>
-                <ReferralProgramStatus colorDark={props.colorDark} colorPass={props.colorPass}/>
+                <ReferralProgramStatus colorDark={props.colorDark} colorPass={props.colorPass} />
             </Grid>
             {/* MY PASS - NEWS */}
             <Grid item xs={12} md={6} lg={6}>
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={12} lg={12} className='!pt-0'>
-                        <BenefitsStatus colorDark={props.colorDark} colorPass={props.colorPass} bgColor={props.bgColor} colorTooltip={props.color}/>
+                        <BenefitsStatus colorDark={props.colorDark} colorPass={props.colorPass} bgColor={props.bgColor} colorTooltip={props.color} />
                     </Grid>
                 </Grid>
             </Grid>
@@ -27,7 +27,7 @@ function Passes(props) {
             <Grid item xs={12} md={6} lg={6} sx={{ mb: { xs: 5, md: 0 } }}>
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
-                        <Statistics colorDark={props.colorDark} colorLine={props.color}/>
+                        <Statistics colorDark={props.colorDark} colorLine={props.color} />
                     </Grid>
                 </Grid>
             </Grid>

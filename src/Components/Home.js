@@ -19,6 +19,7 @@ function Home() {
     const [content, setContent] = React.useState('');
     const section = useSelector(state => state.sidebar.section);
     const referralCode = useSelector(state => state.user.referralCode);
+    const refUsed = useSelector(state => state.user.refUsed);
 
     return (
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
@@ -32,7 +33,7 @@ function Home() {
                         <ButtonConnect />
                     </Grid>
                     <Grid item xs={6} md={6} lg={5.5} className='!pt-6'>
-                        <SimpleNumberTextCard number={11} text={'Referral Used'} />
+                        <SimpleNumberTextCard number={refUsed} text={'Referral Used'} />
                     </Grid>
                     <Grid item xs={6} md={6} lg={5.5} className='!pt-6'>
                         <SimpleNumberTextCard number={25} text={'ETH Earned'} />
@@ -68,7 +69,7 @@ function Home() {
                 </Grid>
             </Grid>
             {/* MODALS */}
-            <ModalCustom open={openNews} setOpen={setOpenNews} title={title} content={content} type={"news"}/>
+            <ModalCustom open={openNews} setOpen={setOpenNews} title={title} content={content} type={"news"} />
         </Grid>
     );
 }

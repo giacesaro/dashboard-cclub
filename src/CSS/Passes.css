@@ -22,15 +22,15 @@
     color: #1a1d1c !important;
 }
 
-.color-label-input-partner-pass > label {
+.color-label-input-partner-pass>label {
     color: #153633 !important;
 }
 
-.color-label-input-elite-pass > label {
+.color-label-input-elite-pass>label {
     color: #821218 !important;
 }
 
-.color-label-input-premium-pass > label {
+.color-label-input-premium-pass>label {
     color: #424141 !important;
 }
 
@@ -38,10 +38,14 @@
     background-color: #a6a6a6 !important;
 }
 
-.info-button:hover, .info-button:visited, .info-button:active{
+.info-button:hover,
+.info-button:visited,
+.info-button:active {
     background-color: transparent !important;
 }
 
-.info-button:focus, .info-button:focus-visible, .info-button:focus-within{
+.info-button:focus,
+.info-button:focus-visible,
+.info-button:focus-within {
     color: transparent !important;
 }

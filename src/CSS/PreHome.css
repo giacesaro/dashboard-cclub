@@ -12,7 +12,7 @@
 	background-color: lightblue;
 	width: 100vw;
 	height: 100vh;
-	position:relative;
+	position: relative;
 }
 
 .circle {
@@ -22,10 +22,12 @@
 	border-radius: 50%;
 }
 
-#one:before { content: "Go to Dashboard!"; }
+#one:before {
+	content: "Go to Dashboard!";
+}
 
 #one {
-	background-color: rgba(0,0,225, 0.45);
+	background-color: rgba(0, 0, 225, 0.45);
 	font-size: 40px;
 	font-family: "Oswald", sans-serif;
 	letter-spacing: 1.5px;
@@ -54,6 +56,7 @@
 	transition: 1s;
 	opacity: 0.5;
 }
+
 #five {
 	background-color: green;
 	transition: 1s;
@@ -61,14 +64,25 @@
 }
 
 #cc {
-	position:relative;
+	position: relative;
 	width: 50vh;
 	height: 50vh;
 	border-radius: 50%;
 	overflow: hidden;
 }
 
-#cc:hover #two { transform: translate(0px, 75px); }
-#cc:hover #three { transform: translate(0px, -75px); }
-#cc:hover #four { transform: translate(75px, 0px); }
-#cc:hover #five { transform: translate(-75px, 0px); }
+#cc:hover #two {
+	transform: translate(0px, 75px);
+}
+
+#cc:hover #three {
+	transform: translate(0px, -75px);
+}
+
+#cc:hover #four {
+	transform: translate(75px, 0px);
+}
+
+#cc:hover #five {
+	transform: translate(-75px, 0px);
+}

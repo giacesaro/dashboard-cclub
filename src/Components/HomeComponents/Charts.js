@@ -26,8 +26,8 @@ class ApexChart extends Component {
           curve: 'smooth'
         },
         markers: {
-          size: 5 ,
-      },
+          size: 5,
+        },
         xaxis: {
           type: 'datetime',
           categories: ['06/20/2022', '06/21/2022', '06/22/2022', '06/23/2022', '06/24/2022', '06/25/2022', '06/26/2022'],
@@ -49,8 +49,8 @@ class ApexChart extends Component {
     };
   }
 
-  componentDidUpdate(prevProps){
-    if(prevProps.colorLine !== this.props.colorLine){
+  componentDidUpdate(prevProps) {
+    if (prevProps.colorLine !== this.props.colorLine) {
       //RIAGGIORNO LE OPTION DEL CHART QUANDO CAMBIO SEZIONE PER POTER CAMBIARE COLORE
       let newOptions = {
         chart: {
@@ -68,14 +68,14 @@ class ApexChart extends Component {
           curve: 'smooth'
         },
         markers: {
-          size: 5 ,
-      },
+          size: 5,
+        },
         xaxis: {
           type: 'datetime',
           categories: ['06/20/2022', '06/21/2022', '06/22/2022', '06/23/2022', '06/24/2022', '06/25/2022', '06/26/2022'],
           tickAmount: 6, //TODO in base alla lunghezza delle categories
           labels: {
-            formatter:  (value, timestamp, opts) => {
+            formatter: (value, timestamp, opts) => {
               return opts.dateFormatter(new Date(timestamp), 'dd MMM')
             }
           }
@@ -86,7 +86,7 @@ class ApexChart extends Component {
           max: 40
         }
       };
-      this.setState({options: newOptions})
+      this.setState({ options: newOptions })
     }
   }
 

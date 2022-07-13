@@ -33,7 +33,7 @@ export function getAllPassConfig() {
     }
 }
 
-export function setLoading(loading = true, message='') {
+export function setLoading(loading = true, message = '') {
     return (dispatch) => {
         dispatch({
             type: SET_LOADING,

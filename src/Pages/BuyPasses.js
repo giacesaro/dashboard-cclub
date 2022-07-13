@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, CardContent, CardHeader, CardMedia, Grid, LinearProgress, Stack, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, CardMedia, Grid, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import '../CSS/BuyPasses.css';
 import '../CSS/Dashboard.css';
@@ -9,21 +9,16 @@ import ButtonConnect from '../Components/ButtonConnect';
 import ModalCustom from '../Components/HomeComponents/ModalCustom';
 import { Zoom } from 'react-reveal';
 import { useWeb3React } from '@web3-react/core';
-import { connectWallet } from '../Redux/Blockchain/BlockchainAction';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { setErrorBoolean } from '../Redux/Blockchain/BlockchainAction';
 
 function BuyPasses() {
-    let {referral} = useParams();
-    console.log('refffff', referral)
-    const { active, account, activate } = useWeb3React();
+    const { active } = useWeb3React();
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const [type, setType] = useState('');
     const [modalTitle, setModalTitle] = useState('');
     const [modalPrice, setModalPrice] = useState('');
-    const [message, setMessage] = useState('');
     var configPasses = useSelector(state => state.application.configPasses);
-    console.log('configPasses', configPasses)
 
     const handleBuy = (pass) => {
         if (active) {
@@ -32,13 +27,7 @@ function BuyPasses() {
             setModalTitle(pass.title);
             setModalPrice(pass.price);
         } else {
-            dispatch(connectWallet(activate).then(result => {
-                setOpen(true);
-                setType(pass.type);
-                setModalTitle(pass.title);
-                setModalPrice(pass.price);
-            })
-            );
+            dispatch(setErrorBoolean(true, 'Connect wallet!'))
         }
     }
 

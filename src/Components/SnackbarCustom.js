@@ -36,7 +36,7 @@ export default function SnackbarCustom() {
 
   return (
     <div>
-      <Snackbar open={(loading || errorBoolean || success)} onClose={handleClose} anchorOrigin={{ vertical, horizontal }} autoHideDuration={(errorBoolean || success )? 4500 : null} key={vertical + horizontal}>
+      <Snackbar open={(loading || errorBoolean || success)} onClose={handleClose} anchorOrigin={{ vertical, horizontal }} autoHideDuration={(errorBoolean || success) ? 4500 : null} key={vertical + horizontal}>
         <Alert onClose={handleClose} severity={loading ? 'info' : errorBoolean ? 'error' : success ? 'success' : ''} action={''}>
           {message || errorMessage || successMessage}
         </Alert>

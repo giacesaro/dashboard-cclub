@@ -15,7 +15,7 @@ function SimpleNumberTextCard(props) {
                     </Typography>
                 </Grid>
                 <Grid item xs={6} md={6} lg={4}>
-                    <Typography variant='body1' className='font-openSans-light !text-lg !font-medium' sx={{mt: {xs: 3, xl: 4.5}, ml: {xs: 1, xl: 0}}}>
+                    <Typography variant='body1' className='font-openSans-light !text-lg !font-medium' sx={{ mt: { xs: 3, xl: 4.5 }, ml: { xs: 1, xl: 0 } }}>
                         {props.text}
                     </Typography>
                 </Grid>

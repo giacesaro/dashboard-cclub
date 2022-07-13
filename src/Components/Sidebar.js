@@ -55,7 +55,7 @@ function Sidebar() {
                     src="/images/home.png"
                 />
             </Button>
-            <Tooltip title="Add" placement="right">
+            <Tooltip title="Partner Pass" placement="right">
                 <Button className='!mt-14 h-16 info-button' onClick={() => handleChangeSection('partner')}>
                     <Box
                         component="img"
@@ -65,7 +65,7 @@ function Sidebar() {
                     />
                 </Button>
             </Tooltip>
-            <Tooltip title="Add" placement="right">
+            <Tooltip title="Elite Pass" placement="right">
                 <Button className='!mt-14 h-16 info-button' onClick={() => handleChangeSection('elite')}>
                     <Box
                         component="img"
@@ -75,7 +75,7 @@ function Sidebar() {
                     />
                 </Button>
             </Tooltip>
-            <Tooltip title="Add" placement="right">
+            <Tooltip title="Premium Pass" placement="right">
                 <Button className='!mt-14 h-16 !mb-32 info-button' onClick={() => handleChangeSection('premium')}>
                     <Box
                         component="img"

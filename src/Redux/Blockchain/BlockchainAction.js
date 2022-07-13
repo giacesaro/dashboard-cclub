@@ -17,7 +17,6 @@ import Web3Modal from "web3modal";
 import { setLoading } from "../Application/ApplicationAction";
 
 var smartContract = {};
-var web3;
 var provider;
 var signer;
 
@@ -38,6 +37,7 @@ export function connectAbi() {
         const abi = await abiResponse.json();
         const { ethereum } = window;
         const walletIsInstalled = ethereum && (ethereum.isMetaMask || ethereum.isCoinbaseWallet);
+        var web3;
 
         if (ethereum === null || ethereum === undefined || walletIsInstalled) {
             provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -55,7 +55,7 @@ export function connectAbi() {
     }
 }
 
-export const connectWallet = (activate) => {
+export function connectWallet(activate) {
     return async (dispatch) => {
         try {
             const provider = await web3Modal.connect();
