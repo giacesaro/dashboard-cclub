@@ -38,7 +38,7 @@ function News(props) {
                                 </Grid>
                                 <Grid item xs={4} md={6} lg={4} className='text-left !mt-6 ' sx={{ ml: { xs: 2, md: 0 } }}>
                                     <Typography variant='h5' className='text-left font-openSans-extrabold text-ellipsis ' sx={{ lineHeight: { xs: 0.8, md: 0.9 } }}>
-                                        333333333333 333333333 3
+                                        {news.title}
                                     </Typography>
                                     <Typography variant='body2' className='text-left font-openSans-light !leading-4 !text-xs pt-1'>
                                         by C-Club

@@ -30,10 +30,11 @@ export function getUserByWallet(wallet) {
             //VADO A CALCOLARE ANCHE I PASS COMPRATI COL MIO REFERRAL
             let refUsed = 0;
             if (Object.keys(resultRefMovement).length !== 0) {
-                let passConf = JSON.parse(resultRefMovement.data.idPassConf);
-                passConf.forEach(element => {
-                    refUsed = refUsed + element.passPosseduti;
-                });
+                let data = resultRefMovement.data;
+                refUsed = parseInt(data.partnerSelled) + parseInt(data.eliteSelled) + parseInt(data.premiumSelled);
+                // passConf.forEach(element => {
+                //     refUsed = refUsed + element.passPosseduti;
+                // });
             }
             dispatch({
                 type: GET_REFERRAL_MOVEMENT,

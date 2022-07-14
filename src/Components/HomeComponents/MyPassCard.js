@@ -60,19 +60,21 @@ function MyPassCard() {
             <Grid item xs={12} md={10} lg={10}>
                 <Card className='box-border !rounded-2xl bg-card !shadow-none' sx={{ height: { xs: 'initial', md: 80 } }}>
                     <Grid container>
-                        <Grid item xs={active ? 12 : 4} md={2} lg={2} className='mt-10n flex' display={active ? 'initial' : 'none'} sx={{ justifyContent: { xs: 'center', md: 'initial' } }}>
+                        <Grid item xs={active ? 12 : 4} md={2} lg={2} className=' flex' display={active ? 'initial' : 'none'} 
+                            sx={{ justifyContent: { xs: 'center', md: 'initial' }, mt: {xs: -1.25, lg: -0.5,xl: -1.25} }}>
                             {active ?
                                 <Box
                                     component="img"
                                     alt="Type"
                                     src={countArrow === 0 ? "/images/Partner-icon.png" : countArrow === 1 ? "/images/Elite-icon.png" : "/images/Premium-icon.png"}
-                                    sx={{ height: { xs: 100, md: 112 } }}
+                                    sx={{ height: { xs: 100, md: 112, lg:100, xl: 112 } }}
                                 />
                                 :
                                 ""
                             }
                         </Grid>
-                        <Grid item xs={12} md={active ? 6 : 12} lg={active ? 5 : 12} className={'text-left ' + (active ? '' : '!text-center')} sx={{ mt: { xs: active ? 0 : 3, md: 3 } }}>
+                        <Grid item xs={12} md={active ? 6 : 12} lg={active ? 7 : 12} xl={active ? 5 : 12} 
+                                className={'text-left ' + (active ? '' : '!text-center')} sx={{ mt: { xs: active ? 0 : 3, md: 3 } }}>
                             <Typography variant='body1' className={'text-center !font-normal !text-3xl line-57p font-openSans-extrabold '} sx={{ height: { xs: 60, md: 40 } }}>
                                 {active ?
                                     (countArrow === 0 ? 'Partner Pass' : countArrow === 1 ? 'Elite Pass' : 'Premium Pass') + ': ' + passPosseduti
@@ -80,7 +82,7 @@ function MyPassCard() {
                                     'No Pass Owned'}
                             </Typography>
                         </Grid>
-                        <Grid item xs={3} md={6} lg={2} className='text-left' sx={{ display: { xs: active ? 'none' : 'initial', md: active ? 'initial' : 'none' }, mt: { xs: 0, md: 3 } }} />
+                        <Grid item xs={3} md={6} lg={2} className='text-left' sx={{ display: { xs: active ? 'none' : 'initial', md: active ? 'initial' : 'none', lg: active ? 'none' : 'initial' }, mt: { xs: 0, md: 3 } }} />
                         <Grid item xs={12} md={6} lg={3} sx={{ mt: { xs: 0, md: 3 }, textAlign: { xs: 'center', sm: 'center', md: 'right' }, pr: { xs: 0, md: 5 } }} display={active ? 'initial' : 'none'}>
                             <Button
                                 variant='contained'

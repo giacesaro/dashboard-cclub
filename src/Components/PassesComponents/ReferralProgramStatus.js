@@ -38,13 +38,14 @@ function ReferralProgramStatus(props) {
                         <Grid item xs={12} md={6} lg={5.5} key={title}>
                             <Card className='box-border h-14 !rounded-2xl bg-card !shadow-none'>
                                 <Grid container>
-                                    <Grid item xs={6} md={6} lg={title === 'Code' ? 7 : 9}>
+                                    <Grid item xs={6} md={6} lg={title === 'Code' || title === 'Level' ? 6 : 9}>
                                         <Typography variant='body1' className='font-openSans-light !text-left !ml-3'
-                                            sx={{ mt: { xs: 2, md: 1.5 }, fontSize: { xs: '24px', md: '30px' }, lineHeight: { xs: '28px', md: '36px' } }}>
+                                            sx={{ mt: { xs: 2, md: 1.5 }, fontSize: { xs: '24px', md: '30px', lg: '24px', xl: '30px' },
+                                                 lineHeight: { xs: '28px', md: '36px' } }}>
                                             {title}
                                         </Typography>
                                     </Grid>
-                                    <Grid item xs={6} md={6} lg={title === 'Code' ? 5 : 3}>
+                                    <Grid item xs={6} md={6} lg={title === 'Code' || title === 'Level' ? 6 : 3}>
                                         <Typography
                                             className={'!text-3xl h-24 !font-normal line-102p !mr-8 !mt-3 font-openSans-extrabold !text-right ' + props.colorDark}>
                                             {value}

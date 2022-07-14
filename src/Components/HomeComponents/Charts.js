@@ -82,7 +82,7 @@ class ApexChart extends Component {
         },
         colors: [this.props.colorLine],
         yaxis: {
-          min: -10,
+          min: 0,
           max: 40
         }
       };

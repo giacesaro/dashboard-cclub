@@ -17,13 +17,13 @@ function BenefitsStatus(props) {
             </Typography>
             {listBenefits.map(benefit => {
                 return (
-                    <Card className='box-border !rounded-2xl bg-card !shadow-none !mb-4' sx={{ height: { xs: 85, md: 70 } }}>
+                    <Card className='box-border !rounded-2xl bg-card !shadow-none !mb-4' sx={{ height: { xs: 85, md: 70 } }} key={benefit}>
                         <Grid container>
                             <Grid item xs={5} md={6} lg={5.5} className='text-left !mt-2 !ml-4 ' >
                                 <Typography variant='h5' className='text-left font-openSans-extrabold !text-base' sx={{ lineHeight: { xs: 0.8, md: 0.9 } }}>
                                     {benefit.title}
                                 </Typography>
-                                <Typography variant='h6' className='text-left font-openSans-light !leading-4 !text-base ' sx={{ pt: { xs: 0, md: 0.5 } }}>
+                                <Typography variant='h6' className='text-left font-openSans-light !leading-4 !text-base ' sx={{ pt: { xs: 0, xl: 0.5 } }}>
                                     {benefit.subtitle}
                                 </Typography>
                             </Grid>
