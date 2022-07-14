@@ -4,6 +4,7 @@ import { blockchainReducer } from "./Blockchain/BlockchainReducer";
 import { newsReducer } from "./News/NewsReducer";
 import { sidebarReducer } from "./Sidebar/SidebarReducer";
 import { userReducer } from "./Users/UserReducer";
+import { historyReducer } from "./History/HistoryReducer";
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     news: newsReducer,
     user: userReducer,
     sidebar: sidebarReducer,
-    application: applicationReducer
+    application: applicationReducer,
+    history: historyReducer
 });
 
 export default rootReducer;
