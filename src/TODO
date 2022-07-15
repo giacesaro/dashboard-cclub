@@ -1,14 +1,14 @@
-- aggiustare su Home allineamento referall used and eth earned per schermo come MAC --FEDE
-- test sottotitoli buy access pass --Da Chiedere
-- TEST connessione 3 wallet
-- Abbellire modale news
-- cambiare Welcome home member --Da Chiedere
+- TEST connessione 3 wallet --Metamask OK, 
 - Check img al db per le news, valutare se si puo caricare al db direttamente l img --FEDE
-- Nella finestra a scelta del connect wallet se scelgo "WalletConnect" ma cambio idea non posso tornare indietro(anche se aggiorno la pagina)
-- Fix del myPassCard, adattare img e testo.. su Mac si vede male --FEDE
-- Se si apre schermata wallet, non si richiude senza selezionare
-- Safari non chiude modale della scelta wallet in caso non voglia scegliere
-- Quando faccio deactivate, non scompaiono dati nelle pagine del pass
-- Non si apre schermata per selezionare i wallet quando non sono in incognito
-- "Referral Used" ha senso? cambiare in altro piu' sensitivo
+- Se si apre schermata wallet, non si richiude senza selezionare --PROVA ORA, FEDE
+- Safari non chiude modale della scelta wallet in caso non voglia scegliere --PROVA ORA, FEDE
 - Quando uso link del referral e ritorno nella home, esce ancora il messaggio di errore
+- Nascondere codice sorgente dal web
+- Nascondere chiamate backend
+- Aggiungere connessione coinbase nel connectWallet --FEDE lo facciamo assieme, mi pare tu hai coin
+- "Referral Used" ha senso? cambiare in altro più sensitivo --da chiedere
+- Abbellire modale news --Da chiedere
+- cambiare Welcome home member --Da Chiedere
+- Info dei benefits da mobile non si legge
+- Wallet non connesso, disabilitare tasti sidebar, lasciarli cosi o mettere grigi? --da chiedere
+- test sottotitoli buy access pass --Da Chiedere

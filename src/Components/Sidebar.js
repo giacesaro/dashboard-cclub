@@ -8,10 +8,11 @@ import { useWeb3React } from '@web3-react/core';
 import { useDispatch } from 'react-redux';
 import { setSection } from '../Redux/Sidebar/SidebarAction';
 import { useNavigate } from "react-router-dom";
+import { disconnectWeb3Modal } from '../Redux/Blockchain/BlockchainAction';
 
 function Sidebar() {
     let navigate = useNavigate();
-    const { account, deactivate } = useWeb3React();
+    const { account, deactivate, active } = useWeb3React();
     const [selected, setSelected] = useState('home');
     const dispatch = useDispatch();
 
@@ -19,6 +20,12 @@ function Sidebar() {
         dispatch(setSection(type));
         setSelected(type);
         navigate("/", { replace: true });
+    }
+
+    const handleDisconnect = () => {
+        dispatch(setSection('home'));
+        setSelected('home');
+        dispatch(disconnectWeb3Modal(deactivate));
     }
 
     var background = '';
@@ -56,7 +63,7 @@ function Sidebar() {
                 />
             </Button>
             <Tooltip title="Partner Pass" placement="right">
-                <Button className='!mt-14 h-16 info-button' onClick={() => handleChangeSection('partner')}>
+                <Button className='!mt-14 h-16 info-button' onClick={() => handleChangeSection('partner')} disabled={!active}>
                     <Box
                         component="img"
                         className=''
@@ -66,7 +73,7 @@ function Sidebar() {
                 </Button>
             </Tooltip>
             <Tooltip title="Elite Pass" placement="right">
-                <Button className='!mt-14 h-16 info-button' onClick={() => handleChangeSection('elite')}>
+                <Button className='!mt-14 h-16 info-button' onClick={() => handleChangeSection('elite')} disabled={!active}>
                     <Box
                         component="img"
                         className=''
@@ -76,7 +83,7 @@ function Sidebar() {
                 </Button>
             </Tooltip>
             <Tooltip title="Premium Pass" placement="right">
-                <Button className='!mt-14 h-16 !mb-32 info-button' onClick={() => handleChangeSection('premium')}>
+                <Button className='!mt-14 h-16 !mb-32 info-button' onClick={() => handleChangeSection('premium')} disabled={!active}>
                     <Box
                         component="img"
                         className=''
@@ -86,7 +93,7 @@ function Sidebar() {
                 </Button>
             </Tooltip>
             {account &&
-                <Button className='!mt-14 h-16 !mb-10 info-button' onClick={deactivate}>
+                <Button className='!mt-14 h-16 !mb-10 info-button' onClick={handleDisconnect}>
                     <Box
                         component="img"
                         className=''

@@ -84,6 +84,11 @@ export function connectWallet(activate) {
     }
 };
 
+export function disconnectWeb3Modal(deactivate) {
+    deactivate();
+    web3Modal.clearCachedProvider();
+  };
+
 export function balanceOf(address) {
     return async (dispatch) => {
         try {

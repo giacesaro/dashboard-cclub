@@ -15,14 +15,20 @@ import { setLoading } from '../../Redux/Application/ApplicationAction';
 
 export default function ModalCustom(props) {
     const dispatch = useDispatch();
+    //VARIABILI REDUX
     const referralFromLink = useSelector(state => state.user.referralFromLink);
     const userLogged = useSelector(state => state.user.userLogged);
+    //VARIABILI WEB3
     const { active, account, activate } = useWeb3React();
     const [referral, setReferral] = React.useState(referralFromLink);
+    //VARIABILI DI STATO
     const [disableConfirm, setDisableConfirm] = React.useState(referral === userLogged.referralCode ? true : false);
-    const handleClose = () => props.setOpen(false);
+    
     if (referral === userLogged.referralCode)
         dispatch(setErrorBoolean(true, 'You cannot use your referral code!'))
+    
+    //FUNCTION
+    const handleClose = () => props.setOpen(false);
 
     const handleChange = (event) => {
         if (event.target.value === userLogged.referralCode) {
@@ -50,6 +56,8 @@ export default function ModalCustom(props) {
             );
         }
     }
+
+    //SWITCH COLORI
     var bgColor = '';
     var borderColor = '';
     var colorPass = '';
@@ -83,8 +91,6 @@ export default function ModalCustom(props) {
             break;
     }
 
-
-
     return (
         <Modal
             open={props.open}
@@ -95,7 +101,7 @@ export default function ModalCustom(props) {
             <div>
                 <Fade right>
                     <Grid container>
-                        <Box className='mt-80 rounded-2xl text-center modal-custom' sx={{width: {xs: '90%', md: 'initial'}}}>
+                        <Box className='mt-80 rounded-2xl text-center modal-custom' sx={{ width: { xs: '90%', md: 'initial' } }}>
                             <Grid item xs={12} md={12} lg={12}>
                                 <Typography id="modal-modal-title" className={'font-openSans-extrabold ' + colorPass} variant="h5" >
                                     {props.title}

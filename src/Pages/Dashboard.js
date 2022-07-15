@@ -27,14 +27,22 @@ function Dashboard() {
     dispatch(setSection('buying'));
     dispatch(setReferralByLink(referral));
   }
+
+  //VARIABILI WEB3
   const { account } = useWeb3React();
+
+  //CHIAMO FUNCTION DI NEWS E CONFIGURATION
   dispatch(getAllNews());
   dispatch(getAllPassConfig())
   dispatch(getParamByKey(CONFIG_PASS))
-  //dispatch(balanceOf(contractTest));
   if (account)
     dispatch(getUserByWallet(account));
+  //dispatch(balanceOf(contractTest));
+
+  //VARIABILI REDUX
   const section = useSelector(state => state.sidebar.section);
+
+  //SWITCH COLORI
   var colorDark = '';
   var colorPass = '';
   var bgColor = '';
@@ -72,6 +80,7 @@ function Dashboard() {
     default:
       break;
   }
+
   return (
     <div className="App">
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -86,7 +95,7 @@ function Dashboard() {
           <Grid item xs={1} md={1} lg={1} sx={{ display: { xs: 'none', md: 'initial' } }}>
             <Sidebar />
           </Grid>
-          <Grid item xs={12} md={1} lg={1} display={{xs: 'initial', md: 'none'}} className={'max-h-14'}>
+          <Grid item xs={12} md={1} lg={1} display={{ xs: 'initial', md: 'none' }} className={'max-h-14'}>
             <SidebarMobile />
           </Grid>
           <Grid item xs={12} md={11} lg={11}>

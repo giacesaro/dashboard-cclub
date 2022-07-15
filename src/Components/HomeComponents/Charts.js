@@ -2,11 +2,13 @@ import { CircularProgress } from '@mui/material';
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { connect } from 'react-redux'
-import { setDatesAndCounts } from '../../Redux/History/HistoryAction';
+import { getHistoryCountAndFind, setDatesAndCounts, setLoadingCharts } from '../../Redux/History/HistoryAction';
 
 class ApexChart extends Component {
   constructor(props) {
     super(props);
+    this.props.setLoadingCharts();
+    this.props.getHistoryCountAndFind();
     this.state = {
       loadingCharts: false,
       series: [{
@@ -174,7 +176,9 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDatesAndCounts: (dates, charts) => dispatch(setDatesAndCounts(dates, charts))
+    setDatesAndCounts: (dates, charts) => dispatch(setDatesAndCounts(dates, charts)),
+    setLoadingCharts: (value) => dispatch(setLoadingCharts(value)),
+    getHistoryCountAndFind: () => dispatch(getHistoryCountAndFind())
   }
 }
 

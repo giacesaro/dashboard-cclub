@@ -18,6 +18,7 @@ import { useWeb3React } from '@web3-react/core';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { setSection } from '../../Redux/Sidebar/SidebarAction';
+import { disconnectWeb3Modal } from '../../Redux/Blockchain/BlockchainAction';
 
 const drawerWidth = 120;
 
@@ -38,6 +39,12 @@ function SidebarMobile(props) {
         dispatch(setSection(type));
         setSelected(type);
         navigate("/", { replace: true });
+    }
+
+    const handleDisconnect = () => {
+        dispatch(setSection('home'));
+        setSelected('home');
+        dispatch(disconnectWeb3Modal(deactivate));
     }
 
     const drawer = (
@@ -93,7 +100,7 @@ function SidebarMobile(props) {
                     </ListItemButton>
                 </ListItem>
                 {active &&
-                    <ListItem key={'logout'} disablePadding onClick={deactivate}>
+                    <ListItem key={'logout'} disablePadding onClick={handleDisconnect}>
                         <ListItemButton className='!justify-center !ml-8 !mt-32'>
                             <ListItemIcon>
                                 <Box
