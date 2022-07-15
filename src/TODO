@@ -1,26 +1,13 @@
-- aggiustare su Home allineamento referall used and eth earned per schermo come MAC
-- Aggiungere descrizione per tooltip info benefits
-- Rimuovere tooltip da sidebar
-- CSS -> CardBuy con box shadow o senza?
-- Rendere dinamico il recupero dei benefits sul buy pass
-- Ricontrollare color, dark e bg sui css
-- test sottotitoli buy access pass
+- aggiustare su Home allineamento referall used and eth earned per schermo come MAC --FEDE
+- test sottotitoli buy access pass --Da Chiedere
 - TEST connessione 3 wallet
 - Abbellire modale news
-- cambiare Welcome home member
-- Check img al db per le news, valutare se si puo caricare al db direttamente l img
-- Nella home lasciare Welcome, home member?
+- cambiare Welcome home member --Da Chiedere
+- Check img al db per le news, valutare se si puo caricare al db direttamente l img --FEDE
 - Nella finestra a scelta del connect wallet se scelgo "WalletConnect" ma cambio idea non posso tornare indietro(anche se aggiorno la pagina)
-- Fix del myPassCard, adattare img e testo.. su Mac si vede male
-- Aggiungere modali di errore
+- Fix del myPassCard, adattare img e testo.. su Mac si vede male --FEDE
 - Se si apre schermata wallet, non si richiude senza selezionare
-- TODO se inserisco il mio referralCode la transazione va avanti
-- Controllare se snackbar si apre solo in buypassess o ovunque
-- Aggiungere router al link per referral
-- Controllo su link referral personale, bloccare se uso mio link
 - Safari non chiude modale della scelta wallet in caso non voglia scegliere
-- Rendere dinamico le news
-- Controllare se avendo fatto mobile, non si e sballato lg xl
 - Quando faccio deactivate, non scompaiono dati nelle pagine del pass
 - Non si apre schermata per selezionare i wallet quando non sono in incognito
 - "Referral Used" ha senso? cambiare in altro piu' sensitivo

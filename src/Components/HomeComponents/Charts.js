@@ -11,7 +11,7 @@ class ApexChart extends Component {
       loadingCharts: false,
       series: [{
         name: 'Sales',
-        data: [1, 2]
+        data: []
       }],
       options: {
         chart: {
@@ -114,7 +114,7 @@ class ApexChart extends Component {
         xaxis: {
           type: 'datetime',
           categories: this.props.datesChart,
-          tickAmount: this.props.datesChart.length, //TODO in base alla lunghezza delle categories
+          tickAmount: this.props.datesChart.length -1, //TODO in base alla lunghezza delle categories
           labels: {
             formatter: (value, timestamp, opts) => {
               return opts.dateFormatter(new Date(timestamp), 'dd MMM')

@@ -12,7 +12,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import ButtonConnect from '../ButtonConnect'
-import { Button, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import '../../CSS/Home.css';
 import { useWeb3React } from '@web3-react/core';
 import { useDispatch } from 'react-redux';
@@ -25,7 +25,7 @@ function SidebarMobile(props) {
     let navigate = useNavigate();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const { active, account, deactivate } = useWeb3React();
+    const { active, deactivate } = useWeb3React();
     const [selected, setSelected] = React.useState('home');
     const dispatch = useDispatch();
     console.log('activ', active)
