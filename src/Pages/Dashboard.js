@@ -24,6 +24,7 @@ function Dashboard() {
   //ACQUISTO PASS E SETTO IL REFERRAL PRESO DALLA ROUTE
   let { referral } = useParams();
   if (referral !== undefined) {
+    console.log('qui')
     dispatch(setSection('buying'));
     dispatch(setReferralByLink(referral));
   }

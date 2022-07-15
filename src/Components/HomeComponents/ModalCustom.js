@@ -23,10 +23,18 @@ export default function ModalCustom(props) {
     const [referral, setReferral] = React.useState(referralFromLink);
     //VARIABILI DI STATO
     const [disableConfirm, setDisableConfirm] = React.useState(referral === userLogged.referralCode ? true : false);
-    
-    if (referral === userLogged.referralCode)
-        dispatch(setErrorBoolean(true, 'You cannot use your referral code!'))
-    
+
+    //UNMOUNT DELL'ERRORE QUANDO CHIUDO MODALE PER IL MINT
+    React.useEffect(() => {
+        if (referral === userLogged.referralCode && props.type !== 'news') {
+            dispatch(setErrorBoolean(true, 'You cannot use your referral code!'));
+        }
+        return () => {
+            dispatch(setErrorBoolean(false, ''))
+        };
+    }, [referral]);
+
+
     //FUNCTION
     const handleClose = () => props.setOpen(false);
 

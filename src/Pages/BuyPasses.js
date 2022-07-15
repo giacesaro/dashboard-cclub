@@ -62,7 +62,7 @@ function BuyPasses() {
                                         className={'!rounded-full !h-12 !text-lg !mt-5 font-openSans-extrabold ' + pass['hover-bg-color'] + ' ' + pass['bg-color']}
                                         onClick={() => handleBuy(pass)}
                                     >
-                                        BUY ACCESS PASS
+                                        BUY {pass.title}
                                     </Button>
                                     <Typography variant="body2" color="text.secondary" className={'text-left !mt-10 ' + pass['css-dark-color']}>
                                         {pass.referralProgram ? <CheckIcon color='success' /> : <ClearIcon color='error' />} Referral Program

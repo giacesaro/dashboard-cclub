@@ -17,7 +17,7 @@ function BenefitsStatus(props) {
             </Typography>
             {listBenefits.map(benefit => {
                 return (
-                    <Card className='box-border !rounded-2xl bg-card !shadow-none !mb-4' sx={{ height: { xs: 85, md: 70 } }} key={benefit}>
+                    <Card className='box-border !rounded-2xl bg-card !shadow-none !mb-4' sx={{ height: { xs: 85, md: 70 } }} key={benefit.title}>
                         <Grid container>
                             <Grid item xs={5} md={6} lg={5.5} className='text-left !mt-2 !ml-4 ' >
                                 <Typography variant='h5' className='text-left font-openSans-extrabold !text-base' sx={{ lineHeight: { xs: 0.8, md: 0.9 } }}>
@@ -29,7 +29,7 @@ function BenefitsStatus(props) {
                             </Grid>
                             <Grid item xs={6} md={6} lg={6} className='text-right self-center !mt-2.5'>
                                 {/* TODO tooltip non si vede da mobile */}
-                                <Tooltip title={benefit.info} placement="left">
+                                <Tooltip title={benefit.info} placement="top" className=''>
                                     <Button className='info-button'>
                                         <InfoIcon className='mr-6' sx={{ color: props.colorTooltip }} />
                                     </Button>

@@ -29,7 +29,6 @@ function SidebarMobile(props) {
     const { active, deactivate } = useWeb3React();
     const [selected, setSelected] = React.useState('home');
     const dispatch = useDispatch();
-    console.log('activ', active)
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);

@@ -23,7 +23,6 @@ export function createUser(account, refCodeUsed, idPass) {
 export function getUserByWallet(wallet) {
     return async function (dispatch) {
         const result = await axios.get(apiRoot.localApi + '/user/getUserByWallet/' + wallet);
-        console.log('ressss', result)
         //SE IL WALLET E' GIA' REGISTRATO, VADO A RECUPERARE ANCHE I MOVIMENTI DALLA TABELLA
         if (Object.keys(result.data).length !== 0) {
             const resultRefMovement = await axios.get(apiRoot.localApi + '/referralmovement/getReferralMovementByIdUserRef/' + result.data.id);

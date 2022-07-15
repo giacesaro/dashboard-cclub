@@ -8,7 +8,6 @@ import {
 export function getHistoryCountAndFind() {
     return async function (dispatch) {
         const result = await axios.get(apiRoot.localApi + '/history/getHistoryCountAndFind');
-        console.log('resss', result)
         dispatch({
             type: SET_DATES_AND_COUNTS_CHART,
             datesChart: result.data.dates,
