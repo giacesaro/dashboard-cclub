@@ -11,6 +11,7 @@ import { useWeb3React } from '@web3-react/core';
 import { CssTextFieldElite, CssTextFieldPartner, CssTextFieldPremium } from '../../Utils/Constants';
 import { connectWallet, mint, setErrorBoolean } from '../../Redux/Blockchain/BlockchainAction';
 import { setLoading } from '../../Redux/Application/ApplicationAction';
+import { contractPartner } from '../../Utils/config';
 
 
 export default function ModalCustom(props) {
@@ -58,7 +59,7 @@ export default function ModalCustom(props) {
             dispatch(setLoading(true, message))
         } else {
             props.setOpen(false);
-            dispatch(connectWallet(activate).then(result => {
+            dispatch(connectWallet(activate, contractPartner).then(result => {
                 props.setOpen(true);
             })
             );

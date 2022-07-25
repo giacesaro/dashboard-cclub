@@ -4,10 +4,11 @@ import Dashboard from './Pages/Dashboard';
 import { connectAbi } from './Redux/Blockchain/BlockchainAction';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { getAllPassConfig } from './Redux/Application';
+import { contractPartner } from './Utils/config';
 
 function App() {
   const dispatch = useDispatch();
-  dispatch(connectAbi());
+  dispatch(connectAbi(contractPartner));
   dispatch(getAllPassConfig())
   return (
     <BrowserRouter>

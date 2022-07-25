@@ -4,13 +4,14 @@ import { useWeb3React } from '@web3-react/core';
 import { useDispatch } from 'react-redux';
 import { connectWallet } from '../Redux/Blockchain/BlockchainAction';
 import '../CSS/Dashboard.css'
+import { contractPartner } from '../Utils/config';
 
 function ButtonConnect(props) {
     const { activate, active, account } = useWeb3React();
     const dispatch = useDispatch();
 
     const handleConnect = () => {
-        dispatch(connectWallet(activate))
+        dispatch(connectWallet(activate, contractPartner))
     };
 
     return (
