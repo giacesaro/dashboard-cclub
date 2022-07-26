@@ -1,16 +1,13 @@
-- TEST connessione 3 wallet --Metamask OK, 
 - Check img al db per le news, valutare se si puo caricare al db direttamente l img --FEDE
-- Se si apre schermata wallet, non si richiude senza selezionare --PROVA ORA, FEDE
-- Safari non chiude modale della scelta wallet in caso non voglia scegliere --PROVA ORA, FEDE
-- Nascondere codice sorgente dal web
 - Nascondere chiamate backend
-- Aggiungere connessione coinbase nel connectWallet --FEDE lo facciamo assieme, mi pare tu hai coin
 - "Referral Used" ha senso? cambiare in altro più sensitivo --da chiedere
 - Abbellire modale news --Da chiedere
 - cambiare Welcome home member --Da Chiedere
 - Wallet non connesso, disabilitare tasti sidebar, lasciarli cosi o mettere grigi? --da chiedere
 - test sottotitoli buy access pass --Da Chiedere
-
+- TODO switch network wallet
+- Aggiungere avvertimento disconnessione coinbase
+- controllare i todo nel progetto
 
 
 smartContract N.2 => 0xB7700529e7eb138179956D4910056b91DC32D8D2

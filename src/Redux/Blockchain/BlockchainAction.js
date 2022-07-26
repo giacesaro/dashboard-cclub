@@ -11,7 +11,7 @@ import {
     CONNECT_WALLET,
     DISCONNECT_WALLET
 } from "./types";
-import { ethers } from "ethers";
+import { ethers, providers } from "ethers";
 import { providerOptions, connectors } from "../../Utils/providerOptions";
 import Web3Modal from "web3modal";
 import { setLoading } from "../Application/ApplicationAction";
@@ -60,31 +60,25 @@ export function connectAbi(contractAddress) {
 export function connectWallet(activate, contractAddress) {
     return async (dispatch) => {
         try {
-            const conn = await web3Modal.connect();
-            const provider = new ethers.providers.InfuraProvider(
-                'rinkeby',
-                '11ee0c6dd31d48119b713767faf131a8'
-              );
-            console.log('provider', provider)
+            const instance  = await web3Modal.connect();
+            provider  = new providers.Web3Provider(instance);
+            signer = provider.getSigner();
             // const library = new ethers.providers.Web3Provider(provider);
             // const library = ethers.providers.WebSocketProvider(`wss://ropsten.infura.io/ws/v3/11ee0c6dd31d48119b713767faf131a8`);
             // console.log('test', library)
             // const accounts = await library.listAccounts();
             // const network = await library.getNetwork();
              console.log('library conn', provider.connection)
-            // console.log('library', library)
-            // console.log('accounts', accounts)
             switch (provider.connection.url) {
                 case 'metamask':
                     activate(connectors.injected)
                     break;
-                case 'https://rinkeby.infura.io/v3/11ee0c6dd31d48119b713767faf131a8':
-                    // signer = wallet.connect(provider);
-                    // console.log('signer', signer)
-                    activate(connectors.coinbaseWallet)
-                    break;
-                default:
+                case 'eip-1193:':
                     activate(connectors.walletConnect)
+                    break;
+                case 'https://rinkeby-infura.wallet.coinbase.com': //TODO sistemare
+                    activate(connectors.coinbaseWallet)
+                default:
                     break;
             }
             // if (accounts) {
