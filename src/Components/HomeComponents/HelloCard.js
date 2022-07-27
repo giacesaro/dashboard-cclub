@@ -32,7 +32,7 @@ function HelloCard(props) {
                 <Grid item xs={6} md={6} lg={6} xl={6}>
                     <Typography variant='h1' className={'text-left h-10 !font-normal font-openSans-extrabold ' + props.colorDark}
                         sx={{
-                            fontSize: { xs: 25, lg: 27, xl: 36 }, mt: { xs: props.type === 'home'? 6 : 3, lg: 4, xl: 5.5 }, mb: { xs: props.type === 'home'? 0 : 3.5, md: 0 },
+                            fontSize: { xs: 25, lg: 27, xl: 34 }, mt: { xs: props.type === 'home'? 6 : 3, lg: 4, xl: 5.5 }, mb: { xs: props.type === 'home'? 0 : 3.5, md: 0 },
                             lineHeight: { xs: '30px', md: '57px' }, ml: { xs: 2, md: 4 }
                         }}
                     >

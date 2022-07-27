@@ -9,7 +9,8 @@ import {
     SET_ERROR_BLOCKCHAIN,
     SET_SUCCESS_BLOCKCHAIN,
     CONNECT_WALLET,
-    DISCONNECT_WALLET
+    DISCONNECT_WALLET,
+    CHAIN_ID_FAILED
 } from "./types";
 import { ethers, providers } from "ethers";
 import { providerOptions, connectors } from "../../Utils/providerOptions";
@@ -21,6 +22,7 @@ var smartContract = {};
 var provider;
 var signer;
 var abi = {}
+var web3;
 
 const web3Modal = new Web3Modal({
     cacheProvider: true, // optional
@@ -40,7 +42,6 @@ export function connectAbi(contractAddress) {
         abi = await abiResponse.json();
         const { ethereum } = window;
         const walletIsInstalled = ethereum && (ethereum.isMetaMask || ethereum.isCoinbaseWallet);
-        var web3;
         if (ethereum === null || ethereum === undefined || walletIsInstalled) {
             provider = new ethers.providers.Web3Provider(window.ethereum);
             web3 = new Web3(provider); //https://bsc-dataseed1.binance.org
@@ -61,13 +62,20 @@ export function connectWallet(activate, contractAddress) {
     return async (dispatch) => {
         try {
             const instance  = await web3Modal.connect();
-            provider  = new providers.Web3Provider(instance);
+            provider  = await new providers.Web3Provider(instance);
             signer = provider.getSigner();
-            // const library = new ethers.providers.Web3Provider(provider);
-            // const library = ethers.providers.WebSocketProvider(`wss://ropsten.infura.io/ws/v3/11ee0c6dd31d48119b713767faf131a8`);
-            // console.log('test', library)
-            // const accounts = await library.listAccounts();
-            // const network = await library.getNetwork();
+            console.log('istance',instance)
+            console.log('provider',provider)
+            console.log('providerNet',provider._network)
+            console.log('web3',web3)
+            var chainId = web3.eth.getChainId;
+            if (chainId !== 4){
+                dispatch({
+                    type: CHAIN_ID_FAILED,
+                    errorBoolean: true,
+                    errorMessage: "Change to Rinkeby network!",
+                });
+            }
              console.log('library conn', provider.connection)
             switch (provider.connection.url) {
                 case 'metamask':

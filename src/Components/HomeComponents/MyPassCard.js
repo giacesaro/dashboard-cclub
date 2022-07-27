@@ -73,7 +73,7 @@ function MyPassCard() {
                                 ""
                             }
                         </Grid>
-                        <Grid item xs={12} md={active ? 6 : 12} lg={active ? 7 : 12} xl={active ? 5 : 12} 
+                        <Grid item xs={12} md={active ? 6 : 12} lg={active ? 7 : 12} xl={active ? 7 : 12} 
                                 className={'text-left ' + (active ? '' : '!text-center')} sx={{ mt: { xs: active ? 0 : 3, md: 3 } }}>
                             <Typography variant='body1' className={'text-center !font-normal !text-3xl line-57p font-openSans-extrabold '} sx={{ height: { xs: 60, md: 40 } }}>
                                 {active ?
