@@ -17,6 +17,7 @@ import { useWeb3React } from '@web3-react/core';
 import { CONFIG_PASS } from '../Redux/Application/types';
 import { useParams } from 'react-router-dom';
 import { setSection } from '../Redux/Sidebar/SidebarAction';
+import SnackbarWarning from '../Components/SnackbarWarning';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -115,6 +116,7 @@ function Dashboard() {
         </Grid>
       }
       <SnackbarCustom />
+      <SnackbarWarning />
     </div>
   );
 }

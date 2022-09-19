@@ -10,7 +10,8 @@ export function applicationReducer(
         configPasses: [],
         params: {},
         loading: false,
-        message: ''
+        message: '',
+        loadingWarning: false
     },
     action
 ) {
@@ -26,7 +27,8 @@ export function applicationReducer(
         case SET_LOADING:
             return Object.assign({}, state, {
                 loading: action.loading,
-                message: action.message
+                message: action.message,
+                loadingWarning: action.loadingWarning
             });
         default:
             return state

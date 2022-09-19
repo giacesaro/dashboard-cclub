@@ -29,7 +29,7 @@ export default function SnackbarCustom() {
     if (reason === 'clickaway') {
       return;
     }
-    dispatch(setLoading(false));
+    dispatch(setLoading(false, '', false));
     dispatch(setErrorBoolean(false, ''));
     dispatch(setSuccess(false, ''))
   };

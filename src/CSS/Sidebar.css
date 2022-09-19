@@ -1,3 +1,8 @@
 .mt-22p {
     margin-top: 22% !important;
 }
+
+.disable-icon {
+    cursor: not-allowed !important;  
+    pointer-events: inherit !important;
+}

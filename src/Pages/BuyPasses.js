@@ -19,6 +19,7 @@ function BuyPasses() {
     const [modalTitle, setModalTitle] = useState('');
     const [modalPrice, setModalPrice] = useState('');
     var configPasses = useSelector(state => state.application.configPasses);
+    var loading = useSelector(state => state.application.loading);
 
     const handleBuy = (pass) => {
         if (active) {
@@ -61,6 +62,7 @@ function BuyPasses() {
                                     <Button variant='contained'
                                         className={'!rounded-full !h-12 !text-lg !mt-5 font-openSans-extrabold ' + pass['hover-bg-color'] + ' ' + pass['bg-color']}
                                         onClick={() => handleBuy(pass)}
+                                        disabled = {loading}
                                     >
                                         BUY {pass.title}
                                     </Button>

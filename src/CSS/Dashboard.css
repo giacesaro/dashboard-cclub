@@ -63,3 +63,27 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+.border-my-black {
+    border-color: #0C0B0B !important;
+}
+
+.border-partner-pass {
+    border-color: #153633 !important;
+}
+
+.border-elite-pass {
+    border-color: #821218 !important;
+}
+
+.border-premium-pass {
+    border-color: #424141 !important;
+}
+
+.color-black-icon > svg {
+    color: black;
+}
+
+.box-shadow-side {
+    box-shadow: 0 25px 50px -12px !important;
+}

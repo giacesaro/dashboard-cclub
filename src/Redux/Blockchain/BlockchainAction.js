@@ -159,7 +159,7 @@ export function mint(mintamount, account, refCodeUsed, idPass, userLogged) {
                     } else {
                         dispatch(updateNewPass(account, refCodeUsed, idPass));
                     }
-                    dispatch(setLoading(false));
+                    dispatch(setLoading(false, '', false));
                     dispatch({
                         type: MINT_SUCCESS,
                         mint: result,
@@ -168,7 +168,7 @@ export function mint(mintamount, account, refCodeUsed, idPass, userLogged) {
                     });
                 })
             } else {
-                dispatch(setLoading(false));
+                dispatch(setLoading(false, '', false));
                 dispatch({
                     type: MINT_FAILED,
                     errorBoolean: true,
@@ -176,7 +176,7 @@ export function mint(mintamount, account, refCodeUsed, idPass, userLogged) {
                 });
             }
         } catch (err) {
-            dispatch(setLoading(false));
+            dispatch(setLoading(false, '', false));
             console.error('Min - Error: ', err)
             dispatch({
                 type: MINT_FAILED,

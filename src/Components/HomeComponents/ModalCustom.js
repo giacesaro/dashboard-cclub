@@ -56,7 +56,7 @@ export default function ModalCustom(props) {
             dispatch(mint(1, account, referral, idPass, userLogged));
             props.setOpen(false);
             let message = 'Processing...'
-            dispatch(setLoading(true, message))
+            dispatch(setLoading(true, message, true))
         } else {
             props.setOpen(false);
             dispatch(connectWallet(activate, contractPartner).then(result => {
@@ -123,7 +123,7 @@ export default function ModalCustom(props) {
                                 <React.Fragment>
                                     <Grid item xs={12} md={12} lg={12} className='text-left !mt-2'>
                                         <Typography id="modal-modal-description" className={'font-openSans-light !font-semibold ' + colorPass}>
-                                            Insert Referral Code:
+                                            Insert Referral Code (Optional):
                                         </Typography>
                                         {props.type === 'partner' ?
                                             <CssTextFieldPartner

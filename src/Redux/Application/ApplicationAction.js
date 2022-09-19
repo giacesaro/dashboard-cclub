@@ -33,12 +33,13 @@ export function getAllPassConfig() {
     }
 }
 
-export function setLoading(loading = true, message = '') {
+export function setLoading(loading = true, message = '', loadingWarning = true) {
     return (dispatch) => {
         dispatch({
             type: SET_LOADING,
             loading: loading,
-            message: message
+            message: message,
+            loadingWarning: loadingWarning
         });
     }
 }
