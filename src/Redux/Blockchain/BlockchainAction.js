@@ -63,13 +63,10 @@ export function connectWallet(activate, contractAddress) {
         try {
             const instance  = await web3Modal.connect();
             provider  = await new providers.Web3Provider(instance);
+            await provider._networkPromise
             signer = provider.getSigner();
-            console.log('istance',instance)
-            console.log('provider',provider)
-            console.log('providerNet',provider._network)
-            console.log('web3',web3)
-            var chainId = web3.eth.getChainId;
-            if (chainId !== 4){
+            var chainId = provider._network.chainId;
+            if (chainId !== 4){ //TODO CAMBIARE PER RETE UFFICIALE
                 dispatch({
                     type: CHAIN_ID_FAILED,
                     errorBoolean: true,

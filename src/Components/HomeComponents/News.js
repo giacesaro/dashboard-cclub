@@ -24,7 +24,7 @@ function News(props) {
                 All News
             </Typography>
             {listNews.map((news, index) => {
-                if (index < 4) { //MOSTRO SOLO LE ULTIME 4 NOTIZIE
+                if (index < 3) { //MOSTRO SOLO LE ULTIME 3 NOTIZIE
                     return (
                         <Card className='box-border !rounded-2xl bg-card !shadow-none !mb-4' sx={{ height: { xs: 'initial', md: 75 } }} key={index}>
                             <Grid container>

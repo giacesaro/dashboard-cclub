@@ -10,6 +10,7 @@
 - controllare i todo nel progetto
 - Verificare grafico statistiche menù pass
 - Sistemare responsive sm
+- TODO NEL CODICE E ELIMNARE DEBUGGER  E CONSOLE
 
 
 smartContract N.2 => 0xB7700529e7eb138179956D4910056b91DC32D8D2
@@ -20,12 +21,12 @@ smartContract N.3 => 0x701d75c17BEcD11beDf2038C201229e18ddD96D0
 
 - sidebar colori------- OK
 - disable tasti in attesa di acquisto -------OK
-- errore change to rinkeby netwrk
+- errore change to rinkeby netwrk ----- OK
 - Avvisare di non refreshare o chiudere la finestra ----------OK
 - sistemare coinbase e wallet connect ( walletconnect su safari)
 - disabilitare sezioni per pass non comprati --------OK
-- grafico sballato se cambio sezione
-- aggiungere nuovo bottone buy your pass
+- grafico sballato se cambio sezione ------------- OK
+- aggiungere nuovo bottone buy your pass ---------- OK
 
 - aggiungere controllo se compro tramite post request curl
 - in caso di referral sbagliato non salva al database

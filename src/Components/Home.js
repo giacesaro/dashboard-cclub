@@ -11,6 +11,7 @@ import ModalCustom from './HomeComponents/ModalCustom';
 import { useSelector } from 'react-redux';
 import ReferralCard from './HomeComponents/ReferralCard';
 import { useWeb3React } from '@web3-react/core';
+import ButtonBuyPass from './HomeComponents/ButtonBuyPass';
 
 function Home() {
     const [openNews, setOpenNews] = React.useState(false);
@@ -50,7 +51,11 @@ function Home() {
                         <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
                             <ReferralCard />
                         </Grid>
-
+                    }
+                    {active &&
+                        <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
+                            <ButtonBuyPass />
+                        </Grid>
                     }
                     <Grid item xs={12} md={12} lg={12} className='!pt-6'>
                         <News setTitle={setTitle} setContent={setContent} setOpenNews={setOpenNews} />

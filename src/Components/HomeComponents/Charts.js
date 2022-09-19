@@ -53,48 +53,11 @@ class ApexChart extends Component {
 
     };
   }
-
+  
   componentDidUpdate(prevProps) {
-    if (prevProps.colorLine !== this.props.colorLine) {
+    if (prevProps.colorLine !== this.props.colorLine || this.props.datesChart !== prevProps.datesChart) {
       //RIAGGIORNO LE OPTION DEL CHART QUANDO CAMBIO SEZIONE PER POTER CAMBIARE COLORE
-      let newOptions = {
-        chart: {
-          height: 350,
-          type: 'line',
-          zoom: {
-            enabled: false
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          width: 5,
-          curve: 'smooth'
-        },
-        markers: {
-          size: 5,
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: [],
-          tickAmount: 0, //TODO in base alla lunghezza delle categories
-          labels: {
-            formatter: (value, timestamp, opts) => {
-              return opts.dateFormatter(new Date(timestamp), 'dd MMM')
-            }
-          }
-        },
-        colors: [this.props.colorLine],
-        yaxis: {
-          min: 0,
-          max: 40
-        }
-      };
-      this.setState({ options: newOptions })
-    }
-    //se cambiano i valori delle date ricreo option e date per il grafico
-    if (this.props.datesChart !== prevProps.datesChart) {
+      //se cambiano i valori delle date ricreo option e date per il grafico
       let newOptions = {
         chart: {
           height: 350,
@@ -116,7 +79,7 @@ class ApexChart extends Component {
         xaxis: {
           type: 'datetime',
           categories: this.props.datesChart,
-          tickAmount: this.props.datesChart.length -1, //TODO in base alla lunghezza delle categories
+          tickAmount: this.props.datesChart.length, //TODO in base alla lunghezza delle categories
           labels: {
             formatter: (value, timestamp, opts) => {
               return opts.dateFormatter(new Date(timestamp), 'dd MMM')
@@ -133,7 +96,7 @@ class ApexChart extends Component {
         name: 'Sales',
         data: this.props.countsChart
       }]
-      this.setState({ series: seriesNew, options: newOptions })
+      this.setState({series: seriesNew, options: newOptions })
     }
     if (this.props.loadingCharts !== prevProps.loadingCharts) {
       this.setState({ loadingCharts: this.props.loadingCharts })
@@ -148,8 +111,7 @@ class ApexChart extends Component {
   //     options.xaxis.categories = this.props.datesChart;
   //     this.setState({series: series, options, options})
   //   }
-  // }
-
+  // }  
 
   render() {
 
