@@ -1,5 +1,5 @@
 export const apiRoot = {
-    localApi: 'https://localhost:3001/cclub',
+    localApi: 'http://localhost:3001/cclub',
     local: 'http://localhost:3000/'
 }
 
