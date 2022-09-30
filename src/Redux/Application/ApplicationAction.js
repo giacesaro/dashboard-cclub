@@ -21,9 +21,9 @@ export function getParamByKey(key) {
 
 export function getAllPassConfig() {
     return async function (dispatch) {
-        var partnerConfig = await axios.get(apiRoot.localApi + '/confparam/getParamByKey/' + PARTNER_CONFIG);
-        var eliteConfig = await axios.get(apiRoot.localApi + '/confparam/getParamByKey/' + ELITE_CONFIG);
-        var premiumConfig = await axios.get(apiRoot.localApi + '/confparam/getParamByKey/' + PREMIUM_CONFIG);
+        var partnerConfig = await axios.get('http://157.90.19.83:3001/cclub/confparam/getParamByKey/' + PARTNER_CONFIG);
+        var eliteConfig = await axios.get('http://157.90.19.83:3001/cclub/confparam/getParamByKey/' + ELITE_CONFIG);
+        var premiumConfig = await axios.get('http://157.90.19.83:3001/cclub/confparam/getParamByKey/' + PREMIUM_CONFIG);
         var configPasses = []
         configPasses.push(partnerConfig.data, eliteConfig.data, premiumConfig.data);
         dispatch({
