@@ -47,7 +47,7 @@ function BuyPasses() {
                                 <CardHeader
                                     className={'!pt-5 card-header-buy ' + pass['css-dark-color']}
                                     title={pass.title}
-                                    subheader="test sottotitolo"
+                                    // subheader="test sottotitolo"
                                 />
                                 <CardMedia
                                     component="img"

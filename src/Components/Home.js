@@ -26,7 +26,7 @@ function Home() {
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
             {/* HELLO CARD - CONNECT WALLET - CARD GENERIC REF AND ETH */}
             <Grid item xs={12} md={6} lg={6}>
-                <HelloCard type={section} image={'/images/Logo-Home.png'} />
+                <HelloCard type={section} image={'/images/Logo-home.png'} />
             </Grid>
             <Grid item xs={12} md={6} lg={6}>
                 <Grid container spacing={5}>
