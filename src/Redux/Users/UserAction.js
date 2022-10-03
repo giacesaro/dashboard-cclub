@@ -7,11 +7,14 @@ import {
     GET_REFERRAL_MOVEMENT,
     SET_REFERRAL_BY_LINK
 } from "./types"
+import { crypt, decrypt, secretKey } from "../../Crypto/Crypto.js"
 
 
 export function createUser(account, refCodeUsed, idPass) {
     return async function (dispatch) {
-        const result = await axios.post(apiRoot.localApi + '/user/', { wallet: account, referralCode: refCodeUsed, idPass: idPass });
+        let stringData = { wallet: account, referralCode: refCodeUsed, idPass: idPass }
+        let data = {data: crypt(secretKey,JSON.stringify(stringData))};
+        const result = await axios.post(apiRoot.localApi + '/user/', data);
         dispatch({
             type: CREATE_USER,
             newUser: result.data,
@@ -51,7 +54,9 @@ export function getUserByWallet(wallet) {
 
 export function updateNewPass(account, refCodeUsed, idPass) {
     return async function (dispatch) {
-        const result = await axios.post(apiRoot.localApi + '/user/updateNewPass', { wallet: account, referralCode: refCodeUsed, idPass: idPass });
+        let stringData = { wallet: account, referralCode: refCodeUsed, idPass: idPass }
+        let data = {data: crypt(secretKey,JSON.stringify(stringData))};
+        const result = await axios.post(apiRoot.localApi + '/user/updateNewPass', data);
         dispatch({
             type: UPDATE_NEW_PASS,
             userLogged: result.data,
