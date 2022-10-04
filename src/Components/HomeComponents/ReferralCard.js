@@ -38,7 +38,7 @@ function ReferralCard() {
         <Grid container>
             <Grid item xs={12} md={10} lg={11} xl={10}>
                 <Card className='box-border !rounded-2xl bg-card !shadow-none' sx={{ height: { xs: 'initial', md: 80 } }}>
-                    <CardContent>
+                    <CardContent sx={{ display: {xs: 'initial', md: 'block'} }}>
                         <Grid container className='items-center'>
                             <Grid item xs={12} md={6} lg={8} xl={8}>
                                 <Typography variant='body1' className='text-left !text-3xl h-10 line-57p font-openSans-light !mt-2 !ml-2 !font-extrabold'>
@@ -46,7 +46,7 @@ function ReferralCard() {
                                 </Typography>
                                 {/* <TextField hiddenLabel id="myReferral" variant="outlined" defaultValue={refCode} value={refCode} disabled={true} className='w-full' sx={{ ml: { xs: 0, md: 3 } }} /> */}
                             </Grid>
-                            <Grid item xs={12} md={6} lg={4} xl={4} sx={{ mt: { xs: 1, md: 0 }, textAlign: {xs: 'center', md: 'initial'} }} display={'flex'}>
+                            <Grid item xs={12} md={6} lg={4} xl={4} sx={{ mt: { xs: 1, md: 0 }, textAlign: {xs: 'center', md: 'initial'}, placeContent: {xs: 'center', md: 'initial'}  }} display={'flex'}>
                                 <CopyToClipboard text={refCode} onCopy={onCopy} >
                                     <Button variant="outlined" className='bg-my-black !text-white !rounded-md font-openSans-light !text-sm !mr-4 !ml-1.5'>
                                         {copied &&

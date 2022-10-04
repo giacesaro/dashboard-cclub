@@ -60,8 +60,8 @@ function MyPassCard() {
             <Grid item xs={12} md={10} lg={10}>
                 <Card className='box-border !rounded-2xl bg-card !shadow-none' sx={{ height: { xs: 'initial', md: 80 } }}>
                     <Grid container>
-                        <Grid item xs={active ? 12 : 4} md={2} lg={2} className=' flex' display={active ? 'initial' : 'none'} 
-                            sx={{ justifyContent: { xs: 'center', md: 'initial' }, mt: {xs: -1.25, lg: -0.5,xl: -1.25} }}>
+                        <Grid item xs={active ? 12 : 4} md={2} lg={2} className=' flex' display={active ? 'flex' : 'none'} 
+                            sx={{ justifyContent: { xs: 'center', md: 'initial' }, mt: {xs: -1.25, lg: -0.5,xl: -1.25}, placeContent: {xs: 'center', md: 'initial'}  }}>
                             {active ?
                                 <Box
                                     component="img"
