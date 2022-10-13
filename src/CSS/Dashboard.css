@@ -47,7 +47,7 @@
 }
 
 .bg-card {
-    background-color: #F5F5F7 !important;
+    background-color: transparent !important;
 }
 
 .font-openSans-extrabold {
@@ -88,9 +88,9 @@
     box-shadow: 0 25px 50px -12px !important;
 }
 
-/* 
+
 body {
-	background: linear-gradient(-45deg, #ee7752, #f6c59c, #1e1e1f, #f3c142);
+	background: linear-gradient(-45deg, #ee7752, #f6c59c, #b8b8c6, #f3c142);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;
@@ -107,4 +107,4 @@ body {
 		background-position: 0% 50%;
 	}
 }
- */
+

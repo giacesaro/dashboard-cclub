@@ -11,6 +11,8 @@
 - Verificare grafico statistiche menù pass
 - Sistemare responsive sm
 - TODO NEL CODICE E ELIMNARE DEBUGGER  E CONSOLE
+- Se cambio rete con account già collegato. cosa fare?
+- Uso link, clicco buy senza connettere wallet, connetto wallet, non si toglie errore in alto
 
 
 smartContract N.2 => 0xB7700529e7eb138179956D4910056b91DC32D8D2

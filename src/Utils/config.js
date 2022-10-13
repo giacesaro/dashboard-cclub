@@ -3,6 +3,6 @@ export const apiRoot = {
     local: 'https://capitaldapp.thecapitalclub.xyz/' 
 }
 
-export const contractPartner = "0x714b73eB6FD84A0B609bE9278C2d5e79ED508d15";
-export const contractElite = "0xB7700529e7eb138179956D4910056b91DC32D8D2";
-export const contractPremium = "0x701d75c17BEcD11beDf2038C201229e18ddD96D0";
+export const contractPartner = "0x76BB445f27D19Db80A3287Cb0b729D8Fe8E0F591";
+export const contractElite = "0xfB6398D0bBe9e1f4F1ecacfd27e8683821581e47";
+export const contractPremium = "0xD44ccaF86A48019631932e9E4e1F3b85854F5562";

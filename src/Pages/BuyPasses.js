@@ -43,7 +43,7 @@ function BuyPasses() {
                 return (
                     <Grid item xs={12} md={3.5} lg={3.5} xl={3.8} key={pass.type} sx={{ pt: { xs: 10, md: 2, xl: '10px !important' } }}>
                         <Zoom left>
-                            <Card className={'box-border !rounded-2xl flex flex-col card-buy '} style={{ borderColor: pass.border, maxHeight: 790 }}> {/*+ (pass.type === 'partner' ? 'bg-partner-pass' : (pass.type === 'elite' ? 'bg-elite-pass' : 'bg-premium-pass')) */}
+                            <Card className={'box-border !rounded-2xl flex flex-col card-buy '} style={{ borderColor: pass.border, maxHeight: 790, backgroundColor: 'transparent' }}> {/*+ (pass.type === 'partner' ? 'bg-partner-pass' : (pass.type === 'elite' ? 'bg-elite-pass' : 'bg-premium-pass')) */}
                                 <CardHeader
                                     className={'!pt-5 card-header-buy ' + pass['css-dark-color']}
                                     title={pass.title}

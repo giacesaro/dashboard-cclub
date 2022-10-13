@@ -13,6 +13,7 @@ export const providerOptions = {
         1: "https://mainnet.infura.io/v3/11ee0c6dd31d48119b713767faf131a8",
         3: "https://ropsten.infura.io/v3/11ee0c6dd31d48119b713767faf131a8",
         4: "https://rinkeby.infura.io/v3/11ee0c6dd31d48119b713767faf131a8",
+        5: "https://goerli.infura.io/v3/11ee0c6dd31d48119b713767faf131a8"
         // ...
       }
     }
@@ -26,6 +27,7 @@ export const providerOptions = {
         1: "https://mainnet.infura.io/v3/11ee0c6dd31d48119b713767faf131a8",
         3: "https://ropsten.infura.io/v3/11ee0c6dd31d48119b713767faf131a8",
         4: "https://rinkeby.infura.io/v3/11ee0c6dd31d48119b713767faf131a8",
+        5: "https://goerli.infura.io/v3/11ee0c6dd31d48119b713767faf131a8"
         // ...
       }, // Optional if `infuraId` is provided; otherwise it's required
       darkMode: true // Optional. Use dark theme, defaults to false
@@ -38,7 +40,7 @@ const injected = new InjectedConnector({ //METAMASK
 });
 
 const walletconnect = new WalletConnectConnector({
-  rpcUrl: 'wss://rinkeby.infura.io/ws/v3/11ee0c6dd31d48119b713767faf131a8',
+  rpcUrl: 'wss://goerli.infura.io/ws/v3/11ee0c6dd31d48119b713767faf131a8',
   //bridge: "https://bridge.walletconnect.org",
   qrcode: true,
 });

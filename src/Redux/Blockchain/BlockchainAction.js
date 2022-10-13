@@ -66,11 +66,11 @@ export function connectWallet(activate, contractAddress) {
             await provider._networkPromise
             signer = provider.getSigner();
             var chainId = provider._network.chainId;
-            if (chainId !== 4){ //TODO CAMBIARE PER RETE UFFICIALE
+            if (chainId !== 5){ //TODO CAMBIARE PER RETE UFFICIALE
                 dispatch({
                     type: CHAIN_ID_FAILED,
                     errorBoolean: true,
-                    errorMessage: "Change to Rinkeby network!",
+                    errorMessage: "Change to Goerli network!",
                 });
             }
              console.log('library conn', provider.connection)
@@ -81,7 +81,7 @@ export function connectWallet(activate, contractAddress) {
                 case 'eip-1193:':
                     activate(connectors.walletConnect)
                     break;
-                case 'https://rinkeby-infura.wallet.coinbase.com': //TODO sistemare
+                case 'https://goerli-infura.wallet.coinbase.com': //TODO sistemare
                     activate(connectors.coinbaseWallet)
                 default:
                     break;

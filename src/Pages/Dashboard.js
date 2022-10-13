@@ -24,6 +24,7 @@ function Dashboard() {
   //SE HO UN REFERRAL NEL ROUTING, ALLORA VADO ALLA SEZIONE DI 
   //ACQUISTO PASS E SETTO IL REFERRAL PRESO DALLA ROUTE
   let { referral } = useParams();
+  console.log('referral', referral)
   if (referral !== undefined) {
     dispatch(setSection('buying'));
     dispatch(setReferralByLink(referral));
@@ -92,7 +93,8 @@ function Dashboard() {
       }
       {
         section !== 'prehome' &&
-        <Grid container>
+        <Grid container className='d-flex flex-column justify-content-center w-100 h-100'>
+          <div class="d-flex flex-column justify-content-center align-items-center"></div>
           <Grid item xs={1} md={1} lg={1} sx={{ display: { xs: 'none', md: 'initial' } }}>
             <Sidebar />
           </Grid>
