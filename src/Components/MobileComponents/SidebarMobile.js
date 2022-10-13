@@ -47,7 +47,7 @@ function SidebarMobile(props) {
     }
 
     const drawer = (
-        <div>
+        <div className='bg-color-gradient !h-full'>
             <Toolbar />
             <List>
                 <ListItem key={'home'} disablePadding>
@@ -143,7 +143,7 @@ function SidebarMobile(props) {
                 sx={{
                 }}
             >
-                <Toolbar className={'!rounded-3xl ml-1 mr-1 mt-3 h-16 ' + background}>
+                <Toolbar className={'!rounded-3xl ml-1 mr-1 mt-3 h-16  ' + background}>
                     <Grid container>
                         <Grid item xs={2} className='self-center'>
                             <IconButton
@@ -177,7 +177,7 @@ function SidebarMobile(props) {
             >
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Drawer
-                    className='test'
+                    className='test '
                     container={container}
                     variant="temporary"
                     open={mobileOpen}

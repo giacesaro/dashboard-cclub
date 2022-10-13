@@ -75,7 +75,7 @@ function MyPassCard() {
                         </Grid>
                         <Grid item xs={12} md={active ? 6 : 12} lg={active ? 7 : 12} xl={active ? 7 : 12} 
                                 className={'text-left ' + (active ? '' : '!text-center')} sx={{ mt: { xs: active ? 0 : 3, md: 3 } }}>
-                            <Typography variant='body1' className={'text-center !font-normal !text-3xl line-57p font-openSans-extrabold '} sx={{ height: { xs: 60, md: 40 } }}>
+                            <Typography variant='body1' className={'text-center !font-normal !text-3xl line-57p font-openSans-extrabold colore-titoli'} sx={{ height: { xs: 60, md: 40 } }}>
                                 {active ?
                                     (countArrow === 0 ? 'Partner Pass' : countArrow === 1 ? 'Elite Pass' : 'Premium Pass') + ': ' + passPosseduti
                                     :
@@ -86,7 +86,7 @@ function MyPassCard() {
                         <Grid item xs={12} md={6} lg={3} sx={{ mt: { xs: 0, md: 3 }, textAlign: { xs: 'center', sm: 'center', md: 'right' }, pr: { xs: 0, md: 5 } }} display={active ? 'initial' : 'none'}>
                             <Button
                                 variant='contained'
-                                className={'!rounded-md font-openSans-light !text-sm ' + (passPosseduti > 0 ? 'bg-my-black' : 'bg-color-disable')}
+                                className={'!rounded-md font-openSans-sanserif !text-sm !text-black ' + (passPosseduti > 0 ? 'bg-my-yellow' : 'bg-color-disable')}
                                 onClick={handleGoPage}
                                 disabled={passPosseduti === 0}
                             >

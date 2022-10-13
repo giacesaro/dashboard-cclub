@@ -41,29 +41,29 @@ function ReferralCard() {
                     <CardContent sx={{ display: {xs: 'initial', md: 'block'} }}>
                         <Grid container className='items-center'>
                             <Grid item xs={12} md={6} lg={8} xl={8}>
-                                <Typography variant='body1' className='text-left !text-3xl h-10 line-57p font-openSans-light !mt-2 !ml-2 !font-extrabold'>
-                                    Your referral: <span className='font-openSans-extrabold'>{refCode}</span>
+                                <Typography variant='body1' className='text-left !text-3xl h-10 colore-titoli line-57p font-openSans-light !mt-2 !ml-2 !font-extrabold'>
+                                    Your referral: <span className='font-openSans-extrabold colore-titoli'>{refCode}</span>
                                 </Typography>
                                 {/* <TextField hiddenLabel id="myReferral" variant="outlined" defaultValue={refCode} value={refCode} disabled={true} className='w-full' sx={{ ml: { xs: 0, md: 3 } }} /> */}
                             </Grid>
                             <Grid item xs={12} md={6} lg={4} xl={4} sx={{ mt: { xs: 1, md: 0 }, textAlign: {xs: 'center', md: 'initial'}, placeContent: {xs: 'center', md: 'initial'}  }} display={'flex'}>
                                 <CopyToClipboard text={refCode} onCopy={onCopy} >
-                                    <Button variant="outlined" className='bg-my-black !text-white !rounded-md font-openSans-light !text-sm !mr-4 !ml-1.5'>
+                                    <Button variant="outlined" className='bg-my-yellow border-my-yellow !text-white !rounded-md font-openSans-light !text-sm !mr-4 !ml-1.5'>
                                         {copied &&
-                                            <CheckIcon />
+                                            <CheckIcon className='svg-black'/>
                                         }
                                         {!copied &&
-                                            <ContentCopyIcon />
+                                            <ContentCopyIcon className='svg-black'/>
                                         }
                                     </Button>
                                 </CopyToClipboard>
                                 <CopyToClipboard text={apiRoot.local + refCode} onCopy={onCopyLink} >
-                                    <Button variant="outlined" className='bg-my-black !text-white !rounded-md font-openSans-light !text-sm !mr-5'>
+                                    <Button variant="outlined" className='bg-my-yellow border-my-yellow  !text-white !rounded-md font-openSans-light !text-sm !mr-5'>
                                         {copiedLink &&
-                                            <CheckIcon />
+                                            <CheckIcon className='svg-black'/>
                                         }
                                         {!copiedLink &&
-                                            <LinkIcon />
+                                            <LinkIcon className='svg-black'/>
                                         }
                                     </Button>
                                 </CopyToClipboard>

@@ -17,12 +17,12 @@ function ButtonConnect(props) {
     return (
         <Fragment>
             {!active &&
-                <Button variant='outlined' className={'h-10 border-my-black !text-black font-openSans-extrabold ' + (props.type !== 'mobile' ? 'bg-transparent' : '!bg-white')} onClick={handleConnect}>
+                <Button variant='outlined' className={'h-10 !text-white border-my-yellow font-openSans-extrabold ' + (props.type !== 'mobile' ? 'bg-transparent' : '!bg-white')} onClick={handleConnect}>
                     CONNECT WALLET
                 </Button>
             }
             {active &&
-                <Typography variant='body1' className='h-10 font-openSans-light !text-lg !font-medium text-ellipsis ' sx={{ mt: { xs: 1.5, md: 0 } }}>
+                <Typography variant='body1' className='h-10 font-openSans-light !text-lg !font-medium text-ellipsis colore-titoli ' sx={{ mt: { xs: 1.5, md: 0 } }}>
                     {account}
                 </Typography>
             }

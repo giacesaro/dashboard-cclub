@@ -17,10 +17,10 @@ function News(props) {
 
     return (
         <Fragment>
-            <Typography variant='h2' className='text-left !text-4xl h-6 !font-normal !leading-9 font-openSans-extrabold ' sx={{ mt: { xs: 0, md: 2 } }}>
+            <Typography variant='h2' className='text-left !text-4xl h-6 !font-normal !leading-9 font-openSans-extrabold colore-titoli ' sx={{ mt: { xs: 0, md: 2 } }}>
                 News
             </Typography>
-            <Typography variant='h3' className='text-left !text-xl h-10 !font-normal line-57p !mt-4 font-openSans-extrabold '>
+            <Typography variant='h3' className='text-left !text-xl h-10 !font-normal line-57p !mt-4 font-openSans-extrabold colore-titoli '>
                 All News
             </Typography>
             {listNews.map((news, index) => {

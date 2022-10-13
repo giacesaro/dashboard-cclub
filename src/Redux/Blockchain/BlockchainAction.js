@@ -33,7 +33,7 @@ const web3Modal = new Web3Modal({
 
 export function connectAbi(contractAddress) {
     return async () => {
-        const abiResponse = await fetch("/config/abi.json", {
+        const abiResponse = await fetch("/config/abiNuovoElitePass.json", {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
@@ -146,7 +146,7 @@ export function mint(mintamount, account, refCodeUsed, idPass, userLogged) {
                     default:
                         break;
                 }
-                const transaction = await smartContract.mint(mintamount);
+                const transaction = await smartContract.mint();
                 //USO IL WAIT PER ATTENDERE CHE LA TRANSAZIONE SI CONCLUDA
                 transaction.wait().then(result => {
                     //CONTROLLO SE L'UTENTE HA GIA' ACQUISTATO UN PASS. SE NON LO POSSIEDE

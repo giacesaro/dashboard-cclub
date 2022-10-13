@@ -26,7 +26,7 @@ function Home() {
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
             {/* HELLO CARD - CONNECT WALLET - CARD GENERIC REF AND ETH */}
             <Grid item xs={12} md={6} lg={6}>
-                <HelloCard type={section} image={'/images/Logo-home.png'} />
+                <HelloCard type={section} image={'/images/Logo.png'} />
             </Grid>
             <Grid item xs={12} md={6} lg={6}>
                 <Grid container spacing={5}>
@@ -66,7 +66,7 @@ function Home() {
             <Grid item xs={12} md={6} lg={6} sx={{ mb: { xs: 5, md: 0 } }}>
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={12} lg={12} className='text-right !pt-6'>
-                        <Statistics colorLine={'#0C0B0B'} />
+                        <Statistics colorLine={'#ffffff'} />
                     </Grid>
                     <Grid item xs={12} md={9} lg={9} className='!pt-6'>
                         <FindOutMore />

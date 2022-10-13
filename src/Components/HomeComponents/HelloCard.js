@@ -30,7 +30,7 @@ function HelloCard(props) {
         <Card className='box-border h-40 !rounded-2xl bg-card !shadow-none'>
             <Grid container>
                 <Grid item xs={6} md={6} lg={6} xl={6}>
-                    <Typography variant='h1' className={'text-left h-10 !font-normal font-openSans-extrabold ' + props.colorDark}
+                    <Typography variant='h1' className={'text-left h-10 !font-normal font-openSans-extrabold colore-titoli ' + props.colorDark}
                         sx={{
                             fontSize: { xs: 25, lg: 27, xl: 34 }, mt: { xs: props.type === 'home'? 6 : 3, lg: 4, xl: 5.5 }, mb: { xs: props.type === 'home'? 0 : 3.5, md: 0 },
                             lineHeight: { xs: '30px', md: '57px' }, ml: { xs: 2, md: 4 }
@@ -40,10 +40,10 @@ function HelloCard(props) {
                     </Typography>
                     <Typography
                         variant='body1'
-                        className='text-left font-openSans-light !font-normal !text-xl !leading-6 w-385'
+                        className='text-left font-openSans-light !font-normal !text-xl !leading-6 w-385 colore-titoli'
                         sx={{ mt: { xs: 2, lg: 1 }, display: { xs: 'contents', md: 'block' }, ml: {xs: 8, md: 4} }}
                     >
-                        Welcome, <span className={props.colorPass + ' !font-bold font-openSans-light'}>{props.type}</span> member!
+                        Welcome, <span className={props.colorPass + ' !font-bold font-openSans-light colore-titoli'}>{props.type}</span> member!
                     </Typography>
                 </Grid>
                 <Grid item xs={6} md={6} lg={6} xl={6}>

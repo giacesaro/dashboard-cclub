@@ -64,7 +64,7 @@ function Sidebar() {
     }
 
     return (
-        <Card className={'w-28 mt-6 ml-6 !mr-3 !rounded-3xl !bg-transparent !border-4 box-shadow-side ' + background}>
+        <Card className={'w-28 mt-6 ml-6 !mr-3 !rounded-3xl bg-color-gradient !border-4 box-shadow-side ' + background}>
             <Box
                 component="img"
                 className='mt-4'

@@ -22,7 +22,7 @@ function ButtonBuyPass() {
         <Grid container>
             <Grid item xs={12} md={10} lg={11} xl={10}>
                 <Typography variant='body1' className='text-center font-openSans-light !font-normal !text-base !leading-6'>
-                    <Button variant='contained' className='bg-my-black !rounded-md font-openSans-light !text-xl !text-left' onClick={() => handleChangeSection('buying')} sx={{ mt: { xs: 1, md: 2 } }}>
+                    <Button variant='contained' className='bg-my-yellow !rounded-md font-openSans-sanserif !text-xl !text-left !text-black' onClick={() => handleChangeSection('buying')} sx={{ mt: { xs: 1, md: 2 } }}>
                         BUY YOUR PASS
                     </Button>
                 </Typography>
