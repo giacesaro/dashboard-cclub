@@ -60,3 +60,22 @@ export const CssTextFieldPremium = styled(TextField)({
         },
     },
 });
+
+export function getTextShadow(type) {
+    let textShadow = ''
+    switch (type) {
+        case 'partner':
+            textShadow = 'text-partner-shadow'
+            break;
+        case 'elite':
+            textShadow = 'text-partner-shadow'
+            break;
+        case 'premium':
+            textShadow = 'text-partner-shadow'
+            break;
+
+        default:
+            break;
+    }
+    return textShadow;
+}

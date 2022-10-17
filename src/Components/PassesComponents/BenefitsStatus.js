@@ -4,14 +4,16 @@ import '../../CSS/Dashboard.css';
 import '../../CSS/Passes.css';
 import InfoIcon from '@mui/icons-material/Info';
 import { useSelector } from 'react-redux';
+import { getTextShadow } from '../../Utils/Constants';
 
 function BenefitsStatus(props) {
     var params = useSelector(state => state.application.params);
-    var listBenefits = JSON.parse(params.valore)
+    var listBenefits = JSON.parse(params.valore);
+    var textShadow = getTextShadow(props.type);
 
     return (
         <Fragment>
-            <Typography variant='h2' className={'text-left h-6 !font-normal !leading-9 font-openSans-extrabold ' + props.colorDark}
+            <Typography variant='h2' className={'text-left h-6 !font-normal !leading-9 font-openSans-extrabold ' + props.colorDark + ' ' + textShadow}
                 sx={{ mt: { xs: 3, md: 0 }, mb: { xs: 3, md: 4 }, fontSize: { xs: '24px', md: '30px' }, lineHeight: { xs: '28px', md: '36px' } }}>
                 Benefits status
             </Typography>

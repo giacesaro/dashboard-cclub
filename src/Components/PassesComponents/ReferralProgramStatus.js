@@ -3,15 +3,17 @@ import { Card, Grid, Typography } from '@mui/material';
 import '../../CSS/Home.css';
 import '../../CSS/Dashboard.css';
 import { useSelector } from 'react-redux';
+import { getTextShadow } from '../../Utils/Constants';
 
 function ReferralProgramStatus(props) {
     let titles = ['Code', 'Level', 'Referral Used', 'ETH earned'];
     const referral = useSelector(state => state.user.referralCode);
     const refUsed = useSelector(state => state.user.refUsed);
+    var textShadow = getTextShadow(props.type);
 
     return (
         <Fragment>
-            <Typography variant='h2' className={'text-left h-6 !font-normal !leading-9 font-openSans-extrabold !mb-4 ' + props.colorDark}
+            <Typography variant='h2' className={'text-left h-6 !font-normal !leading-9 font-openSans-extrabold !mb-4 ' + props.colorDark + ' ' + textShadow}
                 sx={{ mt: { xs: 0, md: 5 }, fontSize: { xs: '24px', md: '30px' }, lineHeight: { xs: '28px', md: '36px' } }}>
                 Referral Program Status
             </Typography>

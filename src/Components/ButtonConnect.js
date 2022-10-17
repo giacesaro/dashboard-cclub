@@ -17,7 +17,7 @@ function ButtonConnect(props) {
     return (
         <Fragment>
             {!active &&
-                <Button variant='outlined' className={'h-10 !text-white border-my-yellow font-openSans-extrabold ' + (props.type !== 'mobile' ? 'bg-transparent' : '!bg-white')} onClick={handleConnect}>
+                <Button variant='outlined' className={'h-10 !text-white border-my-yellow font-openSans-extrabold ' + (props.type !== 'mobile' ? 'bg-transparent' : '!bg-black')} onClick={handleConnect}>
                     CONNECT WALLET
                 </Button>
             }
