@@ -9,6 +9,7 @@ function ReferralProgramStatus(props) {
     let titles = ['Code', 'Level', 'Referral Used', 'ETH earned'];
     const referral = useSelector(state => state.user.referralCode);
     const refUsed = useSelector(state => state.user.refUsed);
+    const ethEarned = useSelector(state => state.blockchain.ethEarned);
     var textShadow = getTextShadow(props.type);
 
     return (
@@ -31,7 +32,7 @@ function ReferralProgramStatus(props) {
                             value = refUsed;
                             break;
                         case 'ETH earned':
-                            value = 12; //TODO cambiare 
+                            value = ethEarned; //TODO cambiare 
                             break;
                         default:
                             break;
