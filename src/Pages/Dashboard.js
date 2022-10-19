@@ -11,10 +11,9 @@ import PreHome from './PreHome';
 import { Grid } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNews } from '../Redux/News/NewsAction';
-import { getAllPassConfig, getParamByKey } from '../Redux/Application';
+import { getAllPassActiveConfig, getAllPassConfig } from '../Redux/Application';
 import { getUserByWallet, setReferralByLink } from '../Redux/Users/UserAction';
 import { useWeb3React } from '@web3-react/core';
-import { CONFIG_PASS } from '../Redux/Application/types';
 import { useParams } from 'react-router-dom';
 import { setSection } from '../Redux/Sidebar/SidebarAction';
 import SnackbarWarning from '../Components/SnackbarWarning';
@@ -24,7 +23,6 @@ function Dashboard() {
   //SE HO UN REFERRAL NEL ROUTING, ALLORA VADO ALLA SEZIONE DI 
   //ACQUISTO PASS E SETTO IL REFERRAL PRESO DALLA ROUTE
   let { referral } = useParams();
-  console.log('referral', referral)
   if (referral !== undefined) {
     dispatch(setSection('buying'));
     dispatch(setReferralByLink(referral));
@@ -36,7 +34,8 @@ function Dashboard() {
   //CHIAMO FUNCTION DI NEWS E CONFIGURATION
   dispatch(getAllNews());
   dispatch(getAllPassConfig())
-  dispatch(getParamByKey(CONFIG_PASS))
+  // dispatch(getParamByKey(CONFIG_PASS))
+  dispatch(getAllPassActiveConfig());
   if (account)
     dispatch(getUserByWallet(account));
   //dispatch(balanceOf(contractTest));

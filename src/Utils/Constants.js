@@ -68,10 +68,10 @@ export function getTextShadow(type) {
             textShadow = 'text-partner-shadow'
             break;
         case 'elite':
-            textShadow = 'text-partner-shadow'
+            textShadow = 'text-elite-premium-shadow'
             break;
         case 'premium':
-            textShadow = 'text-partner-shadow'
+            textShadow = 'text-elite-premium-shadow'
             break;
 
         default:

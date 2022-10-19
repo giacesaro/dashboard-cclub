@@ -6,7 +6,8 @@ import {
     MINT_FAILED,
     MINT_SUCCESS,
     SET_ERROR_BLOCKCHAIN,
-    SET_SUCCESS_BLOCKCHAIN
+    SET_SUCCESS_BLOCKCHAIN,
+    TOTAL_SUPPLY_SUCCESS
 } from "./types";
 
 export function blockchainReducer(
@@ -16,14 +17,22 @@ export function blockchainReducer(
         errorMessage: '',
         mint: {},
         success: false,
-        successMessage: ''
+        successMessage: '',
+        balanceOfPartner: 0,
+        balanceOfElite: 0,
+        balanceOfPremium: 0,
+        totalSupplyPartner: 0,
+        totalSupplyElite: 0,
+        totalSupplyPremium: 0
     },
     action
 ) {
     switch (action.type) {
         case BALANCE_OF_SUCCESS:
             return Object.assign({}, state, {
-                balanceOf: action.balanceOf
+                balanceOfPartner: action.balanceOfPartner,
+                balanceOfElite: action.balanceOfElite,
+                balanceOfPremium: action.balanceOfPremium
             })
         case BALANCE_OF_FAILED:
             return Object.assign({}, state, {
@@ -59,6 +68,12 @@ export function blockchainReducer(
                 errorBoolean: action.errorBoolean,
                 errorMessage: action.errorMessage
             });
+        case TOTAL_SUPPLY_SUCCESS:
+            return Object.assign({}, state, {
+                totalSupplyPartner: action.totalSupplyPartner,
+                totalSupplyElite: action.totalSupplyElite,
+                totalSupplyPremium: action.totalSupplyPremium
+            })
         default:
             return state;
     }

@@ -1,5 +1,6 @@
 import {
     GET_ALL_PASS,
+    GET_CONFIG_PASS_ACTIVE,
     GET_PARAM_BY_KEY,
     SET_LOADING
 } from "./types";
@@ -11,7 +12,8 @@ export function applicationReducer(
         params: {},
         loading: false,
         message: '',
-        loadingWarning: false
+        loadingWarning: false,
+        configActiveInactive: []
     },
     action
 ) {
@@ -30,6 +32,10 @@ export function applicationReducer(
                 message: action.message,
                 loadingWarning: action.loadingWarning
             });
+        case GET_CONFIG_PASS_ACTIVE:
+            return Object.assign({}, state, {
+                configActiveInactive: action.configActiveInactive
+            })
         default:
             return state
     }

@@ -5,12 +5,30 @@ import '../../CSS/Passes.css';
 import InfoIcon from '@mui/icons-material/Info';
 import { useSelector } from 'react-redux';
 import { getTextShadow } from '../../Utils/Constants';
+import { CONFIG_PASS_ELITE, CONFIG_PASS_PARTNER, CONFIG_PASS_PREMIUM } from '../../Redux/Application/types';
 
 function BenefitsStatus(props) {
-    var params = useSelector(state => state.application.params);
-    var listBenefits = JSON.parse(params.valore);
+    var configActiveInactive = useSelector(state => state.application.configActiveInactive);
+    var listBenefits = [];
+    if(configActiveInactive.length > 0 ) {
+        let pass = ''
+        switch (props.type) {
+            case 'partner':
+                pass = CONFIG_PASS_PARTNER
+                break;
+            case 'elite':
+                pass = CONFIG_PASS_ELITE
+                break;
+            case 'premium':
+                pass = CONFIG_PASS_PREMIUM
+                break;
+            default:
+                break;
+        }
+        listBenefits = JSON.parse(configActiveInactive.find(elem => elem.chiave === pass).valore);
+    }
     var textShadow = getTextShadow(props.type);
-
+    
     return (
         <Fragment>
             <Typography variant='h2' className={'text-left h-6 !font-normal !leading-9 font-openSans-extrabold ' + props.colorDark + ' ' + textShadow}

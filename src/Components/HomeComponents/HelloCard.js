@@ -10,7 +10,8 @@ function HelloCard(props) {
     var widthImgXsXl = 0;
     var widthImgMd = 0;
     var topCss = '';
-    var heightImg = ''
+    var heightImg = '';
+    var textHello = '';
     var textShadow = getTextShadow(props.type);
     switch (props.type) {
         case 'home':
@@ -27,6 +28,9 @@ function HelloCard(props) {
             topCss = '!top-0';
             heightImg = 160;
             break;
+    }
+    if(props.type === 'premium'){
+        textHello = 'text-elite-premium-shadow'
     }
     return (
         <Card className='box-border h-40 !rounded-2xl bg-card !shadow-none'>
@@ -45,7 +49,7 @@ function HelloCard(props) {
                         className='text-left font-openSans-light !font-normal !text-xl !leading-6 w-385 colore-titoli'
                         sx={{ mt: { xs: 2, lg: 1 }, display: { xs: 'contents', md: 'block' }, ml: {xs: 8, md: 4} }}
                     >
-                        Welcome, <span className={props.colorPass + ' !font-bold font-openSans-light colore-titoli'}>{props.type}</span> member!
+                        Welcome, <span className={props.colorPass + ' !font-bold font-openSans-light colore-titoli ' + textHello}>{props.type}</span> member!
                     </Typography>
                 </Grid>
                 <Grid item xs={6} md={6} lg={6} xl={6}>

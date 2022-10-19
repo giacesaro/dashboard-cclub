@@ -137,3 +137,7 @@ body {
 .text-partner-shadow {
     text-shadow: 0 0 15px aqua;
 }
+
+.text-elite-premium-shadow {
+    text-shadow: 0 0 15px white;
+}

@@ -41,7 +41,8 @@ export function getUserByWallet(wallet) {
             dispatch({
                 type: GET_REFERRAL_MOVEMENT,
                 refMovement: resultRefMovement.data,
-                refUsed: refUsed
+                refUsed: refUsed,
+                ethEarned: result.data.ethEarned
             })
         }
         dispatch({

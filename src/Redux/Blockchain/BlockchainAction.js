@@ -10,7 +10,9 @@ import {
     SET_SUCCESS_BLOCKCHAIN,
     CONNECT_WALLET,
     DISCONNECT_WALLET,
-    CHAIN_ID_FAILED
+    CHAIN_ID_FAILED,
+    TOTAL_SUPPLY_SUCCESS,
+    TOTAL_SUPPLY_FAILED
 } from "./types";
 import { ethers, providers } from "ethers";
 import { providerOptions, connectors } from "../../Utils/providerOptions";
@@ -73,7 +75,6 @@ export function connectWallet(activate, contractAddress) {
                     errorMessage: "Change to Goerli network!",
                 });
             }
-             console.log('library conn', provider.connection)
             switch (provider.connection.url) {
                 case 'metamask':
                     activate(connectors.injected)
@@ -108,14 +109,18 @@ export function disconnectWeb3Modal(deactivate) {
     };
 };
 
-export function balanceOf(address) {
+export function balanceOf() {
     return async (dispatch) => {
         try {
             if (Object.keys(smartContract).length !== 0) {
-                const balanceOf = await smartContract.balanceOf(address);
+                const balanceOfPartner = await smartContract.balanceOf(contractPartner);
+                const balanceOfElite = await smartContract.balanceOf(contractElite);
+                const balanceOfPremium = await smartContract.balanceOf(contractPremium);
                 dispatch({
                     type: BALANCE_OF_SUCCESS,
-                    balanceOf: balanceOf,
+                    balanceOfPartner: balanceOfPartner,
+                    balanceOfElite: balanceOfElite,
+                    balanceOfPremium: balanceOfPremium
                 });
             }
         } catch (err) {
@@ -203,3 +208,30 @@ export function setSuccess(success = false, successMessage = '') {
         });
     }
 }
+
+export const totalSupplyMethod = () => {
+    return async (dispatch) => {
+        try {
+              let smartContractPartner = new ethers.Contract(contractPartner, abi, signer);
+              let smartContractElite = new ethers.Contract(contractElite, abi, signer);
+              let smartContractPremium = new ethers.Contract(contractPremium, abi, signer);
+            console.log('smartContractPartner', smartContractPartner)
+              const supplyPartner = await smartContractPartner.totalSupply();
+              const supplyElite = await smartContractElite.totalSupply();
+              const supplyPremium = await smartContractPremium.totalSupply();
+              console.log('res', supplyElite, supplyPartner, supplyPremium)
+              dispatch({
+                type: TOTAL_SUPPLY_SUCCESS,
+                totalSupplyPartner: supplyPartner,
+                totalSupplyElite: supplyElite,
+                totalSupplyPremium: supplyPremium
+              });
+        } catch (err) {
+          dispatch({
+            type: TOTAL_SUPPLY_FAILED,
+            errorBoolean: true,
+            errorMethod: "Could not load data from contract.",
+          });
+        }
+    };
+  };

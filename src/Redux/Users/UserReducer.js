@@ -13,7 +13,8 @@ export function userReducer(
         userLogged: {},
         refMovement: {},
         referralFromLink: '',
-        refUsed: 0
+        refUsed: 0,
+        ethEarned: 0
     },
     action
 ) {
@@ -35,7 +36,8 @@ export function userReducer(
         case GET_REFERRAL_MOVEMENT:
             return Object.assign({}, state, {
                 refMovement: action.refMovement,
-                refUsed: action.refUsed
+                refUsed: action.refUsed,
+                ethEarned: action.ethEarned
             });
         case SET_REFERRAL_BY_LINK:
             return Object.assign({}, state, {

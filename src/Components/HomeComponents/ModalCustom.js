@@ -20,7 +20,7 @@ export default function ModalCustom(props) {
     const referralFromLink = useSelector(state => state.user.referralFromLink);
     const userLogged = useSelector(state => state.user.userLogged);
     //VARIABILI WEB3
-    const { active, account, activate } = useWeb3React();
+    const { active, account, activate, chainId } = useWeb3React();
     const [referral, setReferral] = React.useState(referralFromLink);
     //VARIABILI DI STATO
     const [disableConfirm, setDisableConfirm] = React.useState(referral === userLogged.referralCode ? true : false);
@@ -52,17 +52,21 @@ export default function ModalCustom(props) {
 
     const mintPass = () => {
         let idPass = props.type === 'partner' ? 1 : props.type === 'elite' ? 2 : 3;
-        if (active) {
-            dispatch(mint(1, account, referral, idPass, userLogged));
-            props.setOpen(false);
-            let message = 'Processing...'
-            dispatch(setLoading(true, message, true))
+        if(chainId !== 5) {
+            dispatch(setErrorBoolean(true, 'Change to Goerli network!'))
         } else {
-            props.setOpen(false);
-            dispatch(connectWallet(activate, contractPartner).then(result => {
-                props.setOpen(true);
-            })
-            );
+            if (active) {
+                dispatch(mint(1, account, referral, idPass, userLogged));
+                props.setOpen(false);
+                let message = 'Processing...'
+                dispatch(setLoading(true, message, true))
+            } else {
+                props.setOpen(false);
+                dispatch(connectWallet(activate, contractPartner).then(result => {
+                    props.setOpen(true);
+                })
+                );
+            }
         }
     }
 

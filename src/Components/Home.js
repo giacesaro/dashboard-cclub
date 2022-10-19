@@ -21,6 +21,7 @@ function Home() {
     const section = useSelector(state => state.sidebar.section);
     const referralCode = useSelector(state => state.user.referralCode);
     const refUsed = useSelector(state => state.user.refUsed);
+    const ethEarned = useSelector(state => state.user.ethEarned);
 
     return (
         <Grid container spacing={5} sx={{ pl: { xs: 1, md: 6 }, pr: { xs: 1, md: 0 }, mt: { xs: 1, md: 3 } }}>
@@ -37,7 +38,7 @@ function Home() {
                         <SimpleNumberTextCard number={refUsed} text={'Referral Used'} />
                     </Grid>
                     <Grid item xs={6} md={6} lg={5.5} className='!pt-6'>
-                        <SimpleNumberTextCard number={25} text={'ETH Earned'} />
+                        <SimpleNumberTextCard number={ethEarned !== null ? ethEarned : 0} text={'ETH Earned'} />
                     </Grid>
                 </Grid>
             </Grid>
