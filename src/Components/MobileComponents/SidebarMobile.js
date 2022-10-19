@@ -15,7 +15,7 @@ import ButtonConnect from '../ButtonConnect'
 import { Grid } from '@mui/material';
 import '../../CSS/Home.css';
 import { useWeb3React } from '@web3-react/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { setSection } from '../../Redux/Sidebar/SidebarAction';
 import { disconnectWeb3Modal } from '../../Redux/Blockchain/BlockchainAction';
@@ -46,6 +46,26 @@ function SidebarMobile(props) {
         dispatch(disconnectWeb3Modal(deactivate));
     }
 
+    const refMovement = useSelector(state => state.user.refMovement);
+    var partnerPassPosseduti = 0;
+    var elitePassPosseduti = 0;
+    var premiumPassPosseduti = 0;
+    if (active && Object.keys(refMovement).length !== 0) {
+        let passConf = JSON.parse(refMovement.idPassConf);
+        partnerPassPosseduti = passConf[0].passPosseduti;
+        elitePassPosseduti = passConf[1].passPosseduti;
+        premiumPassPosseduti = passConf[2].passPosseduti;
+        console.log('pass', passConf[0].passPosseduti)
+    }
+
+    const isDisable = (passPosseduti) => {
+        console.log('pass',passPosseduti)
+        if (!active || passPosseduti === 0)
+            return true;
+        else
+            return false;
+    }
+
     const drawer = (
         <div className='bg-color-gradient !h-full'>
             <Toolbar />
@@ -62,8 +82,8 @@ function SidebarMobile(props) {
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key={'partner'} disablePadding onClick={() => handleChangeSection('partner')}>
-                    <ListItemButton className='!justify-center !pt-12'>
+                <ListItem key={'partner'} disablePadding onClick={() => handleChangeSection('partner')} disabled={isDisable(partnerPassPosseduti)}>
+                    <ListItemButton className={'!justify-center !pt-12 '}>
                         <ListItemIcon>
                             <Box
                                 component="img"
@@ -74,8 +94,8 @@ function SidebarMobile(props) {
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key={'elite'} disablePadding onClick={() => handleChangeSection('elite')}>
-                    <ListItemButton className='!justify-center'>
+                <ListItem key={'elite'} disablePadding onClick={() => handleChangeSection('elite')} disabled={isDisable(elitePassPosseduti)}>
+                    <ListItemButton className={'!justify-center '} disabled={isDisable(elitePassPosseduti)}>
                         <ListItemIcon>
                             <Box
                                 component="img"
@@ -86,8 +106,8 @@ function SidebarMobile(props) {
                         </ListItemIcon>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key={'premium'} disablePadding>
-                    <ListItemButton className='!justify-center' onClick={() => handleChangeSection('premium')}>
+                <ListItem key={'premium'} disablePadding onClick={() => handleChangeSection('premium')} disabled={isDisable(premiumPassPosseduti)}>
+                    <ListItemButton className={'!justify-center '} disabled={isDisable(premiumPassPosseduti)}>
                         <ListItemIcon>
                             <Box
                                 component="img"
